@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Platform } from 'react-native';
-import PropTypes from 'prop-types'
-import color from 'color'
-
+import { ScrollView, View } from 'react-native';
+import color from 'color';
 import keys from 'lodash/keys';
+import parsePropTypes from 'parse-prop-types';
+
 import Col from '../components/Col';
 import Row from '../components/Row';
 import Button from '../components/Button';
-
 import Text from '../components/Text';
 import { colors } from '../components/theme';
-
 import isPlainObject from 'lodash/isPlainObject';
 
 
-import parsePropTypes from 'parse-prop-types';
-
-const monospaceFont = Platform.OS == 'ios' ? 'Courier' : 'monospace';
 const parseDefaultValue = (value) => {
   if (typeof value === 'string') {
     return /^#[a-fA-F0-9]{6}$/.test(value) ? value.toUpperCase() : value.length ? value : `' '`;
   } else if (typeof value === 'undefined') {
-    console.log(value);
     return 'none';
   } else if (typeof value === 'number') {
     return `${value}`;
@@ -32,7 +26,6 @@ const parseDefaultValue = (value) => {
   } else if (Array.isArray(value)) {
     return value.length ? `[${value.join(', ')}]` : '[]';
   } else if (isPlainObject(value)) {
-    console.log(value);
     return JSON.stringify(value);
   } else {
     return '?';
@@ -58,14 +51,16 @@ const getBackgroundForColor = (hex) => {
 
 const MonospaceText = ({ children, italic, backgroundColor = colors.WHITE, color = colors.APP_PRIMARY, fontWeight = '300' }) => {
   return (
-    <Text
+    <Text.Monospace
       numberOfLines={1}
-      style={{ fontSize: 12, color, fontStyle: italic && 'italic', fontFamily: monospaceFont, backgroundColor, fontWeight, alignSelf: 'flex-start' }}>
+      color={color}
+      size='small'
+      fontWeight={fontWeight}
+      style={{ fontStyle: italic && 'italic', backgroundColor, alignSelf: 'flex-start' }}>
       {children}
-    </Text>
+    </Text.Monospace>
   );
 }
-
 
 const createComponentScreen = (Element) => {
 
@@ -155,7 +150,7 @@ const createComponentScreen = (Element) => {
 
                         <MonospaceText
                           color={textColor}
-                          fontWeight='bold'
+                          fontWeight='500'
                           backgroundColor={backgroundColor}>
                           {value}
                         </MonospaceText>

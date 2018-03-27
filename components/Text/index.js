@@ -88,7 +88,7 @@ CustomText.demoProps = {
 };
 
 const createTextComponent = (fontFamily, fontWeight) => (props) =>
-  <CustomText {...props} fontFamily={fontFamily} fontWeight={fontWeight} />;
+  <CustomText fontWeight={fontWeight} {...props} fontFamily={fontFamily} />;
 
 keys(fonts[Platform.OS]).forEach((key) => {
   const [ family, weight ] = key.split('-');
@@ -104,7 +104,7 @@ keys(fontWeights).forEach((key) => {
   AppText[key].displayName = `${AppText.displayName}.${key}`;
 });
 
-AppText.Monospace = createTextComponent(monospaceFont, fontWeights.Regular);
+AppText.Monospace = createTextComponent(monospaceFont);
 AppText.Monospace.displayName = `${AppText.displayName}.Monospace`;
 
 AppText.Monospace.demoProps = {
