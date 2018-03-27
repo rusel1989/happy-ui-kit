@@ -12,12 +12,12 @@ import { colors } from '@happy/components/theme';
 
 const ListItem = ({
   label,
-  labelColor = colors.MEDIUM_GREY,
-  iconColor = colors.MEDIUM_GREY,
+  labelColor,
+  iconColor,
   icon,
   children,
-  showSeparator = true,
-  height = 60
+  showSeparator,
+  height
 }) => (
   <Row style={[ styles.container, { borderBottomWidth: showSeparator ? 1 : 0, height } ]}>
     {(icon || label) && (
@@ -40,12 +40,33 @@ const ListItem = ({
   </Row>
 );
 
-class SelectableListItem extends Component {
-  static defaultProps = {
-    onPress: () => {},
-    selectedBackgroundColor: colors.WHITE
-  }
+ListItem.displayName = 'ListItem';
 
+ListItem.propTypes = {
+  label: PropTypes.string,
+  labelColor: PropTypes.string,
+  iconColor: PropTypes.string,
+  icon: PropTypes.string,
+  children: PropTypes.node,
+  showSeparator: PropTypes.bool,
+  height: PropTypes.number
+};
+
+ListItem.defaultProps = {
+  labelColor: colors.MEDIUM_GREY,
+  iconColor: colors.MEDIUM_GREY,
+  showSeparator: true,
+  height: 60
+};
+
+ListItem.demoProps = {
+  label: 'List item',
+  icon: 'save',
+  iconColor: colors.APP_PRIMARY
+
+};
+
+class SelectableListItem extends Component {
   setRef = (v) => {
     this.btnRef = v;
   }
@@ -82,14 +103,37 @@ class SelectableListItem extends Component {
   }
 }
 
+SelectableListItem.displayName = `${ListItem.displayName}.Selectable`;
+
+SelectableListItem.propTypes = {
+  ...ListItem.propTypes,
+  animated: PropTypes.bool,
+  isSelected: PropTypes.bool,
+  onPress: PropTypes.func,
+  selectedBackgroundColor: PropTypes.string,
+  rightButton: PropTypes.node
+}
+
+SelectableListItem.defaultProps = {
+  ...ListItem.defaultProps,
+  onPress: () => {},
+  selectedBackgroundColor: colors.WHITE,
+  animated: false,
+  isSelected: false,
+  rightButton: null
+};
+
+SelectableListItem.demoProps = {
+  icon: 'radio-active',
+  isSelected: true,
+  label: 'Selectable Item',
+  labelColor: colors.APP_DARK_GREY,
+  iconColor: colors.APP_BLACK,
+  selectedBackgroundColor: colors.APP_LIGHT_GREY
+};
+
+
 class CollapsibleListItem extends Component {
-  static defaultProps = {
-    onPress: () => {},
-    onOpen: () => {},
-    onClose: () => {},
-    selectedBackgroundColor: colors.WHITE,
-    contentHeight: 240
-  }
 
   state = {
     collapsibleHeight: new Animated.Value(0),
@@ -157,8 +201,41 @@ class CollapsibleListItem extends Component {
   }
 }
 
+CollapsibleListItem.displayName = `${ListItem.displayName}.Collapsible`;
+
+CollapsibleListItem.propTypes = {
+  ...SelectableListItem.propTypes,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  contentHeight: PropTypes.number,
+  getRef: PropTypes.func,
+  children: PropTypes.node
+};
+
+CollapsibleListItem.defaultProps = {
+  ...SelectableListItem.defaultProps,
+  onOpen: () => {},
+  onClose: () => {},
+  contentHeight: 240,
+  getRef: () => {}
+};
+
+CollapsibleListItem.demoProps = {
+ label: 'Collapsible item',
+ icon: 'arrow-down',
+ children: <Col><Text>{`Collapsible content`}</Text></Col>,
+ contentHeight: 50
+};
+
 ListItem.Selectable = SelectableListItem;
 ListItem.Collapsible = CollapsibleListItem;
+
+ListItem.subComponents = [
+  SelectableListItem,
+  CollapsibleListItem
+];
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -168,10 +245,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE
   }
 });
-
-ListItem.propTypes = {
-
-};
-
 
 export default ListItem;

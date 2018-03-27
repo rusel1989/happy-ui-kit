@@ -5,6 +5,8 @@ import keys from 'lodash/keys';
 import Col from '../components/Col';
 import Row from '../components/Row';
 import Text from '../components/Text';
+import { colors } from '../components/theme';
+
 import isPlainObject from 'lodash/isPlainObject';
 
 
@@ -37,6 +39,7 @@ const createComponentScreen = (Element) => {
   class ComponentScreen extends Component {
     render () {
       const demoProps = Element.demoProps || {};
+      const subComponents = Element.subComponents || [];
       return (
         <ScrollView style={{ backgroundColor: '#EEE' }}>
           <View style={{ padding: 16 }}>
@@ -54,7 +57,6 @@ const createComponentScreen = (Element) => {
               <Element {...demoProps} />
 
             )}
-
           </View>
 
           <View style={{ paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'white', margin: 10, elevation: 2 }}>
@@ -101,6 +103,18 @@ const createComponentScreen = (Element) => {
             </Row>
 
           </View>
+
+                     {subComponents.map((SubComponent, i) => {
+                const subComponentProps = SubComponent.demoProps ? SubComponent.demoProps : demoProps.length ? demoProps[0] : demoProps;
+                return (
+                  <Col key={i} justifyContent='flex-start' alignItems='stretch' style={{ backgroundColor: 'white',  paddingVertical: 4, elevation: 2, marginBottom: 10 }}>
+                    <Text.Semibold style={{ paddingLeft: 8 }}  size={12} >{`<${SubComponent.displayName} />`}</Text.Semibold >
+                    <SubComponent key={i} {...subComponentProps} />
+                  </Col>
+                );
+              })}
+
+
         </ScrollView>
       );
     }

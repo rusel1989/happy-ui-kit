@@ -4,9 +4,11 @@ import componentList from '../component-list.json';
 
 const Button = ({ label, onPress }) => {
   return (
-    <TouchableHighlight style={{ height: 50, paddingHorizontal: 16, justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#DDD' }} onPress={onPress} underlayColor='#EEE'>
-      <Text>{label}</Text>
-    </TouchableHighlight>
+    <View style={{ backgroundColor: 'white' }}>
+          <TouchableHighlight style={{ height: 50, paddingHorizontal: 16, justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#DDD' }} onPress={onPress} underlayColor='#EEE'>
+        <Text>{label}</Text>
+      </TouchableHighlight>
+    </View>
   )
 }
 

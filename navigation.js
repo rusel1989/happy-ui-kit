@@ -14,7 +14,6 @@ import ChipGroup from './components/ChipGroup';
 import CircleChart from './components/CircleChart';
 import CircleSlider from './components/CircleSlider';
 import Col from './components/Col';
-import Drawer from './components/Drawer';
 import Dropdown from './components/Dropdown';
 import FooterButton from './components/FooterButton';
 import HeaderButton from './components/HeaderButton';
@@ -111,12 +110,6 @@ const RootNavigator = StackNavigator({
     screen: createComponentScreen(Col),
     navigationOptions: {
       title: 'Col'
-    }
-  },
-  Drawer: {
-    screen: createComponentScreen(Drawer),
-    navigationOptions: {
-      title: 'Drawer'
     }
   },
   Dropdown: {

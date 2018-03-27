@@ -15,16 +15,6 @@ import { to24hTime } from '@happy/utils/date';
 const locationBackground = color(colors.APP_PRIMARY).alpha(0.1);
 
 class Dropdown extends React.Component {
-  static defaultProps = {
-    label: 'Select',
-    options: [],
-    onSelect: () => {}
-  }
-
-  static propTypes = {
-
-  }
-
   state = {
     selectedOption: null
   }
@@ -68,5 +58,22 @@ class Dropdown extends React.Component {
   }
 }
 
+Dropdown.defaultProps = {
+  label: 'Select',
+  options: [],
+  onSelect: () => {}
+}
+
+Dropdown.propTypes = {
+  label: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.any, label: PropTypes.string })),
+  onSelect: PropTypes.func
+}
+
+Dropdown.demoProps = {
+  label: 'Select anything',
+  options: [{ value: 'any', label: 'Anything'}, { value: 'some', label: 'Something' }],
+  onSelect: (v) => console.log(v)
+}
 
 export default Dropdown

@@ -40,8 +40,19 @@ const styles = StyleSheet.create({
 });
 
 FooterButton.propTypes = {
-
+  icon: PropTypes.string,
+  onPress: PropTypes.func,
+  label: PropTypes.string
 };
 
+FooterButton.defaultProps = {
+  icon: 'arrow',
+  onPress: () => {},
+  label: ''
+};
+
+FooterButton.demoProps = {
+  label: 'Footer button'
+};
 
 export default FooterButton;
