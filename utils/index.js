@@ -1,3 +1,4 @@
+import React from 'react';
 import { Asset, Font } from 'expo';
 import { Image, Alert, RefreshControl } from 'react-native';
 import { colors } from '../components/theme';
