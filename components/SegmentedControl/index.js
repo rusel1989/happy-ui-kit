@@ -8,9 +8,9 @@ import { toTitleCase } from '@happy/utils';
 
 const CustomSegmentedControl = ({
   onChange,
-  options = [],
-  selectedIndex = 0,
-  tintColor = colors.APP_BLACK
+  options,
+  selectedIndex,
+  tintColor
 }) => {
   return (
     <View style={styles.container}>
@@ -30,7 +30,23 @@ const styles = StyleSheet.create({
 });
 
 CustomSegmentedControl.propTypes = {
+  onChange: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string),
+  selectedIndex: PropTypes.number,
+  tintColor: PropTypes.string
+};
 
+CustomSegmentedControl.defaultProps = {
+  onChange: () => {},
+  options: [],
+  selectedIndex: 0,
+  tintColor: colors.APP_BLACK
+};
+
+CustomSegmentedControl.demoProps = {
+  onChange: (i) => console.log(`selected ${i}`),
+  options: ['Segmented', 'Control'],
+  tintColor: colors.APP_PRIMARY
 };
 
 export default CustomSegmentedControl;

@@ -6,7 +6,6 @@ import options from './demo/navOptions';
 
 import ActionSheet from './components/ActionSheet';
 import Button from './components/Button';
-import Calendar from './components/Calendar';
 import Card from './components/Card';
 import Checkbox from './components/Checkbox';
 import Chip from './components/Chip';
@@ -15,30 +14,23 @@ import CircleChart from './components/CircleChart';
 import CircleSlider from './components/CircleSlider';
 import Col from './components/Col';
 import Dropdown from './components/Dropdown';
-import FooterButton from './components/FooterButton';
 import HeaderButton from './components/HeaderButton';
 import Icon from './components/Icon';
 import IconButton from './components/IconButton';
 import ListItem from './components/ListItem';
-import ListScreen from './components/ListScreen';
 import Notification from './components/Notification';
 import Overlay from './components/Overlay';
 import ParallaxView from './components/ParallaxView';
 import ProgressBar from './components/ProgressBar';
 import PullToRefreshView from './components/PullToRefreshView';
-import RefreshControl from './components/RefreshControl';
+import RoundButton from './components/RoundButton';
 import Row from './components/Row';
-import Screen from './components/Screen';
-import ScreenContainer from './components/ScreenContainer';
 import Section from './components/Section';
 import SectionHeader from './components/SectionHeader';
 import SectionList from './components/SectionList';
 import SegmentedControl from './components/SegmentedControl';
 import Separator from './components/Separator';
-import SharedElement from './components/SharedElement';
 import SwipeRow from './components/SwipeRow';
-import TabBar from './components/TabBar';
-import TabBarButton from './components/TabBarButton';
 import Text from './components/Text';
 import TextField from './components/TextField';
 import Toast from './components/Toast';
@@ -62,12 +54,6 @@ const RootNavigator = StackNavigator({
     screen: createComponentScreen(Button),
     navigationOptions: {
       title: 'Button'
-    }
-  },
-  Calendar: {
-    screen: createComponentScreen(Calendar),
-    navigationOptions: {
-      title: 'Calendar'
     }
   },
   Card: {
@@ -118,12 +104,6 @@ const RootNavigator = StackNavigator({
       title: 'Dropdown'
     }
   },
-  FooterButton: {
-    screen: createComponentScreen(FooterButton),
-    navigationOptions: {
-      title: 'Footer Button'
-    }
-  },
   HeaderButton: {
     screen: createComponentScreen(HeaderButton),
     navigationOptions: {
@@ -146,12 +126,6 @@ const RootNavigator = StackNavigator({
     screen: createComponentScreen(ListItem),
     navigationOptions: {
       title: 'List Item'
-    }
-  },
-  ListScreen: {
-    screen: createComponentScreen(ListScreen),
-    navigationOptions: {
-      title: 'List Screen'
     }
   },
   Notification: {
@@ -184,28 +158,16 @@ const RootNavigator = StackNavigator({
       title: 'Pull To Refresh View'
     }
   },
-  RefreshControl: {
-    screen: createComponentScreen(RefreshControl),
+  RoundButton: {
+    screen: createComponentScreen(RoundButton),
     navigationOptions: {
-      title: 'Refresh Control'
+      title: 'Round Button'
     }
   },
   Row: {
     screen: createComponentScreen(Row),
     navigationOptions: {
       title: 'Row'
-    }
-  },
-  Screen: {
-    screen: createComponentScreen(Screen),
-    navigationOptions: {
-      title: 'Screen'
-    }
-  },
-  ScreenContainer: {
-    screen: createComponentScreen(ScreenContainer),
-    navigationOptions: {
-      title: 'Screen Container'
     }
   },
   Section: {
@@ -238,28 +200,10 @@ const RootNavigator = StackNavigator({
       title: 'Separator'
     }
   },
-  SharedElement: {
-    screen: createComponentScreen(SharedElement),
-    navigationOptions: {
-      title: 'Shared Element'
-    }
-  },
   SwipeRow: {
     screen: createComponentScreen(SwipeRow),
     navigationOptions: {
       title: 'Swipe Row'
-    }
-  },
-  TabBar: {
-    screen: createComponentScreen(TabBar),
-    navigationOptions: {
-      title: 'Tab Bar'
-    }
-  },
-  TabBarButton: {
-    screen: createComponentScreen(TabBarButton),
-    navigationOptions: {
-      title: 'Tab Bar Button'
     }
   },
   Text: {

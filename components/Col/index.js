@@ -36,7 +36,7 @@ Col.demoProps = [{
   style: demoStyle,
   children: <Text>center | stretch</Text>,
   alignItems: 'stretch'
-},{
+}, {
   style: demoStyle,
   children: <Text>flex-end | center</Text>,
   justifyContent: 'flex-end'

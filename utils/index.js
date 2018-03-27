@@ -1,5 +1,6 @@
 import { Asset, Font } from 'expo';
-import { Image, Alert } from 'react-native';
+import { Image, Alert, RefreshControl } from 'react-native';
+import { colors } from '../components/theme';
 
 export const cacheImages = (images) => {
   return images.map(image => {
@@ -40,5 +41,15 @@ export const showConfirmDialog = ({
       { text: 'OK', onPress: onOkPress }
     ],
     { cancelable: false }
+  );
+};
+
+export const renderRefreshControl = ({ refreshing, onRefresh }) => {
+  return (
+    <RefreshControl
+      colors={[colors.APP_PRIMARY]}
+      tintColor={colors.APP_PRIMARY}
+      refreshing={refreshing}
+      onRefresh={onRefresh} />
   );
 };

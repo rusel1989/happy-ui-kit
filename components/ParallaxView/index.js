@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 
 import { colors } from '@happy/components/theme';
-import { renderRefreshControl } from '../RefreshControl';
+import { renderRefreshControl } from '../../utils';
 import Card from '../Card';
 import Shadow from './Shadow';
 
 class ParallaxView extends Component {
-  static defaultProps = {
-    refreshing: false,
-    onRefresh: () => {},
-    scrollViewRef: () => {},
-    scrollEnabled: true,
-    teaserHeight: 200,
-    header: <View />
-  }
-
-  static propTypes = {
-
-  }
-
   constructor (props) {
     super(props);
     this.state = {
@@ -30,7 +17,7 @@ class ParallaxView extends Component {
   }
 
   render () {
-    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children, header } = this.props;
+    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children, header, style } = this.props;
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [ 0, teaserHeight ],
       outputRange: [ teaserHeight, 0 ],
@@ -39,7 +26,7 @@ class ParallaxView extends Component {
     const headerZIndex = refreshing ? -1 : 1;
 
     return (
-      <View style={styles.container}>
+      <View style={[ styles.container, style ]}>
         <KeyboardAwareScrollView
           style={styles.scrollView}
           innerRef={scrollViewRef}
@@ -62,6 +49,32 @@ class ParallaxView extends Component {
     );
   }
 }
+
+ParallaxView.defaultProps = {
+  refreshing: false,
+  onRefresh: () => {},
+  scrollViewRef: () => {},
+  scrollEnabled: true,
+  teaserHeight: 200,
+  header: <View />
+};
+
+ParallaxView.propTypes = {
+  refreshing: PropTypes.bool,
+  onRefresh: PropTypes.func,
+  scrollViewRef: PropTypes.func,
+  scrollEnabled: PropTypes.bool,
+  teaserHeight: PropTypes.number,
+  header: PropTypes.node,
+  children: PropTypes.node
+};
+
+ParallaxView.demoProps = {
+  style: { height: 200 },
+  teaserHeight: 150,
+  header: <View style={{ height: 150, backgroundColor: colors.APP_PRIMARY }}><Text>header</Text></View>,
+  children: <View style={{ height: 200, backgroundColor: colors.APP_LIGHT_GREY }}><Text>content</Text></View>
+};
 
 const styles = StyleSheet.create({
   container: {

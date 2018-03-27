@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 
 import { colors } from '@happy/components/theme';
 import SectionHeader from '../SectionHeader';
+import ListItem from '../ListItem';
+
 import Separator from '../Separator';
-import { renderRefreshControl } from '../RefreshControl';
+import { renderRefreshControl } from '../../utils';
 
 const createAnimatedComponent = (Component) => ({
   duration = 200,
@@ -49,12 +51,13 @@ const ListFooterComponent = ({ loading }) => {
 
 const CustomSectionList = ({
   extraData,
-  sections = [],
-  onRefresh = () => {},
-  refreshing = false,
-  loading = false,
-  animated = false,
-  getRef = () => {},
+  sections,
+  onRefresh,
+  refreshing,
+  loading,
+  animated,
+  getRef,
+  style,
   ...rest
 }) => {
   return (
@@ -66,7 +69,7 @@ const CustomSectionList = ({
       ListFooterComponent={() => <ListFooterComponent loading={loading} />}
       ItemSeparatorComponent={({ leadingItem }) => <ListItemSeparator delay={leadingItem.totalIndex * 200} />}
       renderSectionHeader={({ section }) => <ListSectionHeader title={section.title} delay={section.totalIndex * 200} />}
-      style={styles.container}
+      style={[ styles.container, style ]}
       extraData={extraData}
       sections={sections}
       {...rest} />
@@ -81,8 +84,36 @@ const styles = StyleSheet.create({
 });
 
 CustomSectionList.propTypes = {
-
+  ...SectionList.propTypes,
+  extraData: PropTypes.any,
+  sections: PropTypes.arrayOf(PropTypes.shape({ title: PropTypes.string, data: PropTypes.array })),
+  onRefresh: PropTypes.func,
+  refreshing: PropTypes.bool,
+  loading: PropTypes.bool,
+  animated: PropTypes.bool,
+  getRef: PropTypes.func
 };
 
+CustomSectionList.defaultProps = {
+  ...SectionList.propTypes,
+  sections: [],
+  onRefresh: () => {},
+  refreshing: false,
+  loading: false,
+  animated: false,
+  getRef: () => {}
+};
+
+CustomSectionList.demoProps = {
+  style: { height: 200 },
+  sections: [{
+    title: 'Section 1',
+    data: [{ name: 'item 1', key: 'item-1' }, { name: 'item 2', key: 'item-2' }]
+  }, {
+    title: 'Section 2',
+    data: [{ name: 'item 3', key: 'item-3' }, { name: 'item 4', key: 'item-4' }]
+  }],
+  renderItem: ({ item }) => <ListItem showSeparator={false} label={item.name} />
+};
 
 export default CustomSectionList;

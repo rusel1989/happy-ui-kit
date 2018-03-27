@@ -19,6 +19,25 @@ const Notification = ({ message, tintColor, icon }) => {
   );
 };
 
+Notification.displayName = 'Notification';
+
+Notification.propTypes = {
+  message: PropTypes.string,
+  tintColor: PropTypes.string,
+  icon: PropTypes.string
+};
+
+Notification.defaultProps = {
+  message: '',
+  tintColor: colors.APP_DARK_GREY,
+  icon: 'notification'
+};
+
+Notification.demoProps = {
+  message: 'Notification with message',
+  icon: 'save'
+};
+
 Notification.Danger = ({ message }) => {
   return (
     <Notification
@@ -27,6 +46,20 @@ Notification.Danger = ({ message }) => {
       message={message} />
 
   );
+};
+
+Notification.Danger.displayName = `${Notification.displayName}.Danger`;
+
+Notification.Danger.propTypes = {
+  message: PropTypes.string
+};
+
+Notification.Danger.defaultProps = {
+  message: ''
+};
+
+Notification.Danger.demoProps = {
+  message: 'Error notification with message'
 };
 
 Notification.Success = ({ message }) => {
@@ -38,8 +71,23 @@ Notification.Success = ({ message }) => {
   );
 };
 
-Notification.propTypes = {
+Notification.Success.displayName = `${Notification.displayName}.Success`;
 
+Notification.Success.propTypes = {
+  message: PropTypes.string
 };
+
+Notification.Success.defaultProps = {
+  message: ''
+};
+
+Notification.Success.demoProps = {
+  message: 'Success notification with message'
+};
+
+Notification.subComponents = [
+  Notification.Success,
+  Notification.Danger
+];
 
 export default Notification;

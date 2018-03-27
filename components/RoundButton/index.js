@@ -11,7 +11,7 @@ import Touchable from '../Touchable';
 
 import { colors } from '@happy/components/theme';
 
-const FooterButton = ({ icon, onPress, label }) => {
+const RoundButton = ({ icon, onPress, label }) => {
   return (
     <Col style={styles.container}>
       <Row style={styles.button}>
@@ -39,20 +39,20 @@ const styles = StyleSheet.create({
   text: { paddingLeft: 15 }
 });
 
-FooterButton.propTypes = {
+RoundButton.propTypes = {
   icon: PropTypes.string,
   onPress: PropTypes.func,
   label: PropTypes.string
 };
 
-FooterButton.defaultProps = {
+RoundButton.defaultProps = {
   icon: 'arrow',
   onPress: () => {},
   label: ''
 };
 
-FooterButton.demoProps = {
+RoundButton.demoProps = {
   label: 'Footer button'
 };
 
-export default FooterButton;
+export default RoundButton;

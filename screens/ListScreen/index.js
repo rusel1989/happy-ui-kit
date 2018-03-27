@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { colors } from '@happy/components/theme';
-import { renderRefreshControl } from '../RefreshControl';
+import { renderRefreshControl } from '../../utils';
 
 class ListScreen extends Component {
   static defaultProps = {

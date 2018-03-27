@@ -99,8 +99,8 @@ class Toast extends Component {
       );
     }
 
-    show ({ children = this.state.children, position = this.state.position, duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }
-      = { children: this.state.children, position: this.state.position, duration: this.props.animatedDuration, easing: Easing.linear, delay: this.props.delay }) {
+    show = ({ children = this.state.children, position = this.state.position, duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }
+      = { children: this.state.children, position: this.state.position, duration: this.props.animatedDuration, easing: Easing.linear, delay: this.props.delay }) => {
       this._toastShowAnimation && this._toastShowAnimation.stop();
       this._toastHideAnimation && this._toastHideAnimation.stop();
       this._toastAnimationToggle && this.clearTimeout(this._toastAnimationToggle);
@@ -137,8 +137,8 @@ class Toast extends Component {
       });
     }
 
-    hide ({ duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }
-      = { duration: this.props.animatedDuration, easing: Easing.linear, delay: this.props.delay }) {
+    hide = ({ duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }
+      = { duration: this.props.animatedDuration, easing: Easing.linear, delay: this.props.delay }) => {
       this._toastShowAnimation && this._toastShowAnimation.stop();
       this._toastHideAnimation && this._toastHideAnimation.stop();
       this.clearTimeout(this._toastAnimationToggle);
@@ -167,7 +167,7 @@ class Toast extends Component {
       this._setToastPosition();
     }
 
-    _setToastPosition (position = this.state.position) {
+    _setToastPosition = (position = this.state.position) => {
       if (!this._toastWidth || !this._toastHeight) {
         return;
       }
@@ -186,5 +186,20 @@ class Toast extends Component {
       });
     }
 }
+
+Toast.demoMethods = [{
+  name: 'show',
+  label: 'Show Toast',
+  args: [{
+    position: 0,
+    children: 'Message toasted'
+  }]
+}];
+
+Toast.demoProps = {
+  marginTop: 64
+};
+
+Toast.renderLast = true;
 
 export default TimerEnhance(Toast);

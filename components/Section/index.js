@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
 
@@ -35,8 +35,20 @@ Section.Animated = ({ title, onHeaderPress, children, getRef, style, contentEnte
 };
 
 Section.propTypes = {
-
+  title: PropTypes.string,
+  onHeaderPress: PropTypes.func,
+  children: PropTypes.node
 };
 
+Section.defaultProps = {
+  title: '',
+  onHeaderPress: () => {}
+};
+
+Section.demoProps = {
+  title: 'Section title',
+  onHeaderPress: () => console.log('pressed header'),
+  children: <View style={{ backgroundColor: 'white' }}><Text>Section content</Text></View>
+};
 
 export default Section;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableNativeFeedback, TouchableOpacity, Platform, TouchableHighlight } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity, Platform, TouchableHighlight, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { colors } from '@happy/components/theme';
@@ -11,15 +11,12 @@ const createTouchable = (Component, touchableProps) => ({
   onPress,
   children,
   style,
-  underlayColor = colors.EXTRA_LIGHT_GREY,
-  hitSlop
+  underlayColor
 }) => {
   return (
     <Component
-      onPress={onPress}
-      {...touchableProps}
-      hitSlop={hitSlop}
       style={style}
+      onPress={onPress}
       underlayColor={underlayColor}>
       <View>
         {children}
@@ -33,12 +30,42 @@ const Touchable = createTouchable(TouchableView, {
   activeOpacity: 1
 });
 
-Touchable.Highlight = createTouchable(TouchableHighlight, {
-  underlayColor: colors.EXTRA_LIGHT_GREY
-});
-
 Touchable.propTypes = {
-
+  onPress: PropTypes.func,
+  children: PropTypes.node,
+  style: PropTypes.object
 };
+
+Touchable.defaultProps = {
+  onPress: () => {}
+};
+
+Touchable.demoProps = {
+  style: { padding: 16 },
+  children: <Text>Touchable</Text>
+};
+
+Touchable.Highlight = createTouchable(TouchableHighlight, {});
+Touchable.Highlight.displayName = 'Touchable.Highlight';
+
+Touchable.Highlight.propTypes = {
+  onPress: PropTypes.func,
+  style: PropTypes.object,
+  underlayColor: PropTypes.string
+};
+
+Touchable.Highlight.defaultProps = {
+  onPress: () => {},
+  underlayColor: colors.EXTRA_LIGHT_GREY
+};
+
+Touchable.Highlight.demoProps = {
+  style: { padding: 16 },
+  children: <Text>Touchable Highlight</Text>
+};
+
+Touchable.subComponents = [
+  Touchable.Highlight
+];
 
 export default Touchable;

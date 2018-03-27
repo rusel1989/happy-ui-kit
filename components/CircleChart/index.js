@@ -6,9 +6,9 @@ import Text from '../Text';
 import { colors } from '../theme';
 
 const renderText = (val, formatText) =>
-  <Text.CondensedBold color='#37474F' size={20}>
+  <Text.RobotoCondensed.Bold color='#37474F' size={20}>
     {formatText(val)}
-  </Text.CondensedBold>;
+  </Text.RobotoCondensed.Bold>;
 
 const CircleChart = ({ value, size, lineWidth, showText, formatText, colors, spacing }) => {
   return (
@@ -67,5 +67,7 @@ CircleChart.demoProps = [{
   colors: { tintColor: colors.APP_PRIMARY, backgroundColor: colors.APP_INFO }
 
 }];
+
+CircleChart.noRef = true;
 
 export default CircleChart;

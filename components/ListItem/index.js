@@ -112,7 +112,7 @@ SelectableListItem.propTypes = {
   onPress: PropTypes.func,
   selectedBackgroundColor: PropTypes.string,
   rightButton: PropTypes.node
-}
+};
 
 SelectableListItem.defaultProps = {
   ...ListItem.defaultProps,
@@ -132,9 +132,7 @@ SelectableListItem.demoProps = {
   selectedBackgroundColor: colors.APP_LIGHT_GREY
 };
 
-
 class CollapsibleListItem extends Component {
-
   state = {
     collapsibleHeight: new Animated.Value(0),
     opened: false
@@ -171,8 +169,7 @@ class CollapsibleListItem extends Component {
   animate = (to, callback) => {
     Animated.timing(this.state.collapsibleHeight, {
       toValue: to,
-      duration: 300,
-      // useNativeDriver: true
+      duration: 300
     }).start(callback);
   }
 
@@ -221,10 +218,10 @@ CollapsibleListItem.defaultProps = {
 };
 
 CollapsibleListItem.demoProps = {
- label: 'Collapsible item',
- icon: 'arrow-down',
- children: <Col><Text>{`Collapsible content`}</Text></Col>,
- contentHeight: 50
+  label: 'Collapsible item',
+  icon: 'arrow-down',
+  children: <Col><Text>{`Collapsible content`}</Text></Col>,
+  contentHeight: 50
 };
 
 ListItem.Selectable = SelectableListItem;
@@ -234,8 +231,6 @@ ListItem.subComponents = [
   SelectableListItem,
   CollapsibleListItem
 ];
-
-
 
 const styles = StyleSheet.create({
   container: {

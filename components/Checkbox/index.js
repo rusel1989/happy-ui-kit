@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
 
-const Checkbox = ({ selected = false, style }) => {
+const Checkbox = ({ selected, style }) => {
   return selected ? (
     <Animatable.View animation='fadeIn'>
       <Icon
@@ -25,6 +25,10 @@ const Checkbox = ({ selected = false, style }) => {
 Checkbox.propTypes = {
   selected: PropTypes.bool,
   style: PropTypes.object
+};
+
+Checkbox.defaultProps = {
+  selected: false
 };
 
 Checkbox.demoProps = [{

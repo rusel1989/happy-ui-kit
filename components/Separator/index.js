@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import { colors } from '@happy/components/theme';
 
-const Separator = ({ spacing = 0, spacingVertical = 0 }) => {
+const Separator = ({ spacing, spacingVertical, width, color }) => {
   return (
-    <View style={{ height: 1, backgroundColor: colors.LIGHT_GREY, marginHorizontal: spacing, marginTop: spacingVertical }} />
+    <View style={{ height: width, backgroundColor: color, marginHorizontal: spacing, marginTop: spacingVertical }} />
   );
 };
 
@@ -17,7 +17,23 @@ Separator.Vertical = () => {
 };
 
 Separator.propTypes = {
+  spacing: PropTypes.number,
+  spacingVertical: PropTypes.number,
+  width: PropTypes.number,
+  color: PropTypes.string
+};
 
+Separator.defaultProps = {
+  spacing: 0,
+  spacingVertical: 0,
+  width: 1,
+  color: colors.SEPARATOR
+};
+
+Separator.demoProps = {
+  spacing: 16,
+  width: 5,
+  color: colors.APP_PRIMARY
 };
 
 export default Separator;

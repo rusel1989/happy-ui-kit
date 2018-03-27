@@ -26,16 +26,6 @@ const renderItem = (data, index, isSelected) => {
 };
 
 class WheelPicker extends Component {
-  static defaultProps = {
-    onOpen: () => {},
-    onClose: () => {},
-    wheels: []
-  }
-
-  static propTypes = {
-
-  }
-
   constructor (props) {
     super(props);
     const initialState = {};
@@ -126,6 +116,34 @@ class WheelPicker extends Component {
     }
   }
 }
+
+WheelPicker.defaultProps = {
+  onOpen: () => {},
+  onClose: () => {},
+  onChange: () => {},
+  getRef: () => {},
+  wheels: [],
+  value: null,
+  animated: false,
+  defaultOpened: false
+};
+
+WheelPicker.propTypes = {
+  getRef: PropTypes.func,
+  onOpen: PropTypes.func,
+  onChange: PropTypes.func,
+  onClose: PropTypes.func,
+  wheels: PropTypes.array,
+  value: PropTypes.any,
+  animated: PropTypes.bool,
+  defaultOpened: PropTypes.bool
+};
+
+WheelPicker.demoProps = {
+  defaultOpened: true,
+  value: { numbers: '30' },
+  wheels: [{ id: 'numbers', values: ['10', '20', '30', '40', '50'] }]
+};
 
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', justifyContent: 'center', height: 240, overflow: 'hidden' },

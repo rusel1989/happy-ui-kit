@@ -76,11 +76,11 @@ class CircularSlider extends Component {
     return (
       <View style={{ alignSelf: 'center' }}>
         <View style={styles.textContainer}>
-          <Text.CondensedRegular
+          <Text.RobotoCondensed.Regular
             color={textColor}
             size={textSize}>
             {formatValue(value)}
-          </Text.CondensedRegular>
+          </Text.RobotoCondensed.Regular>
         </View>
         <Svg
           onLayout={this.onLayout}
@@ -143,7 +143,7 @@ CircularSlider.propTypes = {
   initialValue: PropTypes.number,
   onValueSelected: PropTypes.func,
   formatValue: PropTypes.func
-}
+};
 
 CircularSlider.defaultProps = {
   width: 120,
@@ -169,5 +169,7 @@ CircularSlider.demoProps = {
   height: 150,
   textSize: 40
 };
+
+CircularSlider.noRef = true;
 
 export default CircularSlider;

@@ -165,7 +165,7 @@ class ActionSheet extends Component {
                 <ListItem.Selectable
                   key={index}
                   selectedBackgroundColor={colors.EXTRA_LIGHT_GREY}
-                  icon={`${option.icon}${isSelected ? '-flat' : '-default'}`}
+                  icon={option.icon}
                   labelColor={colors.DARK_GREY}
                   iconColor={isSelected ? null : colors.DARK_GREY}
                   isSelected={isSelected}
@@ -188,6 +188,17 @@ class ActionSheet extends Component {
     );
   }
 }
+
+ActionSheet.demoMethods = [{
+  name: 'show',
+  label: 'Show sheet',
+  args: [{
+    options: [
+      { label: 'Option 1', icon: 'save', value: 'value' },
+      { label: 'Option 2', icon: 'remove', value: 'value2' }
+    ]
+  }, 'value']
+}];
 
 const styles = StyleSheet.create({
   sheetContainer: {

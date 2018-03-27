@@ -4,15 +4,11 @@ import PropTypes from 'prop-types';
 
 import Text from '../Text';
 
-const SectionHeader = ({ title = '', onPress }) => (
+const SectionHeader = ({ title, uppercase }) => (
   <View style={styles.container}>
-    <Text.Medium size={12}>{title.toUpperCase()}</Text.Medium>
+    <Text.Medium size={12}>{uppercase ? title.toUpperCase() : title}</Text.Medium>
   </View>
 );
-
-SectionHeader.defaultProps = {
-  onPress: () => {}
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,8 +21,17 @@ const styles = StyleSheet.create({
 });
 
 SectionHeader.propTypes = {
-
+  title: PropTypes.string,
+  uppercase: PropTypes.bool
 };
 
+SectionHeader.defaultProps = {
+  title: '',
+  uppercase: true
+};
+
+SectionHeader.demoProps = {
+  title: 'Section header'
+};
 
 export default SectionHeader;
