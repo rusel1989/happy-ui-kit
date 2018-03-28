@@ -41,15 +41,6 @@ IconButton.defaultProps = {
   size: 60
 };
 
-IconButton.demoProps = [{
-  name: 'save',
-  color: 'green',
-  iconSize: 40,
-  onPress: () => console.log('save')
-}, {
-  name: 'remove',
-  color: 'red',
-  onPress: () => console.log('remove')
-}];
+IconButton.demoProps = [];
 
 export default IconButton;

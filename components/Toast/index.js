@@ -197,19 +197,4 @@ Toast.propTypes = {
   borderRadius: PropTypes.number
 };
 
-Toast.demoMethods = [{
-  name: 'show',
-  label: 'Show Toast',
-  args: [{
-    position: 0,
-    children: 'Message toasted'
-  }]
-}];
-
-Toast.demoProps = {
-  marginTop: 64
-};
-
-Toast.renderLast = true;
-
 export default TimerEnhance(Toast);

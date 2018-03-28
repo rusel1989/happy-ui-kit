@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
+import color from 'color';
 
 import Text from '../Text';
 import Touchable from '../Touchable';
-
 import BaseTheme from '../../theme/base';
 import { toTitleCase } from '@happy/utils';
 
-const BaseChip = ({ label, value, active, animated, onPress, spacingHorizontal, ...rest }, context) => {
-  const { activeTintColor, tintColor, backgroundColor, height, borderRadius, borderWidth, textSize } = context.mergeStyle('Chip', rest);
+const BaseChip = ({ label, active, animated, onPress, spacingHorizontal, ...rest }, context) => {
+  const { activeTintColor, tintColor, backgroundColor, height,
+    borderRadius, borderWidth, textSize } = context.mergeStyle('Chip', rest);
   const tintColorF = active ? activeTintColor : tintColor;
   return (
     <View style={[styles.chipContainer, { marginHorizontal: spacingHorizontal }]}>
       <View style={{ borderColor: tintColor, backgroundColor, height, borderRadius, borderWidth }} >
         <Touchable.Highlight
           style={{ paddingHorizontal: 17, flex: 1, justifyContent: 'center', borderRadius }}
-          onPress={() => onPress(value)}>
+          underlayColor={color(backgroundColor).darken(0.1)}
+          onPress={() => onPress(label)}>
           <Text.Regular size={textSize} color={tintColorF}>
             {toTitleCase(label)}
           </Text.Regular>

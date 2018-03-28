@@ -40,9 +40,4 @@ Overlay.defaultProps = {
   ...BaseTheme.Overlay
 };
 
-Overlay.demoProps = {
-  style: { height: 200, position: 'relative' },
-  duration: 3000
-};
-
 export default Overlay;

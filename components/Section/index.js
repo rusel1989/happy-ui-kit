@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import SectionHeader from '../SectionHeader';
@@ -53,18 +52,5 @@ Section.defaultProps = {
   title: '',
   ...BaseTheme.Section
 };
-
-Section.demoProps = [{
-  title: 'Section title',
-  children: <Text>Section content</Text>
-}, {
-  title: 'Custom section',
-  headerUppercase: false,
-  headerHeight: 40,
-  headerTextSize: 18,
-  headerTextColor: BaseTheme.palette.WHITE,
-  headerBackgroundColor: BaseTheme.palette.APP_DANGER,
-  children: <Text>Section content</Text>
-}];
 
 export default Section;

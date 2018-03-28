@@ -39,9 +39,4 @@ TextField.defaultProps = {
   ...BaseTheme.TextField
 };
 
-TextField.demoProps = {
-  padding: 16,
-  placeholder: 'Text field'
-};
-
 export default TextField;

@@ -34,8 +34,4 @@ SectionHeader.defaultProps = {
   ...BaseTheme.SectionHeader
 };
 
-SectionHeader.demoProps = {
-  title: 'Section header'
-};
-
 export default SectionHeader;

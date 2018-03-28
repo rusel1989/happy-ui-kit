@@ -46,7 +46,7 @@ CircleChart.propTypes = {
 };
 
 CircleChart.defaultProps = {
-  value: 0,
+  value: 100,
   formatText: (v) => `${v.toFixed(0)}`,
   ...BaseTheme.CircleChart
 };

@@ -73,15 +73,4 @@ Dropdown.propTypes = {
   itemHeight: PropTypes.number
 };
 
-Dropdown.demoProps = {
-  label: 'Select anything',
-  labelColor: BaseTheme.palette.APP_OVERLAY,
-  options: [{
-    value: 'any', label: 'Anything'
-  }, {
-    value: 'some', label: 'Something'
-  }],
-  onSelect: (v) => console.log(v)
-};
-
 export default Dropdown;

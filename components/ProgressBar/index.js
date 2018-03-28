@@ -39,14 +39,6 @@ ProgressBar.propTypes = {
 
 ProgressBar.defaultProps = BaseTheme.ProgressBar;
 
-ProgressBar.demoProps = [{
-  progress: 0.65
-}, {
-  progress: 0.4,
-  barColor: 'green',
-  backgroundColor: 'navy',
-  textColor: 'white',
-  borderRadius: 10
-}];
+ProgressBar.demoProps = [];
 
 export default ProgressBar;

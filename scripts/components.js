@@ -9,12 +9,38 @@ const list = [];
 const normalizeName = (name) =>
   name.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase().trim());
 
+// eslint-disable-next-line
+const demoTemplate = (name) => {
+  return `
+import React from 'react';
+import ${name} from './index';
+import BaseTheme from '../../theme/base';
+
+const demo = {
+  containerHeight: 150,
+  containerType: 'column',
+  components: [{
+    Component: ${name},
+    items: [{
+      label: 'Default',
+      props: {}
+    }, {
+      label: 'Custom ${name}',
+      props: {}
+    }]
+  }]
+};
+
+export default demo;`;
+};
+
 files.forEach((filename, i) => {
   if (filename.indexOf('.') < 0) {
     list.push(filename);
-    imports.push(`import ${filename} from './components/${filename}';`);
+    // fs.writeFileSync(path.join(__dirname, '..', 'components', filename, 'Demo.js'), demoTemplate(filename));
+    imports.push(`import ${filename} from './components/${filename}/Demo';`);
     components.push(`  ${filename}: {
-    screen: createComponentScreen(${filename}),
+    screen: createDemoScreen(${filename}),
     navigationOptions: {
       title: '${normalizeName(filename)}'
     }
@@ -24,7 +50,7 @@ files.forEach((filename, i) => {
 
 const template = () => `
 import { StackNavigator } from 'react-navigation';
-import createComponentScreen from './demo/ComponentScreen';
+import createDemoScreen from './demo/createDemoScreen';
 import Home from './demo/Home';
 import options from './demo/navOptions';
 

@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+import color from 'color';
+
 export const palette = {
   PINK: '#F50057',
   WHITE: '#ffffff',
@@ -9,16 +12,28 @@ export const palette = {
   TAB_BAR_BUTTON: '#78909C',
   TAB_BAR_BUTTON_ACTIVE: '#455A64',
 
-  APP_PRIMARY: '#9B51E0',
-  APP_BACKGROUND: '#EEEEEE',
+  APP_PRIMARY: '#2196F3',
+  APP_PRIMARY_DARKER: '#1976D2',
+  APP_BACKGROUND: '#BBDEFB',
+  APP_ACCENT: '#FF9800',
   APP_BLACK: '#424242',
   APP_INFO: '#00BCD4',
   APP_DARK_GREY: '#686868',
   APP_LIGHT_GREY: '#E0E0E0',
   APP_SUCCESS: '#00C853',
   APP_DANGER: '#F44336',
-  APP_SEPARATOR: '#ECEFF1',
-  APP_OVERLAY: 'rgba(38,50,56,0.4)'
+  APP_SEPARATOR: '#BDBDBD',
+  APP_OVERLAY: 'rgba(38,50,56,0.4)',
+  APP_PRIMARY_TEXT: '#212121',
+  APP_SECONDARY_TEXT: '#757575'
+};
+
+export const spacing = {
+  xsmall: 4,
+  small: 8,
+  medium: 16,
+  large: 20,
+  xlarge: 32
 };
 
 export const components = {
@@ -38,19 +53,20 @@ export const components = {
     uppercaseLabel: true,
     labelSize: 20,
     borderRadius: 0,
-    height: 60
+    height: 60,
+    spacingHorizontal: spacing.medium
   },
   Card: {
     backgroundColor: palette.WHITE,
-    spacingVertical: 16,
-    spacingHorizontal: 16,
+    spacingVertical: spacing.medium,
+    spacingHorizontal: spacing.medium,
     borderRadius: 0,
     shadow: true
   },
   Checkbox: {
-    tintColor: palette.APP_DARK_GREY,
-    selectedTintColor: palette.APP_PRIMARY,
-    size: 22,
+    tintColor: palette.APP_SECONDARY_TEXT,
+    selectedTintColor: palette.APP_PRIMARY_TEXT,
+    iconSize: 22,
     animation: 'fadeIn',
     selectedIcon: 'radio-active',
     icon: 'radio-deafult'
@@ -62,7 +78,7 @@ export const components = {
     height: 36,
     borderRadius: 20,
     borderWidth: 2,
-    textSize: 16,
+    textSize: spacing.medium,
     overflow: 'hidden',
     spacingHorizontal: 0
   },
@@ -71,7 +87,7 @@ export const components = {
     spacingHorizontal: 5
   },
   CircleChart: {
-    size: 100,
+    size: 120,
     lineWidth: 10,
     linecap: 'round',
     rotation: 0,
@@ -91,10 +107,9 @@ export const components = {
     railWidth: 10,
     railColor: palette.APP_LIGHT_GREY,
     meterWidth: 10,
-    meterColor: palette.APP_DANGER,
-    meterColors: [palette.APP_DANGER, palette.APP_SUCCESS],
-    textColor: palette.APP_DARK_GREY,
-    textSize: 58
+    meterColors: [palette.APP_PRIMARY, palette.APP_PRIMARY_DARKER],
+    textColor: palette.APP_PRIMARY_TEXT,
+    textSize: 30
   },
   HeaderButton: {
     iconColor: palette.WHITE,
@@ -103,12 +118,12 @@ export const components = {
     height: 44
   },
   ListItem: {
-    labelSize: 16,
+    labelSize: spacing.medium,
     labelColor: palette.APP_DARK_GREY,
     iconColor: palette.APP_DARK_GREY,
     showSeparator: true,
     height: 60,
-    spacingHorizontal: 16,
+    spacingHorizontal: spacing.medium,
     backgroundColor: palette.WHITE,
     activeBackgroundColor: palette.EXTRA_LIGHT_GREY,
     selectedBackgroundColor: palette.WHITE
@@ -117,8 +132,8 @@ export const components = {
     tintColor: palette.APP_BLACK,
     backgroundColor: palette.WHITE,
     spacingVertical: 8,
-    spacingHorizontal: 16,
-    textSize: 16,
+    spacingHorizontal: spacing.medium,
+    textSize: spacing.medium,
     textAlign: 'center'
   },
   Overlay: {
@@ -148,14 +163,14 @@ export const components = {
     headerTextColor: palette.APP_DARK_GREY,
     headerBackgroundColor: palette.APP_LIGHT_GREY,
     contentSpacingVertical: 8,
-    contentSpacingHorizontal: 16,
+    contentSpacingHorizontal: spacing.medium,
     contentBackgroundColor: palette.WHITE
   },
   SectionHeader: {
     backgroundColor: palette.LIGHT_GREY,
     textColor: palette.DARK_GREY,
     textSize: 12,
-    spacingHorizontal: 16,
+    spacingHorizontal: spacing.medium,
     height: 28,
     uppercase: true
   },
@@ -165,7 +180,7 @@ export const components = {
     textSize: 14,
     backgroundColor: palette.WHITE,
     spacingVertical: 10,
-    spacingHorizontal: 16
+    spacingHorizontal: spacing.medium
   },
   Separator: {
     width: 1,
@@ -174,7 +189,7 @@ export const components = {
     spacingVertical: 0
   },
   Text: {
-    color: palette.APP_DARK_GREY,
+    color: palette.APP_PRIMARY_TEXT,
     size: 14,
     fontFamily: 'System',
     fontWeight: '400',
@@ -182,14 +197,14 @@ export const components = {
   },
   TextField: {
     textColor: palette.APP_BLACK,
-    textSize: 16,
+    textSize: spacing.medium,
     backgroundColor: palette.WHITE,
     font: 'System',
     borderRadius: 0,
     borderColor: 'transparent',
     borderWidth: 0,
     spacingVertical: 4,
-    spacingHorizontal: 16
+    spacingHorizontal: spacing.medium
   },
   Toast: {
     backgroundColor: palette.APP_BLACK,
@@ -198,7 +213,7 @@ export const components = {
     font: 'System',
     borderRadius: 5,
     spacingVertical: 4,
-    spacingHorizontal: 16
+    spacingHorizontal: spacing.medium
   },
   WheelPicker: {
     height: 240,

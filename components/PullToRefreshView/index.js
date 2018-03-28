@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { renderRefreshControl } from '../../utils';
@@ -35,14 +35,6 @@ PullToRefreshView.defaultProps = {
   refreshing: false,
   getRef: () => {},
   scrollEnabled: true
-};
-
-PullToRefreshView.demoFlexDirection = 'row';
-
-PullToRefreshView.demoProps = {
-  onRefresh: () => console.log('on refresh'),
-  children: <Text>Pull to refresh</Text>,
-  style: { height: 200 }
 };
 
 export default PullToRefreshView;

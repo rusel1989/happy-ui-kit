@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { FlatList, TouchableHighlight, View,Text } from 'react-native'
+import { FlatList, TouchableHighlight, View, Text } from 'react-native';
 import componentList from '../component-list.json';
 
 const Button = ({ label, onPress }) => {
   return (
     <View style={{ backgroundColor: 'white' }}>
-          <TouchableHighlight style={{ height: 50, paddingHorizontal: 16, justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#DDD' }} onPress={onPress} underlayColor='#EEE'>
+      <TouchableHighlight style={{ height: 50, paddingHorizontal: 16, justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#DDD' }} onPress={onPress} underlayColor='#EEE'>
         <Text>{label}</Text>
       </TouchableHighlight>
     </View>
-  )
-}
+  );
+};
 
-export default class componentName extends Component {
+export default class App extends Component {
   onItemPress = (name) => {
     this.props.navigation.navigate(name);
   }
@@ -20,15 +20,15 @@ export default class componentName extends Component {
   renderItem = ({ item }) => {
     return (
       <Button label={item} onPress={() => this.onItemPress(item)} />
-    )
+    );
   }
 
-  render() {
+  render () {
     return (
       <FlatList
         keyExtractor={(item, index) => `${item}-${index}`}
         renderItem={this.renderItem}
         data={componentList} />
-    )
+    );
   }
 }

@@ -91,14 +91,6 @@ CustomText.defaultProps = {
   ...BaseTheme.Text
 };
 
-CustomText.demoProps = {
-  size: 'xlarge',
-  fontWeight: fontWeights.Bold,
-  color: BaseTheme.palette.APP_SUCCESS,
-  style: { padding: 8 },
-  children: 'Custom text'
-};
-
 AppText.Custom = CustomText;
 
 const createTextComponent = (fontFamily, fontWeight) => (props) =>
@@ -125,19 +117,5 @@ AppText.Monospace.demoProps = {
   children: 'Monospace text',
   style: { padding: 8 }
 };
-
-AppText.subComponents = [
-  CustomText,
-  AppText.ExtraLight,
-  AppText.Light,
-  AppText.Book,
-  AppText.Regular,
-  AppText.Medium,
-  AppText.Semibold,
-  AppText.Bold,
-  AppText.Black,
-  AppText.ExtraBlack,
-  AppText.Monospace
-];
 
 export default AppText;

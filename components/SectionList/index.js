@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 
 import BaseTheme from '../../theme/base';
 import SectionHeader from '../SectionHeader';
-import ListItem from '../ListItem';
-
 import Separator from '../Separator';
 import { renderRefreshControl } from '../../utils';
 
-const createAnimatedComponent = (Component) => ({
+export const createAnimatedComponent = (Component) => ({
   duration = 200,
   animation = 'fadeInUp',
   easing = 'ease-in-out-quad',
@@ -129,7 +127,6 @@ CustomSectionList.propTypes = {
   loading: PropTypes.bool,
   animated: PropTypes.bool,
   getRef: PropTypes.func,
-
   sectionHeaderTextColor: PropTypes.string,
   sectionHeaderBackgroundColor: PropTypes.string,
   separatorColor: PropTypes.string,
@@ -137,7 +134,6 @@ CustomSectionList.propTypes = {
   animation: PropTypes.string,
   showSeparator: PropTypes.bool,
   showFooter: PropTypes.bool,
-
   sectionHeaderHeight: PropTypes.number,
   sectionHeaderTextSize: PropTypes.number,
   sectionHeaderSpacingHorizontal: PropTypes.number,
@@ -155,26 +151,6 @@ CustomSectionList.defaultProps = {
   animated: false,
   getRef: () => {},
   ...BaseTheme.SectionList
-};
-
-const AnimatedListItem = createAnimatedComponent(ListItem);
-
-CustomSectionList.demoFlexDirection = 'row';
-
-CustomSectionList.demoProps = {
-  style: { height: 200 },
-  animated: true,
-  duration: 150,
-  sections: [{
-    title: 'Section 1',
-    totalIndex: 0,
-    data: [{ name: 'item 1', key: 'item-1', totalIndex: 1 }, { name: 'item 2', key: 'item-2', totalIndex: 2 }]
-  }, {
-    title: 'Section 2',
-    totalIndex: 3,
-    data: [{ name: 'item 3', key: 'item-3', totalIndex: 4 }, { name: 'item 4', key: 'item-4', totalIndex: 5 }]
-  }],
-  renderItem: ({ item, ...rest }) => <AnimatedListItem showSeparator={false} label={item.name} height={50} {...rest} />
 };
 
 export default CustomSectionList;

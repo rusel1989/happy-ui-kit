@@ -44,11 +44,6 @@ Notification.defaultProps = {
   ...BaseTheme.Notification
 };
 
-Notification.demoProps = {
-  message: 'Notification with message',
-  icon: 'save'
-};
-
 Notification.Danger = ({ message }) => {
   return (
     <Notification

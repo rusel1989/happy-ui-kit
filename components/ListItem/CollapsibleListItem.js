@@ -96,11 +96,5 @@ CollapsibleListItem.defaultProps = {
   getRef: () => {}
 };
 
-CollapsibleListItem.demoProps = {
-  label: 'Collapsible item',
-  icon: 'arrow-down',
-  children: <Col><Text>{`Collapsible content`}</Text></Col>,
-  contentHeight: 50
-};
 
 export default CollapsibleListItem;

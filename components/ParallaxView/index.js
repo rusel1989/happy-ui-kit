@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, StyleSheet, View, Text } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 
@@ -16,15 +16,16 @@ class ParallaxView extends Component {
   }
 
   render () {
-    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children, header, style, cardStyle, ...rest } = this.props;
+    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children,
+      header, style, cardStyle, ...rest } = this.props;
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [ 0, teaserHeight ],
       outputRange: [ teaserHeight, 0 ],
       extrapolate: 'clamp'
     });
     const headerZIndex = refreshing ? -1 : 1;
-    const { backgroundColor, showIndicator, spinnerColor, headerBackgroundColor, cardBackgroundColor, cardSpacingVertical, cardSpacingHorizontal,
-      cardBorderRadius, cardShadow } = this.context.mergeStyle('ParallaxView', rest);
+    const { backgroundColor, showIndicator, spinnerColor, headerBackgroundColor, cardBackgroundColor,
+      cardSpacingVertical, cardSpacingHorizontal, cardBorderRadius, cardShadow } = this.context.mergeStyle('ParallaxView', rest);
 
     return (
       <View style={[ { backgroundColor, flex: 1 }, style ]}>
@@ -90,27 +91,7 @@ ParallaxView.propTypes = {
   cardBorderRadius: PropTypes.number
 };
 
-ParallaxView.demoFlexDirection = 'row';
-
-ParallaxView.demoProps = {
-  style: { height: 200 },
-  teaserHeight: 100,
-  backgroundColor: BaseTheme.palette.APP_PRIMARY,
-  headerBackgroundColor: BaseTheme.palette.APP_PRIMARY,
-  cardStyle: { marginHorizontal: 10 },
-  cardShadow: true,
-  header: <View style={{ height: 100 }}><Text>header</Text></View>,
-  children: <View style={{ height: 200 }}><Text>content</Text></View>
-};
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  scrollView: {
-    backgroundColor: 'transparent',
-    flex: 1
-  },
   header: {
     overflow: 'hidden',
     position: 'absolute',

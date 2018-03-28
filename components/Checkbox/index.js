@@ -6,20 +6,21 @@ import Icon from '../Icon';
 import BaseTheme from '../../theme/base';
 
 const Checkbox = ({ selected, ...rest }, context) => {
-  const { animation, size, selectedTintColor, tintColor, selectedIcon, icon } = context.mergeStyle('Checkbox', rest);
+  const { animation, iconSize, selectedTintColor, tintColor,
+    selectedIcon, icon } = context.mergeStyle('Checkbox', rest);
   return selected ? (
     <Animatable.View animation={animation}>
       <Icon
         name={selectedIcon}
         color={selectedTintColor}
-        size={size} />
+        size={iconSize} />
     </Animatable.View>
   ) : (
     <Animatable.View animation={animation}>
       <Icon
         name={icon}
         color={tintColor}
-        size={size} />
+        size={iconSize} />
     </Animatable.View>
   );
 };
@@ -35,29 +36,13 @@ Checkbox.propTypes = {
   selectedTintColor: PropTypes.string,
   animation: PropTypes.string,
   icon: PropTypes.string,
-  tintColor: PropTypes.string
+  tintColor: PropTypes.string,
+  iconSize: PropTypes.number
 };
 
 Checkbox.defaultProps = {
   selected: false,
   ...BaseTheme.Checkbox
 };
-
-Checkbox.demoFlexDirection = 'row';
-
-Checkbox.demoProps = [{
-  selected: true
-}, {
-  selected: false
-}, {
-  selected: true,
-  selectedIcon: 'save',
-  selectedTintColor: 'green',
-  animation: 'zoomIn'
-}, {
-  selected: false,
-  tintColor: 'red',
-  icon: 'remove'
-}];
 
 export default Checkbox;

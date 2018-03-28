@@ -7,7 +7,7 @@ import BaseTheme from '../../theme/base';
 
 const ChipGroup = ({
   options,
-  onSelect,
+  onPress,
   value,
   selectable,
   justifyContent,
@@ -21,9 +21,9 @@ const ChipGroup = ({
           key={i}
           animated={animated}
           spacingHorizontal={spacingHorizontal}
-          onPress={onSelect}
+          onPress={onPress}
           label={option}
-          active={selectable ? option === value : false} />
+          active={selectable && option === value} />
       ))}
     </Row>
   );

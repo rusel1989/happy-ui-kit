@@ -33,14 +33,4 @@ Separator.defaultProps = {
   ...BaseTheme.Separator
 };
 
-Separator.demoProps = [{
-  spacing: 16,
-  width: 5,
-  color: BaseTheme.palette.APP_PRIMARY
-}, {
-  width: 2,
-  spacingVertical: 10,
-  color: BaseTheme.palette.APP_DANGER
-}];
-
 export default Separator;

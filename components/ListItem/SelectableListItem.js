@@ -85,13 +85,4 @@ SelectableListItem.defaultProps = {
   rightButton: null
 };
 
-SelectableListItem.demoProps = {
-  icon: 'radio-active',
-  isSelected: false,
-  label: 'Selectable Item',
-  labelColor: BaseTheme.palette.APP_DARK_GREY,
-  iconColor: BaseTheme.palette.APP_BLACK,
-  selectedBackgroundColor: BaseTheme.palette.APP_LIGHT_GREY
-};
-
 export default SelectableListItem;

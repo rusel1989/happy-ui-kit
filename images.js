@@ -2,7 +2,6 @@
 import map from 'lodash/map';
 
 export const getImagesMap = () => ({
-  'Allergan_Logo_Tm': require('./assets/images/Allergan_Logo_Tm.png'),
   'icon-arrow': require('./assets/images/icon-arrow.png'),
   'icon-arrow-down': require('./assets/images/icon-arrow-down.png'),
   'icon-arrow-left': require('./assets/images/icon-arrow-left.png'),
