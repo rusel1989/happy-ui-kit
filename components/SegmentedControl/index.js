@@ -4,7 +4,7 @@ import SegmentedControl from 'react-native-segmented-control-tab';
 import PropTypes from 'prop-types';
 
 import BaseTheme from '../../theme/base';
-import { toTitleCase } from '../utils';
+import { toTitleCase } from '../../utils';
 
 const CustomSegmentedControl = ({
   onChange,
