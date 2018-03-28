@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 
 import BaseTheme from '../../theme/base';
 
-const TextField = ({ style, getRef, onChangeText, ...rest }, context) => {
+const TextField = ({ style, getRef, onChangeText, placeholder, ...rest }, context) => {
   const { textColor, textSize, backgroundColor, font, borderRadius, borderColor,
     borderWidth, spacingVertical, spacingHorizontal } = context.mergeStyle('TextField', rest);
   return (
     <TextInput
       ref={getRef}
+      placeholder={placeholder}
       onChangeText={onChangeText}
       underlineColorAndroid='transparent'
       style={[ { fontSize: textSize, color: textColor, backgroundColor, fontFamily: font, borderRadius, borderWidth, borderColor, paddingVertical: spacingVertical, paddingHorizontal: spacingHorizontal }, style ]} />

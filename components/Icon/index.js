@@ -32,6 +32,8 @@ Icon.propTypes = {
 
 Icon.defaultProps = {};
 
+Icon.demoFlexDirection = 'row';
+
 Icon.demoProps = [
   { name: 'arrow', color: BaseTheme.palette.APP_PRIMARY },
   { name: 'back', color: BaseTheme.palette.APP_PRIMARY },

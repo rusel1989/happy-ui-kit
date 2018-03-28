@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import BaseTheme from '../../theme/base';
+import Text from '../Text';
 
 const Row = ({ style, children, justifyContent, alignItems, backgroundColor }) => {
   return (
@@ -19,7 +20,8 @@ Row.propTypes = {
   style: PropTypes.object,
   children: PropTypes.node,
   justifyContent: PropTypes.string,
-  alignItems: PropTypes.string
+  alignItems: PropTypes.string,
+  backgroundColor: PropTypes.string
 };
 
 Row.defaultProps = {
@@ -29,23 +31,30 @@ Row.defaultProps = {
 };
 
 const demoStyle = {
-  backgroundColor: '#fff',
-  height: 60,
-  width: 100
+  height: 50,
+  padding: 8,
+  borderWidth: 1,
+  borderColor: BaseTheme.palette.APP_BLACK
 };
 
-Row.demoProps = [{
-  style: demoStyle,
-  children: <Text>flex-start | space-between</Text>,
-  alignItems: 'flex-start'
-}, {
-  style: demoStyle,
-  children: <Text>flex-end | space-between</Text>,
-  alignItems: 'flex-end'
-}, {
-  style: demoStyle,
-  children: <Text>center | flex-end</Text>,
-  justifyContent: 'flex-end'
-}];
+Row.demoProps = [
+  { alignItems: 'center', justifyContent: 'flex-start' },
+  { alignItems: 'flex-start', justifyContent: 'space-between' },
+  { alignItems: 'center', justifyContent: 'center' },
+  { alignItems: 'flex-end', justifyContent: 'flex-end' }
+].map(({ alignItems, justifyContent }) => {
+  return {
+    style: demoStyle,
+    backgroundColor: BaseTheme.palette.APP_LIGHT_GREY,
+    children: (
+      <Text.Monospace color={BaseTheme.palette.APP_BLACK} fontWeight='600' size={11}>
+        {`<Row alignItems='${alignItems}'
+  justifyContent='${justifyContent}' />`}
+      </Text.Monospace>
+    ),
+    alignItems,
+    justifyContent
+  };
+});
 
 export default Row;

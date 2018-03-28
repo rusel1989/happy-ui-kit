@@ -114,7 +114,7 @@ const createComponentScreen = (Element) => {
       return (
         <View style={{ flex: 1, backgroundColor: '#EEE' }}>
 
-          <View style={{ marginVertical: 10, maxHeight: 200, justifyContent: 'center', flexDirection }}>
+          <View style={{ marginVertical: 10, maxHeight: 300, justifyContent: 'center', flexDirection }}>
             {Array.isArray(demoProps) ? (
               demoProps.map((p, i) => (
                 <View key={i} style={{ margin: 10 }}>
