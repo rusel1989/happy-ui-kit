@@ -1,0 +1,119 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "headerUppercase",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 28
+    },
+    "def": "28",
+    "key": "headerHeight",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 12
+    },
+    "def": "12",
+    "key": "headerTextSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 8
+    },
+    "def": "8",
+    "key": "contentSpacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "contentSpacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "headerTextColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "headerBackgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "contentBackgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": ""
+    },
+    "def": "' '",
+    "key": "title",
+    "typeName": "string"
+  }
+]

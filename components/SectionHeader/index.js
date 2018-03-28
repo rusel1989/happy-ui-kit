@@ -14,6 +14,8 @@ const SectionHeader = ({ title, ...rest }, context) => {
   );
 };
 
+SectionHeader.displayName = 'SectionHeader';
+
 SectionHeader.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

@@ -1,0 +1,72 @@
+[
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onPress",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 44
+    },
+    "def": "44",
+    "key": "width",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 44
+    },
+    "def": "44",
+    "key": "height",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "arrow"
+    },
+    "def": "'arrow'",
+    "key": "iconName",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "iconColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "transparent"
+    },
+    "def": "'transparent'",
+    "key": "backgroundColor",
+    "typeName": "string"
+  }
+]

@@ -5,7 +5,6 @@ const files = fs.readdirSync(path.join(__dirname, '..', 'components'));
 const components = [];
 const imports = [];
 const list = [];
-
 const normalizeName = (name) =>
   name.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase().trim());
 

@@ -1,0 +1,271 @@
+[
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "value": [
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900"
+      ],
+      "name": "oneOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "400"
+    },
+    "def": "'400'",
+    "key": "fontWeight",
+    "typeName": "oneOf"
+  },
+  {
+    "type": {
+      "value": [
+        "left",
+        "center",
+        "right"
+      ],
+      "name": "oneOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "left"
+    },
+    "def": "'left'",
+    "key": "textAlign",
+    "typeName": "oneOf"
+  },
+  {
+    "type": {
+      "value": [
+        {
+          "name": "string"
+        },
+        {
+          "name": "number"
+        }
+      ],
+      "name": "oneOfType"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 14
+    },
+    "def": "14",
+    "key": "size",
+    "typeName": "oneOfType"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#212121"
+    },
+    "def": "#212121",
+    "key": "color",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "System"
+    },
+    "def": "'System'",
+    "key": "fontFamily",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "disabled",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "minimumFontScale",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "adjustsFontSizeToFit",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "accessible",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "allowFontScaling",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "nativeID",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "testID",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "value": {
+        "name": "array"
+      },
+      "name": "oneOfType"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "style",
+    "typeName": "oneOfType"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "suppressHighlighting",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "custom"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "selectionColor",
+    "typeName": "custom"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "selectable",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "custom"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "pressRetentionOffset",
+    "typeName": "custom"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "onLongPress",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "onPress",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "onLayout",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "value": [
+        "simple",
+        "highQuality",
+        "balanced"
+      ],
+      "name": "oneOf"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "textBreakStrategy",
+    "typeName": "oneOf"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "numberOfLines",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "value": [
+        "head",
+        "middle",
+        "tail",
+        "clip"
+      ],
+      "name": "oneOf"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "ellipsizeMode",
+    "typeName": "oneOf"
+  }
+]

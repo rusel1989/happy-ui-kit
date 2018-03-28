@@ -25,7 +25,7 @@ const CustomSegmentedControl = ({
     </View>
   );
 };
-CustomSegmentedControl.displayName = 'SegmentedControls';
+CustomSegmentedControl.displayName = 'SegmentedControl';
 
 CustomSegmentedControl.contextTypes = {
   theme: PropTypes.object,

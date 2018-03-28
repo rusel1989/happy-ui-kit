@@ -1,0 +1,98 @@
+[
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 8
+    },
+    "def": "8",
+    "key": "spacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "spacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "textSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": ""
+    },
+    "def": "' '",
+    "key": "message",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#424242"
+    },
+    "def": "#424242",
+    "key": "tintColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "notification"
+    },
+    "def": "'notification'",
+    "key": "icon",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "center"
+    },
+    "def": "'center'",
+    "key": "textAlign",
+    "typeName": "string"
+  }
+]

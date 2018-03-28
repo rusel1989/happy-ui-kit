@@ -30,6 +30,8 @@ const Section = ({ title, children, ...rest }, context) => {
   );
 };
 
+Section.displayName = 'Section';
+
 Section.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

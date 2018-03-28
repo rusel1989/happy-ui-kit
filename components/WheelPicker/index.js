@@ -76,6 +76,8 @@ class WheelPicker extends Component {
   }
 }
 
+WheelPicker.displayName = 'WheelPicker';
+
 WheelPicker.defaultProps = {
   onChange: () => {},
   wheels: [],

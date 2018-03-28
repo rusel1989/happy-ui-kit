@@ -1,0 +1,50 @@
+[
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "spacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "spacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 1
+    },
+    "def": "1",
+    "key": "width",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#BDBDBD"
+    },
+    "def": "#BDBDBD",
+    "key": "color",
+    "typeName": "string"
+  }
+]

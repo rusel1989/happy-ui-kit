@@ -1,0 +1,221 @@
+[
+  {
+    "type": {
+      "name": "any"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": null
+    },
+    "def": "?",
+    "key": "value",
+    "typeName": "any"
+  },
+  {
+    "type": {
+      "value": {
+        "value": {
+          "id": {
+            "type": {
+              "name": "string"
+            },
+            "required": false
+          },
+          "values": {
+            "type": {
+              "value": {
+                "name": "string"
+              },
+              "name": "arrayOf"
+            },
+            "required": false
+          }
+        },
+        "name": "shape"
+      },
+      "name": "arrayOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": []
+    },
+    "def": "[]",
+    "key": "wheels",
+    "typeName": "arrayOf"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onChange",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 22
+    },
+    "def": "22",
+    "key": "selectedTextSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 20
+    },
+    "def": "20",
+    "key": "textSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 240
+    },
+    "def": "240",
+    "key": "height",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 50
+    },
+    "def": "50",
+    "key": "wheelWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 50
+    },
+    "def": "50",
+    "key": "itemHeight",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "spacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 36
+    },
+    "def": "36",
+    "key": "wheelSpacing",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 2
+    },
+    "def": "2",
+    "key": "selectedItemBorderWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 5
+    },
+    "def": "5",
+    "key": "selectedItemBorderRadius",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#424242"
+    },
+    "def": "#424242",
+    "key": "selectedTextColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "textColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#424242"
+    },
+    "def": "#424242",
+    "key": "selectedItemBorderColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "highlightColor",
+    "typeName": "string"
+  }
+]

@@ -26,6 +26,8 @@ const CircleChart = ({ value, formatText, ...rest }, context) => {
   );
 };
 
+CircleChart.displayName = 'CircleChart';
+
 CircleChart.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func
@@ -50,31 +52,5 @@ CircleChart.defaultProps = {
   formatText: (v) => `${v.toFixed(0)}`,
   ...BaseTheme.CircleChart
 };
-
-CircleChart.demoFlexDirection = 'row';
-
-CircleChart.demoProps = [{
-  size: 50,
-  value: 90
-}, {
-  value: 80,
-  size: 80,
-  lineWidth: 10,
-  showText: false,
-  tintColor: BaseTheme.palette.APP_DANGER,
-  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY
-}, {
-  value: 7,
-  formatText: (v) => `${v.toFixed(0)} %`,
-  tintColor: BaseTheme.palette.APP_SUCCESS,
-  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY
-}, {
-  value: 50,
-  lineWidth: 4,
-  tintColor: BaseTheme.palette.APP_PRIMARY,
-  backgroundColor: BaseTheme.palette.APP_INFO
-}];
-
-CircleChart.noRef = true;
 
 export default CircleChart;

@@ -1,0 +1,14 @@
+[
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": ""
+    },
+    "def": "' '",
+    "key": "message",
+    "typeName": "string"
+  }
+]

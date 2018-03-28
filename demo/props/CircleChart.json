@@ -1,0 +1,132 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "showText",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "formatText",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 100
+    },
+    "def": "100",
+    "key": "value",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 120
+    },
+    "def": "120",
+    "key": "size",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 10
+    },
+    "def": "10",
+    "key": "lineWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 20
+    },
+    "def": "20",
+    "key": "textSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "rotation",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "textColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#2196F3"
+    },
+    "def": "#2196F3",
+    "key": "tintColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "round"
+    },
+    "def": "'round'",
+    "key": "linecap",
+    "typeName": "string"
+  }
+]

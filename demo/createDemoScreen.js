@@ -11,6 +11,9 @@ import Button from '../components/Button';
 import Text from '../components/Text';
 import ParallaxView from '../components/ParallaxView';
 import BaseTheme from '../theme/base';
+import { saveDemoProps } from '../utils';
+
+import * as componentProps from '../demo/props';
 
 const parseDefaultValue = (value) => {
   if (typeof value === 'string') {
@@ -73,12 +76,17 @@ const propsSorter = (key) => (a, b) => {
 
 const createDemoScreen = (demoConfig) => {
   demoConfig.components.forEach((demoItem, i) => {
-    demoItem.parsedProps = map(parsePropTypes(demoItem.Component), (item, key) => {
-      item.def = item.defaultValue ? parseDefaultValue(item.defaultValue.value) : 'n/a';
-      item.key = key;
-      item.typeName = (item.type && item.type.name) || 'unknown';
-      return item;
-    }).sort(propsSorter('typeName'));
+    if (__DEV__) {
+      demoItem.parsedProps = map(parsePropTypes(demoItem.Component), (item, key) => {
+        item.def = item.defaultValue ? parseDefaultValue(item.defaultValue.value) : 'n/a';
+        item.key = key;
+        item.typeName = (item.type && item.type.name) || 'unknown';
+        return item;
+      }).sort(propsSorter('typeName'));
+      saveDemoProps(demoItem.Component.displayName, demoItem.parsedProps);
+    } else {
+      demoItem.parsedProps = componentProps[demoItem.Component.displayName.replace('.', '') + 'Props'] || [];
+    }
   });
 
   if (!demoConfig.componentContainerStyle) {

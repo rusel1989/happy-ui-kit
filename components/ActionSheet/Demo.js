@@ -1,4 +1,3 @@
-
 import ActionSheet from './index';
 
 const demo = {

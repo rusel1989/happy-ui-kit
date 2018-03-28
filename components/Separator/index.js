@@ -17,6 +17,8 @@ Separator.Vertical = () => {
   );
 };
 
+Separator.displayName = 'Separator';
+
 Separator.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

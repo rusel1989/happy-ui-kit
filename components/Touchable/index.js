@@ -30,6 +30,8 @@ const Touchable = createTouchable(TouchableView, {
   activeOpacity: 1
 });
 
+Touchable.displayName = 'Touchable';
+
 Touchable.contextTypes = {
   theme: PropTypes.object
 };

@@ -1,0 +1,86 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "selected",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 22
+    },
+    "def": "22",
+    "key": "iconSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "radio-active"
+    },
+    "def": "'radio-active'",
+    "key": "selectedIcon",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#212121"
+    },
+    "def": "#212121",
+    "key": "selectedTintColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "fadeIn"
+    },
+    "def": "'fadeIn'",
+    "key": "animation",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "radio-deafult"
+    },
+    "def": "'radio-deafult'",
+    "key": "icon",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#757575"
+    },
+    "def": "#757575",
+    "key": "tintColor",
+    "typeName": "string"
+  }
+]

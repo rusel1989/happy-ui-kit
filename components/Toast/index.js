@@ -166,6 +166,8 @@ class Toast extends Component {
     }
 }
 
+Toast.displayName = 'Toast';
+
 Toast.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

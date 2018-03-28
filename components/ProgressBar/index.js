@@ -22,6 +22,8 @@ const ProgressBar = ({ progress, ...rest }, context) => {
   );
 };
 
+ProgressBar.displayName = 'ProgressBar';
+
 ProgressBar.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

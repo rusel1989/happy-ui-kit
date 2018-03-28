@@ -1,0 +1,193 @@
+[
+  {
+    "type": {
+      "value": {
+        "name": "string"
+      },
+      "name": "arrayOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": [
+        "#2196F3",
+        "#1976D2"
+      ]
+    },
+    "def": "[#2196F3, #1976D2]",
+    "key": "meterColors",
+    "typeName": "arrayOf"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onValueSelected",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "formatValue",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 15
+    },
+    "def": "15",
+    "key": "btnRadius",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 120
+    },
+    "def": "120",
+    "key": "width",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 120
+    },
+    "def": "120",
+    "key": "height",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "btnStrokeWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 10
+    },
+    "def": "10",
+    "key": "railWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 10
+    },
+    "def": "10",
+    "key": "meterWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 30
+    },
+    "def": "30",
+    "key": "textSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "initialValue",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "btnFill",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "transparent"
+    },
+    "def": "'transparent'",
+    "key": "btnStroke",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "railColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#212121"
+    },
+    "def": "#212121",
+    "key": "textColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "meterColor",
+    "typeName": "string"
+  }
+]

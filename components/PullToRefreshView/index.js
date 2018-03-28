@@ -17,6 +17,8 @@ const PullToRefreshView = ({ onRefresh, refreshing, children, getRef, scrollEnab
   );
 };
 
+PullToRefreshView.displayName = 'PullToRefreshView';
+
 PullToRefreshView.contextTypes = {
   theme: PropTypes.object
 };

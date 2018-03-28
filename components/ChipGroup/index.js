@@ -29,6 +29,8 @@ const ChipGroup = ({
   );
 };
 
+ChipGroup.displayName = 'ChipGroup';
+
 ChipGroup.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

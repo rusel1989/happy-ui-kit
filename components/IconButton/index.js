@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
   button: { width: 60, height: 60, alignItems: 'center', justifyContent: 'center' }
 });
 
+IconButton.displayName = 'IconButton';
+
 IconButton.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

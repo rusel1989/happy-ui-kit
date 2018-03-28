@@ -28,6 +28,8 @@ const Button = ({
   );
 };
 
+Button.displayName = 'Button';
+
 Button.defaultProps = {
   onPress: () => {},
   label: '',

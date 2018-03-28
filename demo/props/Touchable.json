@@ -1,0 +1,30 @@
+[
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onPress",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "object"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "style",
+    "typeName": "object"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 30
+    },
+    "def": "30",
+    "key": "spacing",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 3000
+    },
+    "def": "3000",
+    "key": "duration",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 510
+    },
+    "def": "510",
+    "key": "animatedDuration",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "delay",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "marginTop",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 14
+    },
+    "def": "14",
+    "key": "textSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 4
+    },
+    "def": "4",
+    "key": "spacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "spacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 5
+    },
+    "def": "5",
+    "key": "borderRadius",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "value": [
+        1,
+        0,
+        2
+      ],
+      "name": "oneOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "position",
+    "typeName": "oneOf"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "textColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "System"
+    },
+    "def": "'System'",
+    "key": "font",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#424242"
+    },
+    "def": "#424242",
+    "key": "backgroundColor",
+    "typeName": "string"
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "showSeparator",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onPress",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 60
+    },
+    "def": "60",
+    "key": "height",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "spacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "labelSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": ""
+    },
+    "def": "' '",
+    "key": "label",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "labelColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "iconColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "activeBackgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "icon",
+    "typeName": "string"
+  }
+]

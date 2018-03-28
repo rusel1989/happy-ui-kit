@@ -25,6 +25,8 @@ const Checkbox = ({ selected, ...rest }, context) => {
   );
 };
 
+Checkbox.displayName = 'Checkbox';
+
 Checkbox.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

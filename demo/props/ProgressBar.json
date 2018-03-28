@@ -1,0 +1,83 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "showText",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 40
+    },
+    "def": "40",
+    "key": "height",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 2
+    },
+    "def": "2",
+    "key": "borderRadius",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#2196F3"
+    },
+    "def": "#2196F3",
+    "key": "barColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "textColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "progress",
+    "typeName": "number"
+  }
+]

@@ -1,41 +1,38 @@
 
 import React from 'react';
 import { AppLoading, Asset, Font } from 'expo';
-import { StatusBar, Platform, Image } from 'react-native';
+import { Platform, Image } from 'react-native';
 
 import { getImagesArray } from './images';
 import * as fonts from './fonts';
 import RootNavigator from './navigation';
 import ThemeProvider from './theme/Provider';
 
-console.disableYellowBox = true;
-StatusBar.setBarStyle('light-content');
-
-const cacheImages = (images) => {
-  return images.map(image => {
-    if (typeof image === 'string') {
-      return Image.prefetch(image);
-    } else {
-      return Asset.fromModule(image).downloadAsync();
-    }
-  });
-};
-
-const cacheFonts = (fonts) => {
-  return Font.loadAsync(fonts);
-};
-
 export default class App extends React.Component {
   state = {
     ready: false
   }
 
+  cacheImages = (images = []) => {
+    return images.map(image => {
+      if (typeof image === 'string') {
+        return Image.prefetch(image);
+      } else {
+        return Asset.fromModule(image).downloadAsync();
+      }
+    });
+  }
+
+  cacheFonts = (fonts = {}) => {
+    return Font.loadAsync(fonts);
+  }
+
   getFontAssets () {
-    return cacheFonts(fonts[Platform.OS]);
+    return this.cacheFonts(fonts[Platform.OS]);
   }
 
   getImageAssets () {
-    return cacheImages(getImagesArray());
+    return this.cacheImages(getImagesArray());
   }
 
   startApp = () => {

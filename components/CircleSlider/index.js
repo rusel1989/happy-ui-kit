@@ -127,6 +127,8 @@ class CircularSlider extends Component {
   }
 }
 
+CircularSlider.displayName = 'CircularSlider';
+
 CircularSlider.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

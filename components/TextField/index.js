@@ -17,6 +17,8 @@ const TextField = ({ style, getRef, onChangeText, placeholder, ...rest }, contex
   );
 };
 
+TextField.displayName = 'TextField';
+
 TextField.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

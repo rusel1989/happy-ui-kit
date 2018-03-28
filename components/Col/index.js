@@ -10,6 +10,8 @@ const Col = ({ style, children, justifyContent, alignItems, backgroundColor }) =
   );
 };
 
+Col.displayName = 'Col';
+
 Col.contextTypes = {
   theme: PropTypes.object
 };

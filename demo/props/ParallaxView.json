@@ -1,0 +1,194 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "refreshing",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "scrollEnabled",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "showIndicator",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "cardShadow",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onRefresh",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "scrollViewRef",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": {
+        "$$typeof": 60103,
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      }
+    },
+    "def": "{\"$$typeof\":60103,\"key\":null,\"ref\":null,\"props\":{},\"_owner\":null,\"_store\":{}}",
+    "key": "header",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 200
+    },
+    "def": "200",
+    "key": "teaserHeight",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "cardSpacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "cardSpacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 0
+    },
+    "def": "0",
+    "key": "cardBorderRadius",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "headerBackgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#2196F3"
+    },
+    "def": "#2196F3",
+    "key": "spinnerColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#ffffff"
+    },
+    "def": "#FFFFFF",
+    "key": "cardBackgroundColor",
+    "typeName": "string"
+  }
+]

@@ -1,0 +1,249 @@
+[
+  {
+    "type": {
+      "value": {
+        "value": {
+          "title": {
+            "type": {
+              "name": "string"
+            },
+            "required": false
+          },
+          "data": {
+            "type": {
+              "name": "array"
+            },
+            "required": false
+          }
+        },
+        "name": "shape"
+      },
+      "name": "arrayOf"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": []
+    },
+    "def": "[]",
+    "key": "sections",
+    "typeName": "arrayOf"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "refreshing",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "loading",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "animated",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "showSeparator",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "showFooter",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onRefresh",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "getRef",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 12
+    },
+    "def": "12",
+    "key": "sectionHeaderTextSize",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 16
+    },
+    "def": "16",
+    "key": "sectionHeaderSpacingHorizontal",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 30
+    },
+    "def": "30",
+    "key": "footerSpacingVertical",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 1
+    },
+    "def": "1",
+    "key": "separatorWidth",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": 200
+    },
+    "def": "200",
+    "key": "duration",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "sectionHeaderHeight",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#686868"
+    },
+    "def": "#686868",
+    "key": "sectionHeaderTextColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#E0E0E0"
+    },
+    "def": "#E0E0E0",
+    "key": "sectionHeaderBackgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#BDBDBD"
+    },
+    "def": "#BDBDBD",
+    "key": "separatorColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "#2196F3"
+    },
+    "def": "#2196F3",
+    "key": "spinnerColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "fadeInUp"
+    },
+    "def": "'fadeInUp'",
+    "key": "animation",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "any"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "extraData",
+    "typeName": "any"
+  }
+]

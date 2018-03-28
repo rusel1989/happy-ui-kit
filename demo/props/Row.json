@@ -1,0 +1,53 @@
+[
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "space-between"
+    },
+    "def": "'space-between'",
+    "key": "justifyContent",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": "center"
+    },
+    "def": "'center'",
+    "key": "alignItems",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "backgroundColor",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  },
+  {
+    "type": {
+      "name": "object"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "style",
+    "typeName": "object"
+  }
+]

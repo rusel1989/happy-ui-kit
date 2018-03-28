@@ -15,6 +15,8 @@ const Card = ({ children, alignItems, justifyContent, style, ...rest }, context)
   );
 };
 
+Card.displayName = 'Card';
+
 Card.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

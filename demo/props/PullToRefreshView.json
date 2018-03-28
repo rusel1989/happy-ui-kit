@@ -1,0 +1,64 @@
+[
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": false
+    },
+    "def": "false",
+    "key": "refreshing",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "bool"
+    },
+    "required": false,
+    "defaultValue": {
+      "value": true
+    },
+    "def": "true",
+    "key": "scrollEnabled",
+    "typeName": "bool"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "onRefresh",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "func"
+    },
+    "required": false,
+    "defaultValue": {},
+    "def": "() => {}",
+    "key": "getRef",
+    "typeName": "func"
+  },
+  {
+    "type": {
+      "name": "object"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "style",
+    "typeName": "object"
+  },
+  {
+    "type": {
+      "name": "node"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "children",
+    "typeName": "node"
+  }
+]

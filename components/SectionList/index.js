@@ -113,6 +113,8 @@ const styles = StyleSheet.create({
   }
 });
 
+CustomSectionList.displayName = 'SectionList';
+
 CustomSectionList.contextTypes = {
   theme: PropTypes.object,
   mergeStyle: PropTypes.func

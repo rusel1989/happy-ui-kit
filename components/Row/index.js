@@ -10,6 +10,8 @@ const Row = ({ style, children, justifyContent, alignItems, backgroundColor }) =
   );
 };
 
+Row.displayName = 'Row';
+
 Row.contextTypes = {
   theme: PropTypes.object
 };

@@ -1,0 +1,38 @@
+[
+  {
+    "type": {
+      "name": "number"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "size",
+    "typeName": "number"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "name",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "string"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "color",
+    "typeName": "string"
+  },
+  {
+    "type": {
+      "name": "object"
+    },
+    "required": false,
+    "def": "n/a",
+    "key": "style",
+    "typeName": "object"
+  }
+]
