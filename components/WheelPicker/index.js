@@ -111,11 +111,4 @@ WheelPicker.propTypes = {
   selectedItemBorderRadius: PropTypes.number
 };
 
-WheelPicker.demoProps = {
-  value: { numbers: '30', strings: 'c' },
-  height: 120,
-  wheelSpacing: 20,
-  wheels: [{ id: 'numbers', values: ['10', '20', '30', '40', '50'] }, { id: 'strings', values: ['a', 'b', 'c', 'd', 'e'] }]
-};
-
 export default WheelPicker;

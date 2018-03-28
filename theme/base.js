@@ -2,30 +2,23 @@
 import color from 'color';
 
 export const palette = {
-  PINK: '#F50057',
   WHITE: '#ffffff',
-  GREY: '#505c61',
-  LIGHT_GREY: '#CFD8DC',
-  MEDIUM_GREY: '#B0BEC5',
-  DARK_GREY: '#455A64',
-  EXTRA_LIGHT_GREY: '#F7F9F9',
-  TAB_BAR_BUTTON: '#78909C',
-  TAB_BAR_BUTTON_ACTIVE: '#455A64',
-
+  BLACK: '#000000',
+  APP_BACKGROUND: '#BBDEFB',
+  APP_PRIMARY_TEXT: '#212121',
+  APP_SECONDARY_TEXT: '#757575',
   APP_PRIMARY: '#2196F3',
   APP_PRIMARY_DARKER: '#1976D2',
-  APP_BACKGROUND: '#BBDEFB',
+  APP_PRIMARY_LIGHT: '#BBDEFB',
   APP_ACCENT: '#FF9800',
+  APP_LIGHT_GREY: '#E0E0E0',
+  APP_DARK_GREY: '#686868',
   APP_BLACK: '#424242',
   APP_INFO: '#00BCD4',
-  APP_DARK_GREY: '#686868',
-  APP_LIGHT_GREY: '#E0E0E0',
   APP_SUCCESS: '#00C853',
   APP_DANGER: '#F44336',
   APP_SEPARATOR: '#BDBDBD',
-  APP_OVERLAY: 'rgba(38,50,56,0.4)',
-  APP_PRIMARY_TEXT: '#212121',
-  APP_SECONDARY_TEXT: '#757575'
+  APP_OVERLAY: 'rgba(38,50,56,0.4)'
 };
 
 export const spacing = {
@@ -125,7 +118,7 @@ export const components = {
     height: 60,
     spacingHorizontal: spacing.medium,
     backgroundColor: palette.WHITE,
-    activeBackgroundColor: palette.EXTRA_LIGHT_GREY,
+    activeBackgroundColor: palette.APP_LIGHT_GREY,
     selectedBackgroundColor: palette.WHITE
   },
   Notification: {
@@ -144,17 +137,13 @@ export const components = {
   ProgressBar: {
     height: 40,
     barColor: palette.APP_PRIMARY,
-    backgroundColor: palette.LIGHT_GREY,
+    backgroundColor: palette.APP_LIGHT_GREY,
     textColor: palette.APP_DARK_GREY,
     borderRadius: 2,
     showText: true
   },
   PullToRefreshView: {
     tintColor: palette.APP_PRIMARY
-  },
-  RoundButton: {
-    backgroundColor: palette.LIGHT_GREY,
-    textColor: palette.DARK_GREY
   },
   Section: {
     headerUppercase: true,
@@ -167,14 +156,13 @@ export const components = {
     contentBackgroundColor: palette.WHITE
   },
   SectionHeader: {
-    backgroundColor: palette.LIGHT_GREY,
-    textColor: palette.DARK_GREY,
+    backgroundColor: palette.APP_LIGHT_GREY,
+    textColor: palette.APP_DARK_GREY,
     textSize: 12,
     spacingHorizontal: spacing.medium,
     height: 28,
     uppercase: true
   },
-
   SegmentedControl: {
     tintColor: palette.APP_PRIMARY,
     textSize: 14,
@@ -224,7 +212,7 @@ export const components = {
     wheelSpacing: 36,
     selectedTextColor: palette.APP_BLACK,
     selectedTextSize: 22,
-    textColor: palette.LIGHT_GREY,
+    textColor: palette.APP_LIGHT_GREY,
     textSize: 20,
     selectedItemBorderColor: palette.APP_BLACK,
     selectedItemBorderWidth: 2,

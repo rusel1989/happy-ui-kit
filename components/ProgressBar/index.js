@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Row from '@happy/components/Row';
-import Col from '@happy/components/Col';
-import Text from '@happy/components/Text';
+import Row from '../Row';
+import Col from '../Col';
+import Text from '../Text';
 import BaseTheme from '../../theme/base';
 
 const ProgressBar = ({ progress, ...rest }, context) => {
@@ -38,7 +38,5 @@ ProgressBar.propTypes = {
 };
 
 ProgressBar.defaultProps = BaseTheme.ProgressBar;
-
-ProgressBar.demoProps = [];
 
 export default ProgressBar;

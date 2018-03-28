@@ -7,7 +7,7 @@ import color from 'color';
 import Text from '../Text';
 import Touchable from '../Touchable';
 import BaseTheme from '../../theme/base';
-import { toTitleCase } from '@happy/utils';
+import { toTitleCase } from '../../utils';
 
 const BaseChip = ({ label, active, animated, onPress, spacingHorizontal, ...rest }, context) => {
   const { activeTintColor, tintColor, backgroundColor, height,

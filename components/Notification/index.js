@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Col from '@happy/components/Col';
-import Text from '@happy/components/Text';
-import Icon from '@happy/components/Icon';
+import Col from '../Col';
+import Text from '../Text';
+import Icon from '../Icon';
 import BaseTheme from '../../theme/base';
 
 const Notification = ({ message, icon, ...rest }, context) => {
@@ -64,10 +64,6 @@ Notification.Danger.defaultProps = {
   message: ''
 };
 
-Notification.Danger.demoProps = {
-  message: 'Error notification with message'
-};
-
 Notification.Success = ({ message }) => {
   return (
     <Notification
@@ -86,14 +82,5 @@ Notification.Success.propTypes = {
 Notification.Success.defaultProps = {
   message: ''
 };
-
-Notification.Success.demoProps = {
-  message: 'Success notification with message'
-};
-
-Notification.subComponents = [
-  Notification.Success,
-  Notification.Danger
-];
 
 export default Notification;

@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import React from 'react';
 import WheelPicker from './index';
 import BaseTheme from '../../theme/base';

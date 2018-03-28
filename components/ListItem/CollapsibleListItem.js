@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Animated, Text } from 'react-native';
+import { Animated } from 'react-native';
 
 import ListItem from './ListItem';
 import Col from '../Col';
@@ -95,6 +95,5 @@ CollapsibleListItem.defaultProps = {
   contentHeight: 240,
   getRef: () => {}
 };
-
 
 export default CollapsibleListItem;

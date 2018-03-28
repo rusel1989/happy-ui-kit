@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from '@happy/components/Icon';
-import ListItem from '@happy/components/ListItem';
+import Icon from '../Icon';
+import ListItem from '../ListItem';
 import BaseTheme from '../../theme/base';
 
 class Dropdown extends React.Component {

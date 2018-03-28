@@ -1,5 +1,3 @@
-
-import React from 'react';
 import Checkbox from './index';
 import BaseTheme from '../../theme/base';
 

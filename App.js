@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { StatusBar, Platform, Image } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
+import { StatusBar, Platform, Image } from 'react-native';
 
 import { getImagesArray } from './images';
 import * as fonts from './fonts';

@@ -75,17 +75,4 @@ ListItem.defaultProps = {
   ...BaseTheme.ListItem
 };
 
-ListItem.demoProps = [{
-  label: 'List item',
-  icon: 'save',
-  iconColor: BaseTheme.palette.APP_PRIMARY
-}, {
-  label: 'Custom list item',
-  icon: 'arrow',
-  labelColor: BaseTheme.palette.APP_DANGER,
-  labelSize: 20,
-  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY,
-  activeBackgroundColor: BaseTheme.palette.APP_DARK_GREY
-}];
-
 export default ListItem;
