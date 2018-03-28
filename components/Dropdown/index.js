@@ -51,6 +51,7 @@ class Dropdown extends React.Component {
     );
   }
 }
+Dropdown.displayName = 'Dropdown';
 
 Dropdown.defaultProps = {
   label: 'Select',

@@ -23,7 +23,6 @@ class ActionSheet extends Component {
   contentHeight = 0;
 
   show = (config, value) => {
-    console.log(this.context.theme);
     let selectedIndex = -1;
     let selectedOption = null;
     let selectedSubOption = null;
@@ -190,6 +189,8 @@ class ActionSheet extends Component {
     );
   }
 }
+
+ActionSheet.displayName = 'ActionSheet';
 
 ActionSheet.contextTypes = {
   theme: PropTypes.object,

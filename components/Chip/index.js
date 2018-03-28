@@ -82,7 +82,7 @@ class Chip extends Component {
   }
 }
 
-Chip.demoFlexDirection = 'row';
+Chip.displayName = 'Chip';
 
 Chip.contextTypes = {
   theme: PropTypes.object,

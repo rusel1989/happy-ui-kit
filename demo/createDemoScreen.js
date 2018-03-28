@@ -2,7 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 import color from 'color';
 import map from 'lodash/map';
-import parsePropTypes from 'parse-prop-types';
 import isPlainObject from 'lodash/isPlainObject';
 
 import Col from '../components/Col';
@@ -77,6 +76,8 @@ const propsSorter = (key) => (a, b) => {
 const createDemoScreen = (demoConfig) => {
   demoConfig.components.forEach((demoItem, i) => {
     if (__DEV__) {
+      const parsePropTypes = require('parse-prop-types');
+
       demoItem.parsedProps = map(parsePropTypes(demoItem.Component), (item, key) => {
         item.def = item.defaultValue ? parseDefaultValue(item.defaultValue.value) : 'n/a';
         item.key = key;

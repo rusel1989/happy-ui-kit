@@ -36,7 +36,7 @@ const AppText = ({ children, ...rest }) => {
   );
 };
 
-AppText.displayName = 'AppText';
+AppText.displayName = 'Text';
 
 AppText.contextTypes = {
   theme: PropTypes.object

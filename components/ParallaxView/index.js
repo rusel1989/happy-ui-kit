@@ -57,6 +57,8 @@ class ParallaxView extends Component {
   }
 }
 
+ParallaxView.displayName = 'ParallaxView';
+
 ParallaxView.defaultProps = {
   refreshing: false,
   onRefresh: () => {},
