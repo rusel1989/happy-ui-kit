@@ -96,18 +96,11 @@ export const components = {
     textColor: palette.APP_DARK_GREY,
     textSize: 58
   },
-
   HeaderButton: {
     iconColor: palette.WHITE,
     backgroundColor: 'transparent',
     width: 44,
     height: 44
-  },
-  Icon: {
-
-  },
-  IconButton: {
-
   },
   ListItem: {
     labelSize: 16,
@@ -132,9 +125,6 @@ export const components = {
     backgroundColor: palette.APP_OVERLAY,
     animation: 'fadeIn',
     duration: 500
-  },
-  ParallaxView: {
-
   },
   ProgressBar: {
     height: 40,
@@ -183,9 +173,6 @@ export const components = {
     spacingHorizontal: 0,
     spacingVertical: 0
   },
-  SwipeRow: {
-
-  },
   Text: {
     color: palette.APP_DARK_GREY,
     size: 14,
@@ -212,9 +199,6 @@ export const components = {
     borderRadius: 5,
     spacingVertical: 4,
     spacingHorizontal: 16
-  },
-  Touchable: {
-
   },
   WheelPicker: {
     height: 240,
@@ -243,7 +227,7 @@ components.ParallaxView = {
   cardSpacingHorizontal: components.Card.spacingHorizontal,
   cardBorderRadius: components.Card.borderRadius,
   cardShadow: components.Card.shadow
-}
+};
 
 components.SectionList = {
   sectionHeaderTextColor: components.SectionHeader.textColor,
