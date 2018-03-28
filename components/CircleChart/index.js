@@ -3,26 +3,32 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { colors } from '../theme';
+import BaseTheme from '../../theme/base';
 
-const renderText = (val, formatText) =>
-  <Text.RobotoCondensed.Bold color='#37474F' size={20}>
+const renderText = (val, formatText, { textSize, textColor }) =>
+  <Text.RobotoCondensed.Bold color={textColor} size={textSize}>
     {formatText(val)}
   </Text.RobotoCondensed.Bold>;
 
-const CircleChart = ({ value, size, lineWidth, showText, formatText, colors, spacing }) => {
+const CircleChart = ({ value, formatText, ...rest }, context) => {
+  const { size, lineWidth, linecap, rotation, backgroundColor, tintColor, showText, textSize, textColor } = context.mergeStyle('CircleChart', rest);
   return (
     <AnimatedCircularProgress
       size={size}
       width={lineWidth}
       fill={value}
-      rotation={0}
-      linecap='round'
-      friction={90000}
-      {...colors}>
-      {showText && (v => renderText(v, formatText))}
+      rotation={rotation}
+      linecap={linecap}
+      tintColor={tintColor}
+      backgroundColor={backgroundColor}>
+      {showText && (v => renderText(v, formatText, { textSize, textColor }))}
     </AnimatedCircularProgress>
   );
+};
+
+CircleChart.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 CircleChart.propTypes = {
@@ -30,23 +36,22 @@ CircleChart.propTypes = {
   size: PropTypes.number,
   lineWidth: PropTypes.number,
   showText: PropTypes.bool,
+  textSize: PropTypes.number,
+  textColor: PropTypes.string,
   formatText: PropTypes.func,
-  colors: PropTypes.shape({
-    tintColor: PropTypes.string,
-    backgroundColor: PropTypes.string
-  }),
-  spacing: PropTypes.number
+  tintColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  rotation: PropTypes.number,
+  linecap: PropTypes.string
 };
 
 CircleChart.defaultProps = {
   value: 0,
-  size: 70,
-  lineWidth: 6,
-  showText: true,
   formatText: (v) => `${v.toFixed(0)}`,
-  colors: { tintColor: colors.APP_PRIMARY, backgroundColor: colors.APP_LIGHT_GREY },
-  spacing: 5
+  ...BaseTheme.CircleChart
 };
+
+CircleChart.demoFlexDirection = 'row';
 
 CircleChart.demoProps = [{
   size: 50,
@@ -56,16 +61,18 @@ CircleChart.demoProps = [{
   size: 80,
   lineWidth: 10,
   showText: false,
-  colors: { tintColor: colors.APP_DANGER, backgroundColor: colors.APP_LIGHT_GREY }
+  tintColor: BaseTheme.palette.APP_DANGER,
+  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY
 }, {
   value: 7,
   formatText: (v) => `${v.toFixed(0)} %`,
-  colors: { tintColor: colors.APP_SUCCESS, backgroundColor: colors.APP_LIGHT_GREY }
+  tintColor: BaseTheme.palette.APP_SUCCESS,
+  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY
 }, {
   value: 50,
   lineWidth: 4,
-  colors: { tintColor: colors.APP_PRIMARY, backgroundColor: colors.APP_INFO }
-
+  tintColor: BaseTheme.palette.APP_PRIMARY,
+  backgroundColor: BaseTheme.palette.APP_INFO
 }];
 
 CircleChart.noRef = true;

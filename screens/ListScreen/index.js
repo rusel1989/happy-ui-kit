@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import { renderRefreshControl } from '../../utils';
 
 class ListScreen extends Component {
@@ -45,7 +45,7 @@ class ListScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.APP_BACKGROUND
+    backgroundColor: BaseTheme.palette.APP_BACKGROUND
   }
 });
 

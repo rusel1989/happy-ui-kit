@@ -4,7 +4,7 @@ import { Svg } from 'expo';
 import interpolate from 'color-interpolate';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import Text from '../Text';
 
 const { Path, Circle, G } = Svg;
@@ -66,7 +66,8 @@ class CircularSlider extends Component {
   }
 
   render () {
-    const { width, height, meterWidth, textColor, textSize, railColor, railWidth, btnRadius, btnFill, btnStroke, btnStrokeWidth, formatValue } = this.props;
+    const { formatValue, ...rest } = this.props;
+    const { width, height, meterWidth, textColor, textSize, railColor, railWidth, btnRadius, btnFill, btnStroke, btnStrokeWidth } = this.context.mergeStyle('CircleSlider', rest);
     const { cx, cy, r, value } = this.state;
     const startCoord = this.polarToCartesian(0);
     const endCoord = this.polarToCartesian(value);
@@ -126,6 +127,11 @@ class CircularSlider extends Component {
   }
 }
 
+CircularSlider.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
 CircularSlider.propTypes = {
   btnRadius: PropTypes.number,
   width: PropTypes.number,
@@ -146,22 +152,10 @@ CircularSlider.propTypes = {
 };
 
 CircularSlider.defaultProps = {
-  width: 120,
-  height: 120,
-  btnRadius: 15,
-  btnFill: '#ddd',
-  btnStroke: 'transparent',
-  btnStrokeWidth: 0,
-  railWidth: 10,
-  railColor: colors.LIGHT_GREY,
-  meterWidth: 10,
-  meterColor: '#0cd',
-  meterColors: [colors.APP_DANGER, colors.APP_SUCCESS],
-  textColor: colors.DARK_GREY,
-  textSize: 58,
   initialValue: 0,
   onValueSelected: () => {},
-  formatValue: (v) => `${(v / 36).toFixed(1)}`
+  formatValue: (v) => `${(v / 36).toFixed(1)}`,
+  ...BaseTheme.CircleSlider
 };
 
 CircularSlider.demoProps = {

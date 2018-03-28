@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 import color from 'color';
-import keys from 'lodash/keys';
 import map from 'lodash/map';
 
 import parsePropTypes from 'parse-prop-types';
@@ -10,8 +9,9 @@ import Col from '../components/Col';
 import Row from '../components/Row';
 import Button from '../components/Button';
 import Text from '../components/Text';
-import { colors } from '../components/theme';
 import isPlainObject from 'lodash/isPlainObject';
+
+import BaseTheme from '../theme/base';
 
 const parseDefaultValue = (value) => {
   if (typeof value === 'string') {
@@ -35,21 +35,21 @@ const parseDefaultValue = (value) => {
 
 const getColor = (value) => {
   if (value === 'true') {
-    return colors.APP_SUCCESS;
+    return BaseTheme.palette.APP_SUCCESS;
   } else if (value === 'false') {
-    return colors.APP_DANGER;
+    return BaseTheme.palette.APP_DANGER;
   } else if (/^#[a-fA-F0-9]{6}$/.test(value)) {
     return value.toUpperCase();
   } else {
-    return colors.APP_DARK_GREY;
+    return BaseTheme.palette.APP_DARK_GREY;
   }
 };
 
 const getBackgroundForColor = (hex) => {
-  return color(hex).luminosity() < 0.7 ? colors.WHITE : colors.DARK_GREY;
+  return color(hex).luminosity() < 0.7 ? BaseTheme.palette.WHITE : BaseTheme.palette.DARK_GREY;
 };
 
-const MonospaceText = ({ children, italic, backgroundColor = colors.WHITE, color = colors.APP_PRIMARY, fontWeight = '300' }) => {
+const MonospaceText = ({ children, italic, backgroundColor = BaseTheme.palette.WHITE, color = BaseTheme.palette.APP_PRIMARY, fontWeight = '300' }) => {
   return (
     <Text.Monospace
       numberOfLines={1}
@@ -62,10 +62,22 @@ const MonospaceText = ({ children, italic, backgroundColor = colors.WHITE, color
 };
 
 const createComponentScreen = (Element) => {
-
-  const parsedProps = parsePropTypes(Element);
+  const parsedProps = map(parsePropTypes(Element), (item, key) => {
+    item.def = item.defaultValue ? parseDefaultValue(item.defaultValue.value) : 'none';
+    item.key = key;
+    item.typeName = (item.type && item.type.name) || 'unknown';
+    return item;
+  });
 
   class ComponentScreen extends Component {
+    state = {
+      parsedProps,
+      sortBy: 'key'
+    }
+
+    componentDidMount () {
+      this.sortProps();
+    }
 
     setElRef = (v) => {
       if (!Element.noRef) {
@@ -79,24 +91,40 @@ const createComponentScreen = (Element) => {
       }
     }
 
+    sortProps = () => {
+      return this.setState({ parsedProps: parsedProps.sort(this.propsSorter) });
+    }
+
+    setSortBy = (key) => {
+      this.setState({ sortBy: key }, () => {
+        this.sortProps();
+      });
+    }
+
+    propsSorter = (a, b) => {
+      if (a[this.state.sortBy] < b[this.state.sortBy]) return -1;
+      if (a[this.state.sortBy] > b[this.state.sortBy]) return 1;
+      return 0;
+    }
+
     render () {
       const demoProps = Element.demoProps || {};
       const subComponents = Element.subComponents || [];
+      const flexDirection = Element.demoFlexDirection || 'column';
       return (
         <View style={{ flex: 1, backgroundColor: '#EEE' }}>
-          <View style={{ margin: 10, flex: 0.4 }}>
+
+          <View style={{ marginVertical: 10, maxHeight: 200, justifyContent: 'center', flexDirection }}>
             {Array.isArray(demoProps) ? (
-              <Row justifyContent='flex-start'>
-                {demoProps.map((p, i) => {
-                  return (
-                    <View key={i} style={{ marginRight: 10 }}>
-                      <Element {...p} />
-                    </View>
-                  );
-                })}
-              </Row>
+              demoProps.map((p, i) => (
+                <View key={i} style={{ margin: 10 }}>
+                  <Element {...p} />
+                </View>
+              ))
             ) : (
-              !Element.renderLast && <Element ref={this.setElRef} {...demoProps} />
+              !Element.renderLast && (
+                <Element ref={this.setElRef} {...demoProps} />
+              )
             )}
           </View>
 
@@ -109,40 +137,39 @@ const createComponentScreen = (Element) => {
             );
           })}
 
-          <ScrollView style={{ flex: 0.6 }}>
+          <ScrollView>
             <View style={{ paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'white', margin: 10, elevation: 2 }}>
               <Col style={{ flex: 1 }} alignItems='stretch' justifyContent='flex-start'>
-                <Row style={{ height: 30, marginBottom: 10, borderBottomWidth: 1, borderBottomColor: colors.APP_LIGHT_GREY }}>
+                <Row style={{ height: 30, marginBottom: 10, borderBottomWidth: 1, borderBottomColor: BaseTheme.palette.APP_LIGHT_GREY }}>
                   <Col style={{ flex: 1 }} alignItems='flex-start'>
-                    <Text.Regular color={colors.APP_DARK_GREY}>Prop name</Text.Regular>
+                    <Text.Regular onPress={() => this.setSortBy('key')} color={BaseTheme.palette.APP_DARK_GREY}>Prop name</Text.Regular>
                   </Col>
                   <Col style={{ flex: 1 }} alignItems='flex-start'>
-                    <Text.Regular color={colors.APP_DARK_GREY}>Prop type</Text.Regular>
+                    <Text.Regular onPress={() => this.setSortBy('typeName')} color={BaseTheme.palette.APP_DARK_GREY}>Prop type</Text.Regular>
                   </Col>
                   <Col style={{ flex: 1 }} alignItems='flex-start'>
-                    <Text.Regular color={colors.APP_DARK_GREY}>Default value</Text.Regular>
+                    <Text.Regular onPress={() => this.setSortBy('def')} color={BaseTheme.palette.APP_DARK_GREY}>Default value</Text.Regular>
                   </Col>
                 </Row>
 
-                {map(parsedProps, (item, key) => {
-                  const value = item.defaultValue ? parseDefaultValue(item.defaultValue.value) : 'none';
-                  const textColor = getColor(value);
+                {this.state.parsedProps.map((item, index) => {
+                  const textColor = getColor(item.def);
                   const backgroundColor = getBackgroundForColor(textColor);
                   return (
-                    <Row key={key} style={{ height: 30 }}>
+                    <Row key={item.key} style={{ height: 30 }}>
                       <Col style={{ flex: 1 }} alignItems='flex-start'>
                         <Text.Light numberOfLines={1}>
-                          {key}
+                          {item.key}
                         </Text.Light>
                       </Col>
                       <Col style={{ flex: 1 }} alignItems='flex-start'>
                         <MonospaceText italic>
-                          {item.type && item.type.name}
+                          {item.typeName}
                         </MonospaceText>
                       </Col>
                       <Col style={{ flex: 1 }} alignItems='flex-start'>
                         <MonospaceText color={textColor} backgroundColor={backgroundColor}>
-                          {value}
+                          {item.def}
                         </MonospaceText>
                       </Col>
                     </Row>
@@ -155,7 +182,7 @@ const createComponentScreen = (Element) => {
               const subComponentProps = SubComponent.demoProps ? SubComponent.demoProps : demoProps.length ? demoProps[0] : demoProps;
               return (
                 <Col key={i} justifyContent='flex-start' alignItems='stretch' style={{ backgroundColor: 'white', margin: 10, elevation: 2 }}>
-                  <Row style={{ height: 30, borderBottomWidth: 1, borderBottomColor: colors.APP_LIGHT_GREY, marginHorizontal: 16 }}>
+                  <Row style={{ height: 30, borderBottomWidth: 1, borderBottomColor: BaseTheme.palette.APP_LIGHT_GREY, marginHorizontal: 16 }}>
                     <Text.Regular>{`<${SubComponent.displayName} />`}</Text.Regular>
                   </Row>
                   <SubComponent key={i} {...subComponentProps} />

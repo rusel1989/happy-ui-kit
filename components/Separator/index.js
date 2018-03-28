@@ -2,38 +2,45 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
-const Separator = ({ spacing, spacingVertical, width, color }) => {
+const Separator = (props, context) => {
+  const { width, color, spacingHorizontal, spacingVertical } = context.mergeStyle('Separator', props);
   return (
-    <View style={{ height: width, backgroundColor: color, marginHorizontal: spacing, marginTop: spacingVertical }} />
+    <View style={{ height: width, backgroundColor: color, marginHorizontal: spacingHorizontal, marginTop: spacingVertical }} />
   );
 };
 
 Separator.Vertical = () => {
   return (
-    <View style={{ width: 1, backgroundColor: colors.SEPARATOR }} />
+    <View style={{ width: 1, backgroundColor: BaseTheme.palette.SEPARATOR }} />
   );
 };
 
+Separator.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
 Separator.propTypes = {
-  spacing: PropTypes.number,
+  spacingHorizontal: PropTypes.number,
   spacingVertical: PropTypes.number,
   width: PropTypes.number,
   color: PropTypes.string
 };
 
 Separator.defaultProps = {
-  spacing: 0,
-  spacingVertical: 0,
-  width: 1,
-  color: colors.SEPARATOR
+  ...BaseTheme.Separator
 };
 
-Separator.demoProps = {
+Separator.demoProps = [{
   spacing: 16,
   width: 5,
-  color: colors.APP_PRIMARY
-};
+  color: BaseTheme.palette.APP_PRIMARY
+}, {
+  width: 2,
+  spacingVertical: 10,
+  color: BaseTheme.palette.APP_DANGER
+}];
 
 export default Separator;

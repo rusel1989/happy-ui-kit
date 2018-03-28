@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import keys from 'lodash/keys';
 
 import * as fonts from '../../fonts';
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
 const monospaceFont = Platform.OS === 'ios' ? 'Courier' : 'monospace';
 const fontWeights = {
@@ -38,6 +38,10 @@ const AppText = ({ children, ...rest }) => {
 
 AppText.displayName = 'AppText';
 
+AppText.contextTypes = {
+  theme: PropTypes.object
+};
+
 AppText.propTypes = Text.propTypes;
 
 AppText.demoProps = {
@@ -46,20 +50,29 @@ AppText.demoProps = {
 };
 
 const CustomText = ({
-  size,
-  color,
-  fontFamily,
-  fontWeight,
-  style,
-  textAlign,
   children,
+  style,
   ...rest
-}) => (
-  <AppText
-    style={[ { fontSize: fontSizes[size] || size, color, fontWeight, fontFamily, textAlign }, style ]}
-    {...rest}>
-    {children}
-  </AppText>);
+}, context) => {
+  const {
+    size,
+    color,
+    fontFamily,
+    fontWeight,
+    textAlign
+  } = context.mergeStyle('Text', rest);
+  return (
+    <AppText
+      style={[ { fontSize: fontSizes[size] || size, color, fontWeight, fontFamily, textAlign }, style ]}
+      {...rest}>
+      {children}
+    </AppText>);
+};
+
+CustomText.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 CustomText.propTypes = {
   ...Text.propTypes,
@@ -67,25 +80,26 @@ CustomText.propTypes = {
   color: PropTypes.string,
   fontFamily: PropTypes.string,
   fontWeight: PropTypes.oneOf([ '100', '200', '300', '400', '500', '600', '700', '800', '900' ]),
-  style: PropTypes.object,
+  style: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   children: PropTypes.node
 };
 
 CustomText.displayName = 'CustomText';
+
 CustomText.defaultProps = {
-  size: 14,
-  color: colors.APP_BLACK,
-  textAlign: 'left'
+  ...BaseTheme.Text
 };
 
 CustomText.demoProps = {
   size: 'xlarge',
   fontWeight: fontWeights.Bold,
-  color: colors.APP_SUCCESS,
+  color: BaseTheme.palette.APP_SUCCESS,
   style: { padding: 8 },
   children: 'Custom text'
 };
+
+AppText.Custom = CustomText;
 
 const createTextComponent = (fontFamily, fontWeight) => (props) =>
   <CustomText fontWeight={fontWeight} {...props} fontFamily={fontFamily} />;

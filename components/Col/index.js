@@ -10,6 +10,10 @@ const Col = ({ style, children, justifyContent, alignItems }) => {
   );
 };
 
+Col.contextTypes = {
+  theme: PropTypes.object
+};
+
 Col.propTypes = {
   style: PropTypes.object,
   children: PropTypes.node,

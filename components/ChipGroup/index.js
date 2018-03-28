@@ -3,40 +3,53 @@ import PropTypes from 'prop-types';
 
 import Chip from '../Chip';
 import Row from '../Row';
+import BaseTheme from '../../theme/base';
 
 const ChipGroup = ({
   options,
   onSelect,
   value,
+  selectable,
   justifyContent,
-  animated
-}) => (
-  <Row justifyContent={justifyContent} style={{ marginHorizontal: -5 }}>
-    {options.map((option, i) => (
-      <Chip
-        key={i}
-        animated={animated}
-        style={{ marginHorizontal: 5 }}
-        onPress={onSelect}
-        value={option}
-        active={option === value} />
-    ))}
-  </Row>
-);
+  ...rest
+}, context) => {
+  const { spacingHorizontal, animated } = context.mergeStyle('ChipGroup', rest);
+  return (
+    <Row justifyContent={justifyContent} style={{ marginHorizontal: -spacingHorizontal }}>
+      {options.map((option, i) => (
+        <Chip
+          key={i}
+          animated={animated}
+          spacingHorizontal={spacingHorizontal}
+          onPress={onSelect}
+          label={option}
+          active={selectable ? option === value : false} />
+      ))}
+    </Row>
+  );
+};
+
+ChipGroup.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 ChipGroup.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   onSelect: PropTypes.func,
   value: PropTypes.string,
   justifyContent: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'space-between']),
-  animated: PropTypes.bool
+  animated: PropTypes.bool,
+  spacingHorizontal: PropTypes.number
 };
 
 ChipGroup.defaultProps = {
   options: [],
   onSelect: () => {},
   value: '',
-  animated: false
+  selectable: true,
+  justifyContent: 'flex-start',
+  ...BaseTheme.ChipGroup
 };
 
 ChipGroup.demoProps = {

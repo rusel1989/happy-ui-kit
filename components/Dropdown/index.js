@@ -1,18 +1,9 @@
 import React from 'react';
-import color from 'color';
 import PropTypes from 'prop-types';
 
-import Row from '@happy/components/Row';
-import Col from '@happy/components/Col';
 import Icon from '@happy/components/Icon';
-import Text from '@happy/components/Text';
-import Touchable from '@happy/components/Touchable';
 import ListItem from '@happy/components/ListItem';
-
-import { colors } from '@happy/components/theme';
-import { to24hTime } from '@happy/utils/date';
-
-const locationBackground = color(colors.APP_PRIMARY).alpha(0.1);
+import BaseTheme from '../../theme/base';
 
 class Dropdown extends React.Component {
   state = {
@@ -34,23 +25,26 @@ class Dropdown extends React.Component {
   }
 
   render () {
-    const { options = [] } = this.props;
+    const { options, ...rest } = this.props;
+    const { rightIcon, itemHeight, ...dropdownStyle } = this.context.mergeStyle('Dropdown', rest);
+    const dropdownItemStyle = this.context.mergeStyle('DropdownItem', rest);
+
     return (
       <ListItem.Collapsible
-        style={this.props.style}
         getRef={this.setCollapsibleRef}
-        icon='category'
-        labelColor={colors.APP_BLACK}
-        iconColor={colors.APP_BLACK}
         label={this.getLabel()}
-        height={50}
-        contentHeight={options.length * 50}
-        rightButton={<Icon name='arrow-down' />}>
+        height={itemHeight}
+        contentHeight={options.length * itemHeight}
+        rightButton={<Icon name={rightIcon} />}
+        {...dropdownStyle}>
         {options.map(({ value, label }, i) => {
           return (
-            <Touchable key={i} onPress={() => this.onSelect({ value, label })}>
-              <ListItem labelColor={colors.APP_BLACK} label={label} height={50} />
-            </Touchable>
+            <ListItem
+              key={i}
+              label={label}
+              onPress={() => this.onSelect({ value, label })}
+              {...dropdownItemStyle}
+              height={itemHeight} />
           );
         })}
       </ListItem.Collapsible>
@@ -61,19 +55,33 @@ class Dropdown extends React.Component {
 Dropdown.defaultProps = {
   label: 'Select',
   options: [],
-  onSelect: () => {}
-}
+  onSelect: () => {},
+  ...BaseTheme.Dropdown
+};
+
+Dropdown.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 Dropdown.propTypes = {
   label: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.any, label: PropTypes.string })),
-  onSelect: PropTypes.func
-}
+  onSelect: PropTypes.func,
+  rightIcon: PropTypes.string,
+  icon: PropTypes.string,
+  itemHeight: PropTypes.number
+};
 
 Dropdown.demoProps = {
   label: 'Select anything',
-  options: [{ value: 'any', label: 'Anything'}, { value: 'some', label: 'Something' }],
+  labelColor: BaseTheme.palette.APP_OVERLAY,
+  options: [{
+    value: 'any', label: 'Anything'
+  }, {
+    value: 'some', label: 'Something'
+  }],
   onSelect: (v) => console.log(v)
-}
+};
 
-export default Dropdown
+export default Dropdown;

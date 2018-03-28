@@ -1,54 +1,70 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import SectionHeader from '../SectionHeader';
+import Col from '../Col';
+import Card from '../Card';
+import BaseTheme from '../../theme/base';
 
-const Section = ({ title, onHeaderPress, children }) => (
-  <View>
-    <SectionHeader
-      onPress={onHeaderPress}
-      title={title} />
-    {children}
-  </View>
-);
-
-Section.Animated = ({ title, onHeaderPress, children, getRef, style, contentEnterDelay = 500 }) => {
+const Section = ({ title, children, ...rest }, context) => {
+  const { headerHeight, headerUppercase, headerTextSize, headerTextColor,
+    headerBackgroundColor, contentBackgroundColor, contentSpacingVertical,
+    contentSpacingHorizontal } = context.mergeStyle('Section', rest);
   return (
-    <Animatable.View
-      ref={getRef}
-      style={style}
-      easing='ease-in-out-quad'
-      useNativeDriver>
-      <Section title={title} onHeaderPress={onHeaderPress}>
-        <Animatable.View
-          useNativeDriver
-          delay={contentEnterDelay}
-          duration={250}
-          animation='pulse'>
-          {children}
-        </Animatable.View>
-      </Section>
-    </Animatable.View>
+    <Col alignItems='stretch' justifyContent='flex-start'>
+      <SectionHeader
+        uppercase={headerUppercase}
+        textSize={headerTextSize}
+        textColor={headerTextColor}
+        height={headerHeight}
+        backgroundColor={headerBackgroundColor}
+        title={title} />
+      <Card
+        shadow={false}
+        backgroundColor={contentBackgroundColor}
+        spacingVertical={contentSpacingVertical}
+        spacingHorizontal={contentSpacingHorizontal}>
+        {children}
+      </Card>
+    </Col>
   );
+};
+
+Section.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 Section.propTypes = {
   title: PropTypes.string,
-  onHeaderPress: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
+  headerUppercase: PropTypes.bool,
+  headerHeight: PropTypes.number,
+  headerTextSize: PropTypes.number,
+  headerTextColor: PropTypes.string,
+  headerBackgroundColor: PropTypes.string,
+  contentBackgroundColor: PropTypes.string,
+  contentSpacingVertical: PropTypes.number,
+  contentSpacingHorizontal: PropTypes.number
 };
 
 Section.defaultProps = {
   title: '',
-  onHeaderPress: () => {}
+  ...BaseTheme.Section
 };
 
-Section.demoProps = {
+Section.demoProps = [{
   title: 'Section title',
-  onHeaderPress: () => console.log('pressed header'),
-  children: <View style={{ backgroundColor: 'white' }}><Text>Section content</Text></View>
-};
+  children: <Text>Section content</Text>
+}, {
+  title: 'Custom section',
+  headerUppercase: false,
+  headerHeight: 40,
+  headerTextSize: 18,
+  headerTextColor: BaseTheme.palette.WHITE,
+  headerBackgroundColor: BaseTheme.palette.APP_DANGER,
+  children: <Text>Section content</Text>
+}];
 
 export default Section;

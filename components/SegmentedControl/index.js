@@ -1,52 +1,58 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import SegmentedControl from 'react-native-segmented-control-tab';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import { toTitleCase } from '@happy/utils';
 
 const CustomSegmentedControl = ({
   onChange,
   options,
   selectedIndex,
-  tintColor
-}) => {
+  ...rest
+}, context) => {
+  const { tintColor, textSize, backgroundColor, spacingVertical, spacingHorizontal } = context.mergeStyle('SegmentedControl', rest);
   return (
-    <View style={styles.container}>
+    <View style={{ paddingHorizontal: spacingHorizontal, backgroundColor, paddingVertical: spacingVertical }}>
       <SegmentedControl
         activeTabStyle={{ backgroundColor: tintColor }}
         onTabPress={i => onChange(i)}
         selectedIndex={selectedIndex}
         tabStyle={{ borderColor: tintColor }}
-        tabTextStyle={{ color: tintColor }}
+        tabTextStyle={{ color: tintColor, fontSize: textSize }}
         values={options.map(o => toTitleCase(o))} />
     </View>
   );
 };
+CustomSegmentedControl.displayName = 'SegmentedControls';
 
-const styles = StyleSheet.create({
-  container: { paddingHorizontal: 16, paddingVertical: 10, backgroundColor: colors.WHITE }
-});
+CustomSegmentedControl.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 CustomSegmentedControl.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.string),
   selectedIndex: PropTypes.number,
-  tintColor: PropTypes.string
+  tintColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  spacingVertical: PropTypes.number,
+  spacingHorizontal: PropTypes.number
 };
 
 CustomSegmentedControl.defaultProps = {
   onChange: () => {},
   options: [],
   selectedIndex: 0,
-  tintColor: colors.APP_BLACK
+  ...BaseTheme.SegmentedControl
 };
 
 CustomSegmentedControl.demoProps = {
   onChange: (i) => console.log(`selected ${i}`),
   options: ['Segmented', 'Control'],
-  tintColor: colors.APP_PRIMARY
+  tintColor: BaseTheme.palette.APP_PRIMARY
 };
 
 export default CustomSegmentedControl;

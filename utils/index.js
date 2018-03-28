@@ -1,7 +1,7 @@
 import React from 'react';
 import { Asset, Font } from 'expo';
 import { Image, Alert, RefreshControl } from 'react-native';
-import { colors } from '../components/theme';
+import BaseTheme from '../theme/base';
 
 export const cacheImages = (images) => {
   return images.map(image => {
@@ -48,8 +48,8 @@ export const showConfirmDialog = ({
 export const renderRefreshControl = ({ refreshing, onRefresh }) => {
   return (
     <RefreshControl
-      colors={[colors.APP_PRIMARY]}
-      tintColor={colors.APP_PRIMARY}
+      colors={[BaseTheme.palette.APP_PRIMARY]}
+      tintColor={BaseTheme.palette.APP_PRIMARY}
       refreshing={refreshing}
       onRefresh={onRefresh} />
   );

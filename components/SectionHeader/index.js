@@ -1,33 +1,37 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
+import Row from '../Row';
 import Text from '../Text';
+import BaseTheme from '../../theme/base';
 
-const SectionHeader = ({ title, uppercase }) => (
-  <View style={styles.container}>
-    <Text.Medium size={12}>{uppercase ? title.toUpperCase() : title}</Text.Medium>
-  </View>
-);
+const SectionHeader = ({ title, ...rest }, context) => {
+  const { uppercase, height, backgroundColor, spacingHorizontal, textSize, textColor } = context.mergeStyle('SectionHeader', rest);
+  return (
+    <Row justifyContent='flex-start' style={{ height, backgroundColor, paddingHorizontal: spacingHorizontal }}>
+      <Text.Medium size={textSize} color={textColor}>{uppercase ? title.toUpperCase() : title}</Text.Medium>
+    </Row>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    height: 28,
-    backgroundColor: '#ECEFF1',
-    paddingHorizontal: 16,
-    alignItems: 'center'
-  }
-});
+SectionHeader.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 SectionHeader.propTypes = {
   title: PropTypes.string,
-  uppercase: PropTypes.bool
+  uppercase: PropTypes.bool,
+  height: PropTypes.number,
+  backgroundColor: PropTypes.string,
+  spacingHorizontal: PropTypes.number,
+  textSize: PropTypes.string,
+  textColor: PropTypes.string
 };
 
 SectionHeader.defaultProps = {
   title: '',
-  uppercase: true
+  ...BaseTheme.SectionHeader
 };
 
 SectionHeader.demoProps = {

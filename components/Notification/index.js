@@ -5,32 +5,43 @@ import PropTypes from 'prop-types';
 import Col from '@happy/components/Col';
 import Text from '@happy/components/Text';
 import Icon from '@happy/components/Icon';
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
-const Notification = ({ message, tintColor, icon }) => {
+const Notification = ({ message, icon, ...rest }, context) => {
+  const { tintColor, backgroundColor, spacingVertical, spacingHorizontal, textSize, textAlign } = context.mergeStyle('Notification', rest);
   return (
-    <Col alignItems='stretch' style={{ backgroundColor: 'white', paddingVertical: 20 }}>
+    <Col alignItems='stretch' style={{ backgroundColor, paddingVertical: spacingVertical, paddingHorizontal: spacingHorizontal }}>
       <Icon
         color={tintColor}
-        style={{ position: 'absolute', left: 16 }}
+        style={{ position: 'absolute', left: spacingHorizontal }}
         name={icon} />
-      <Text.Light style={{ alignSelf: 'center' }} color={tintColor}>{message}</Text.Light>
+      <Text.Light size={textSize} style={{ alignSelf: textAlign }} color={tintColor}>{message}</Text.Light>
     </Col>
   );
 };
 
 Notification.displayName = 'Notification';
 
+Notification.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
 Notification.propTypes = {
   message: PropTypes.string,
   tintColor: PropTypes.string,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  spacingVertical: PropTypes.number,
+  spacingHorizontal: PropTypes.number,
+  textSize: PropTypes.number,
+  textAlign: PropTypes.string
 };
 
 Notification.defaultProps = {
   message: '',
-  tintColor: colors.APP_DARK_GREY,
-  icon: 'notification'
+  icon: 'notification',
+  ...BaseTheme.Notification
 };
 
 Notification.demoProps = {
@@ -42,7 +53,7 @@ Notification.Danger = ({ message }) => {
   return (
     <Notification
       icon='error'
-      tintColor={colors.APP_DANGER}
+      tintColor={BaseTheme.palette.APP_DANGER}
       message={message} />
 
   );
@@ -66,7 +77,7 @@ Notification.Success = ({ message }) => {
   return (
     <Notification
       icon='notification'
-      tintColor={colors.APP_SUCCESS}
+      tintColor={BaseTheme.palette.APP_SUCCESS}
       message={message} />
   );
 };

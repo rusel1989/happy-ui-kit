@@ -3,21 +3,27 @@ import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
 
-const Overlay = ({ getRef, style, onPress, backgroundColor, animation, duration }) => (
-  <Animatable.Text
-    useNativeDriver
-    ref={getRef}
-    animation={animation}
-    duration={duration}
-    style={[ styles.overlay, { backgroundColor }, style ]}
-    onPress={onPress} />
-);
+import BaseTheme from '../../theme/base';
 
-const styles = StyleSheet.create({
-  overlay: { ...StyleSheet.absoluteFillObject }
-});
+const Overlay = ({ getRef, style, onPress, ...rest }, context) => {
+  const { backgroundColor, animation, duration } = context.mergeStyle('Overlay', rest);
+  return (
+    <Animatable.Text
+      useNativeDriver
+      ref={getRef}
+      animation={animation}
+      duration={duration}
+      style={[ { ...StyleSheet.absoluteFillObject, backgroundColor }, style ]}
+      onPress={onPress} />
+  );
+};
 
 Overlay.displayName = 'Overlay';
+
+Overlay.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
 
 Overlay.propTypes = {
   getRef: PropTypes.func,
@@ -31,9 +37,7 @@ Overlay.propTypes = {
 Overlay.defaultProps = {
   getRef: () => {},
   onPress: () => {},
-  backgroundColor: 'rgba(38,50,56,0.4)',
-  animation: 'fadeIn',
-  duration: 500
+  ...BaseTheme.Overlay
 };
 
 Overlay.demoProps = {

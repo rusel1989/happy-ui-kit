@@ -3,10 +3,9 @@ import { Animated, StyleSheet, View, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import { renderRefreshControl } from '../../utils';
 import Card from '../Card';
-import Shadow from './Shadow';
 
 class ParallaxView extends Component {
   constructor (props) {
@@ -17,33 +16,40 @@ class ParallaxView extends Component {
   }
 
   render () {
-    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children, header, style } = this.props;
+    const { onRefresh, refreshing, teaserHeight, scrollViewRef, scrollEnabled, children, header, style, cardStyle, ...rest } = this.props;
     const headerHeight = this.state.scrollY.interpolate({
       inputRange: [ 0, teaserHeight ],
       outputRange: [ teaserHeight, 0 ],
       extrapolate: 'clamp'
     });
     const headerZIndex = refreshing ? -1 : 1;
+    const { backgroundColor, showIndicator, spinnerColor, headerBackgroundColor, cardBackgroundColor, cardSpacingVertical, cardSpacingHorizontal,
+      cardBorderRadius, cardShadow } = this.context.mergeStyle('ParallaxView', rest);
 
     return (
-      <View style={[ styles.container, style ]}>
+      <View style={[ { backgroundColor, flex: 1 }, style ]}>
         <KeyboardAwareScrollView
-          style={styles.scrollView}
+          style={{ flex: 1 }}
           innerRef={scrollViewRef}
           scrollEventThrottle={5}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={showIndicator}
           scrollEnabled={scrollEnabled}
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }])}
-          refreshControl={renderRefreshControl({ onRefresh, refreshing })}>
+          refreshControl={renderRefreshControl({ onRefresh, refreshing, spinnerColor })}>
           <View style={{ marginTop: teaserHeight }}>
-            <Card>
+            <Card
+              backgroundColor={cardBackgroundColor}
+              spacingVertical={cardSpacingVertical}
+              spacingHorizontal={cardSpacingHorizontal}
+              borderRadius={cardBorderRadius}
+              shadow={cardShadow}
+              style={cardStyle}>
               {children}
             </Card>
           </View>
         </KeyboardAwareScrollView>
-        <Animated.View style={[ styles.header, { height: headerHeight, zIndex: headerZIndex } ]}>
+        <Animated.View style={[ styles.header, { backgroundColor: headerBackgroundColor, height: headerHeight, zIndex: headerZIndex } ]}>
           {header}
-          <Shadow />
         </Animated.View>
       </View>
     );
@@ -56,7 +62,13 @@ ParallaxView.defaultProps = {
   scrollViewRef: () => {},
   scrollEnabled: true,
   teaserHeight: 200,
-  header: <View />
+  header: <View />,
+  ...BaseTheme.ParallaxView
+};
+
+ParallaxView.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 ParallaxView.propTypes = {
@@ -66,19 +78,33 @@ ParallaxView.propTypes = {
   scrollEnabled: PropTypes.bool,
   teaserHeight: PropTypes.number,
   header: PropTypes.node,
-  children: PropTypes.node
+  children: PropTypes.node,
+  backgroundColor: PropTypes.string,
+  headerBackgroundColor: PropTypes.string,
+  spinnerColor: PropTypes.string,
+  cardBackgroundColor: PropTypes.string,
+  showIndicator: PropTypes.bool,
+  cardShadow: PropTypes.bool,
+  cardSpacingHorizontal: PropTypes.number,
+  cardSpacingVertical: PropTypes.number,
+  cardBorderRadius: PropTypes.number
 };
+
+ParallaxView.demoFlexDirection = 'row';
 
 ParallaxView.demoProps = {
   style: { height: 200 },
-  teaserHeight: 150,
-  header: <View style={{ height: 150, backgroundColor: colors.APP_PRIMARY }}><Text>header</Text></View>,
-  children: <View style={{ height: 200, backgroundColor: colors.APP_LIGHT_GREY }}><Text>content</Text></View>
+  teaserHeight: 100,
+  backgroundColor: BaseTheme.palette.APP_PRIMARY,
+  headerBackgroundColor: BaseTheme.palette.APP_PRIMARY,
+  cardStyle: { marginHorizontal: 10 },
+  cardShadow: true,
+  header: <View style={{ height: 100 }}><Text>header</Text></View>,
+  children: <View style={{ height: 200 }}><Text>content</Text></View>
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.WHITE,
     flex: 1
   },
   scrollView: {
@@ -86,7 +112,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    backgroundColor: colors.WHITE,
     overflow: 'hidden',
     position: 'absolute',
     top: 0,

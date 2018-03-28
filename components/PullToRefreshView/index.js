@@ -17,6 +17,10 @@ const PullToRefreshView = ({ onRefresh, refreshing, children, getRef, scrollEnab
   );
 };
 
+PullToRefreshView.contextTypes = {
+  theme: PropTypes.object
+};
+
 PullToRefreshView.propTypes = {
   onRefresh: PropTypes.func,
   refreshing: PropTypes.bool,
@@ -32,6 +36,8 @@ PullToRefreshView.defaultProps = {
   getRef: () => {},
   scrollEnabled: true
 };
+
+PullToRefreshView.demoFlexDirection = 'row';
 
 PullToRefreshView.demoProps = {
   onRefresh: () => console.log('on refresh'),

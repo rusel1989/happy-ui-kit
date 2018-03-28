@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Modal, StyleSheet, Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import ChipGroup from '../ChipGroup';
 import Button from '../Button';
 import ListItem from '../ListItem';
@@ -22,19 +22,8 @@ class ActionSheet extends Component {
   translateY = new Animated.Value(0);
   contentHeight = 0;
 
-  static defaultProps = {
-    duration: 400,
-    easing: Easing.linear,
-    onSelectionFinished: () => {}
-  }
-
-  static propTypes = {
-    duration: PropTypes.number,
-    easing: PropTypes.func,
-    onSelectionFinished: PropTypes.func
-  }
-
   show = (config, value) => {
+    console.log(this.context.theme);
     let selectedIndex = -1;
     let selectedOption = null;
     let selectedSubOption = null;
@@ -74,7 +63,7 @@ class ActionSheet extends Component {
   }
 
   _computeHeight = (optionCount = 0) => {
-    return (optionCount * 60) + 80;
+    return ((optionCount + 1) * this.props.itemHeight) + 20;
   }
 
   _animateSheet = (toValue = 0, duration) => {
@@ -139,6 +128,10 @@ class ActionSheet extends Component {
 
   render () {
     const { visible, selectedIndex, subOptions, options, selectedSubOption } = this.state;
+
+    const { duration, ...rest } = this.props;
+    const { labelColor, itemBackgroundColor, selectedBackgroundColor, selectedIconColor,
+      selectedLabelColor, iconColor, itemBorderRadius, itemHeight } = this.context.mergeStyle('ActionSheet', rest);
     return (
       <Modal
         visible={visible}
@@ -164,12 +157,16 @@ class ActionSheet extends Component {
               return (
                 <ListItem.Selectable
                   key={index}
-                  selectedBackgroundColor={colors.EXTRA_LIGHT_GREY}
                   icon={option.icon}
-                  labelColor={colors.DARK_GREY}
-                  iconColor={isSelected ? null : colors.DARK_GREY}
-                  isSelected={isSelected}
                   label={option.label}
+                  height={itemHeight}
+                  iconColor={iconColor}
+                  labelColor={labelColor}
+                  backgroundColor={itemBackgroundColor}
+                  selectedIconColor={selectedIconColor}
+                  selectedLabelColor={selectedLabelColor}
+                  selectedBackgroundColor={selectedBackgroundColor}
+                  isSelected={isSelected}
                   onPress={() => this.onOptionSelected({ ...option, index })}>
                   {subOptions && isSelected && (
                     <ChipGroup
@@ -181,6 +178,11 @@ class ActionSheet extends Component {
             })}
           </View>
           <Button
+            borderRadius={itemBorderRadius}
+            backgroundColor={itemBackgroundColor}
+            color={labelColor}
+            height={itemHeight}
+            uppercaseLabel={false}
             label={this.canSaveValue() ? 'Save' : 'Cancel'}
             onPress={this.onFinishButtonPress} />
         </Animated.View>
@@ -188,6 +190,32 @@ class ActionSheet extends Component {
     );
   }
 }
+
+ActionSheet.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
+ActionSheet.propTypes = {
+  duration: PropTypes.number,
+  easing: PropTypes.func,
+  onSelectionFinished: PropTypes.func,
+  labelColor: PropTypes.string,
+  itemBackgroundColor: PropTypes.string,
+  selectedBackgroundColor: PropTypes.string,
+  selectedIconColor: PropTypes.string,
+  selectedTextColor: PropTypes.string,
+  iconColor: PropTypes.string,
+  itemBorderRadius: PropTypes.number,
+  itemHeight: PropTypes.number
+};
+
+ActionSheet.defaultProps = {
+  duration: 400,
+  easing: Easing.linear,
+  onSelectionFinished: () => {},
+  ...BaseTheme.ActionSheet
+};
 
 ActionSheet.demoMethods = [{
   name: 'show',
@@ -197,7 +225,7 @@ ActionSheet.demoMethods = [{
       { label: 'Option 1', icon: 'save', value: 'value' },
       { label: 'Option 2', icon: 'remove', value: 'value2' }
     ]
-  }, 'value']
+  }, '']
 }];
 
 const styles = StyleSheet.create({

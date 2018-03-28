@@ -4,25 +4,27 @@ import PropTypes from 'prop-types';
 import Row from '@happy/components/Row';
 import Col from '@happy/components/Col';
 import Text from '@happy/components/Text';
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
-const ProgressBar = ({
-  progress,
-  backgroundColor,
-  barColor,
-  height,
-  textColor
-}) => {
+const ProgressBar = ({ progress, ...rest }, context) => {
+  const { showText, borderRadius, backgroundColor, barColor, height, textColor } = context.mergeStyle('ProgressBar', rest);
+
   return (
     <Col alignItems='stretch'>
-      <Row justifyContent='flex-start' style={{ backgroundColor, borderRadius: 2, overflow: 'hidden' }}>
+      <Row justifyContent='flex-start' style={{ backgroundColor, borderRadius, overflow: 'hidden' }}>
         <Row style={{ flex: progress, backgroundColor: barColor, height }} />
       </Row>
-      <Col style={{ position: 'absolute', right: 16 }}>
-        <Text.Regular color={textColor}>{(progress * 100).toFixed(1)} %</Text.Regular>
-      </Col>
+      {showText && (
+        <Col style={{ position: 'absolute', right: 16 }}>
+          <Text.Regular color={textColor}>{(progress * 100).toFixed(1)} %</Text.Regular>
+        </Col>)}
     </Col>
   );
+};
+
+ProgressBar.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 ProgressBar.propTypes = {
@@ -30,19 +32,21 @@ ProgressBar.propTypes = {
   backgroundColor: PropTypes.string,
   barColor: PropTypes.string,
   height: PropTypes.number,
-  textColor: PropTypes.string
+  textColor: PropTypes.string,
+  showText: PropTypes.bool,
+  borderRadius: PropTypes.number
 };
 
-ProgressBar.defaultProps = {
-  progress: 0,
-  backgroundColor: colors.APP_LIGHT_GREY,
-  barColor: colors.APP_PRIMARY,
-  height: 40,
-  textColor: colors.APP_BLACK
-};
+ProgressBar.defaultProps = BaseTheme.ProgressBar;
 
-ProgressBar.demoProps = {
+ProgressBar.demoProps = [{
   progress: 0.65
-};
+}, {
+  progress: 0.4,
+  barColor: 'green',
+  backgroundColor: 'navy',
+  textColor: 'white',
+  borderRadius: 10
+}];
 
 export default ProgressBar;

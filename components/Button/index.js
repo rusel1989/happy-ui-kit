@@ -3,79 +3,67 @@ import { View, TouchableNativeFeedback, TouchableHighlight, StyleSheet, Platform
 import PropTypes from 'prop-types';
 
 import Text from '../Text';
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
 const Touchable = Platform.OS === 'ios' ? TouchableHighlight : TouchableNativeFeedback;
 
 const Button = ({
   onPress,
   label,
-  background,
-  color,
-  uppercaseLabel
-}) => (
-  <Touchable onPress={onPress}>
-    <View style={[styles.button, { backgroundColor: background }]}>
-      <Text.Bold
-        color={color}
-        size={20}>
-        {uppercaseLabel ? label.toUpperCase() : label}
-      </Text.Bold>
-    </View>
-  </Touchable>
-);
+  ...rest
+}, context) => {
+  const { backgroundColor, color, uppercaseLabel, height, borderRadius, labelSize } = context.mergeStyle('Button', rest);
+  return (
+    <Touchable onPress={onPress}>
+      <View style={[styles.button, { backgroundColor, height, borderRadius }]}>
+        <Text.Bold
+          color={color}
+          size={labelSize}>
+          {uppercaseLabel ? label.toUpperCase() : label}
+        </Text.Bold>
+      </View>
+    </Touchable>
+  );
+};
 
 Button.defaultProps = {
   onPress: () => {},
   label: '',
-  background: colors.APP_PRIMARY,
-  color: colors.WHITE,
-  uppercaseLabel: false
+  ...BaseTheme.Button
+};
+
+Button.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 Button.propTypes = {
   onPress: PropTypes.func,
   label: PropTypes.string,
-  background: PropTypes.string,
+  backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  uppercaseLabel: PropTypes.bool
+  uppercaseLabel: PropTypes.bool,
+  labelSize: PropTypes.number,
+  borderRadius: PropTypes.number,
+  height: PropTypes.number
 };
 
-Button.demoProps = {
-  label: 'Test',
-  onPress: () => {}
-};
-
-const RoundButton = (props) => (
-  <Touchable
-    onPress={props.onPress}
-    underlayColor={colors.LIGHT_GREY}>
-    <View style={styles.button}>
-      <Text.Bold
-        color={colors.GREY}
-        size={20}>
-        {props.label}
-      </Text.Bold>
-    </View>
-  </Touchable>
-);
-
-Button.Round = RoundButton;
-
+Button.demoProps = [{
+  label: 'Default Button'
+}, {
+  label: 'Custom Buttom',
+  backgroundColor: BaseTheme.palette.APP_DARK_GREY,
+  color: BaseTheme.palette.WHITE,
+  borderRadius: 20,
+  height: 40,
+  labelSize: 14,
+  uppercaseLabel: false
+}];
 
 const styles = StyleSheet.create({
-  container: {
-    height: 60,
-    flexDirection: 'row'
-  },
   button: {
-    height: 60,
-    backgroundColor: colors.WHITE,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  roundedButton: {
-    borderRadius: 12
+    justifyContent: 'center'
   }
 });
 

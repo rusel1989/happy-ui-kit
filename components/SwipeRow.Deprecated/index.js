@@ -18,6 +18,10 @@ const CustomSwipeRow = ({ leftOpenValue, rightOpenValue, disableSwipe, children,
     {children}
   </SwipeRow>);
 
+CustomSwipeRow.contextTypes = {
+  theme: PropTypes.object
+};
+
 CustomSwipeRow.propTypes = {
   leftOpenValue: PropTypes.number,
   rightOpenValue: PropTypes.number,

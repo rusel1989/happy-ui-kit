@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text,
   StyleSheet,
   Animated,
   Easing,
@@ -19,46 +18,22 @@ import {
 
 import TimerEnhance from 'react-native-smart-timer-enhance';
 import constants, { gravity } from './constants';
+import BaseTheme from '../../theme/base';
+import Text from '../Text';
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     position: 'absolute',
-    borderRadius: 8,
-    padding: 8,
     left: -9999,
     top: -9999,
     zIndex: 999
-  },
-  text: {
-    fontFamily: 'System',
-    fontSize: 14,
-    color: '#fff'
   }
 });
 
 class Toast extends Component {
     static constants = constants
-
-    static defaultProps = {
-      spacing: 30,
-      position: gravity.bottom,
-      duration: 3000,
-      animatedDuration: 510,
-      delay: 0,
-      marginTop: 0
-    }
-
-    static propTypes = {
-      spacing: PropTypes.number,
-      position: PropTypes.oneOf([ gravity.top, gravity.bottom, gravity.center ]),
-      duration: PropTypes.number,
-      animatedDuration: PropTypes.number,
-      delay: PropTypes.number,
-      marginTop: PropTypes.number
-    }
-
     constructor (props) {
       super(props);
       this.state = {
@@ -75,13 +50,17 @@ class Toast extends Component {
     }
 
     render () {
+      const { textColor, textSize, font, spacingVertical, spacingHorizontal, backgroundColor, borderRadius } = this.context.mergeStyle('Toast', this.props);
       let children = React.Children.map(this.state.children, (child) => {
         if (!React.isValidElement(child)) {
           return (
-            <Text
-              style={[ styles.text, this.props.textStyle ]}>
+            <Text.Custom
+              size={textSize}
+              color={textColor}
+              fontFamily={font}
+              style={[ styles.text, { } ]}>
               {child}
-            </Text>
+            </Text.Custom>
           );
         }
         return child;
@@ -92,7 +71,7 @@ class Toast extends Component {
             <Animated.View
               ref={component => { this._container = component; }}
               onLayout={this._onToastLayout}
-              style={[styles.container, this.props.style, { opacity: this.state.opacity }]}>
+              style={[styles.container, { paddingVertical: spacingVertical, paddingHorizontal: spacingHorizontal, backgroundColor, borderRadius, opacity: this.state.opacity }]}>
               {children}
             </Animated.View>)
           : null
@@ -186,6 +165,37 @@ class Toast extends Component {
       });
     }
 }
+
+Toast.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
+Toast.defaultProps = {
+  spacing: 30,
+  position: gravity.bottom,
+  duration: 3000,
+  animatedDuration: 510,
+  delay: 0,
+  marginTop: 0,
+  ...BaseTheme.Toast
+};
+
+Toast.propTypes = {
+  spacing: PropTypes.number,
+  position: PropTypes.oneOf([ gravity.top, gravity.bottom, gravity.center ]),
+  duration: PropTypes.number,
+  animatedDuration: PropTypes.number,
+  delay: PropTypes.number,
+  marginTop: PropTypes.number,
+  textColor: PropTypes.string,
+  textSize: PropTypes.number,
+  font: PropTypes.string,
+  spacingVertical: PropTypes.number,
+  spacingHorizontal: PropTypes.number,
+  backgroundColor: PropTypes.string,
+  borderRadius: PropTypes.number
+};
 
 Toast.demoMethods = [{
   name: 'show',

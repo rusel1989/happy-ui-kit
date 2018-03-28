@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Constants } from 'expo';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import Col from '../Col';
 
 const Screen = ({ children, style, justifyContent = 'flex-start', alignItems = 'stretch', ...rest }) => (
@@ -19,17 +19,20 @@ const Screen = ({ children, style, justifyContent = 'flex-start', alignItems = '
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.APP_BACKGROUND
+    backgroundColor: BaseTheme.palette.APP_BACKGROUND
   },
   statusBar: {
     height: Constants.statusBarHeight,
-    backgroundColor: colors.PINK
+    backgroundColor: BaseTheme.palette.PINK
   }
 });
+
+Screen.contextTypes = {
+  theme: PropTypes.object
+};
 
 Screen.propTypes = {
 
 };
-
 
 export default Screen;

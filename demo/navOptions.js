@@ -1,17 +1,17 @@
-import { colors } from '../components/theme';
+import BaseTheme from '../theme/base';
 
 export default {
   navigationOptions: {
     gesturesEnabled: false,
     headerStyle: {
-      backgroundColor: colors.APP_PRIMARY,
-      borderBottomColor: colors.APP_PRIMARY,
+      backgroundColor: BaseTheme.palette.APP_PRIMARY,
+      borderBottomColor: BaseTheme.palette.APP_PRIMARY,
       elevation: 0
     },
-    headerTintColor: colors.WHITE,
+    headerTintColor: BaseTheme.palette.WHITE,
     headerTitleStyle: {
       fontWeight: 'bold',
-      color: colors.WHITE,
+      color: BaseTheme.palette.WHITE,
       fontSize: 18
     }
   },

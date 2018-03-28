@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StatusBar, Platform, AsyncStorage, Image } from 'react-native';
+import { StatusBar, Platform, Image } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 
 import { getImagesArray } from './images';
 import * as fonts from './fonts';
-import RootNavigator from './navigation'
+import RootNavigator from './navigation';
+import ThemeProvider from './theme/Provider';
 
 console.disableYellowBox = true;
 StatusBar.setBarStyle('light-content');
@@ -56,8 +56,9 @@ export default class App extends React.Component {
       );
     }
     return (
-      <RootNavigator />
+      <ThemeProvider>
+        <RootNavigator />
+      </ThemeProvider>
     );
   }
 }
-

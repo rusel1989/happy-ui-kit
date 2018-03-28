@@ -2,10 +2,10 @@ import React from 'react';
 import { View, TouchableNativeFeedback, TouchableOpacity, Platform, TouchableHighlight, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 
 const TouchableView = Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
-const background = Platform.OS === 'android' ? TouchableNativeFeedback.Ripple(colors.EXTRA_LIGHT_GREY, true) : null;
+const background = Platform.OS === 'android' ? TouchableNativeFeedback.Ripple(BaseTheme.palette.EXTRA_LIGHT_GREY, true) : null;
 
 const createTouchable = (Component, touchableProps) => ({
   onPress,
@@ -29,6 +29,10 @@ const Touchable = createTouchable(TouchableView, {
   background,
   activeOpacity: 1
 });
+
+Touchable.contextTypes = {
+  theme: PropTypes.object
+};
 
 Touchable.propTypes = {
   onPress: PropTypes.func,
@@ -56,7 +60,7 @@ Touchable.Highlight.propTypes = {
 
 Touchable.Highlight.defaultProps = {
   onPress: () => {},
-  underlayColor: colors.EXTRA_LIGHT_GREY
+  underlayColor: BaseTheme.palette.EXTRA_LIGHT_GREY
 };
 
 Touchable.Highlight.demoProps = {

@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import Text from '../Text';
 import ScrollPicker from './ScrollPicker';
+import Row from '../Row';
+import Col from '../Col';
 
-const renderItem = (data, index, isSelected) => {
+const renderItem = ({ data, index, isSelected, selectedTextColor, selectedTextSize, textColor, textSize }) => {
   if (isSelected) {
     return (
       <Text.Medium
-        size={22}
-        color={colors.DARK_GREY}>
+        size={selectedTextSize}
+        color={selectedTextColor}>
         {data}
       </Text.Medium>);
   } else {
     return (
       <Text.Regular
-        size={20}
-        color={colors.LIGHT_GREY}>
+        size={textSize}
+        color={textColor}>
         {data}
       </Text.Regular>);
   }
@@ -35,120 +35,87 @@ class WheelPicker extends Component {
     };
   }
 
-  componentDidMount () {
-    if (this.props.getRef) {
-      this.props.getRef(this);
-    }
-    if (!this.props.defaultOpened && this.props.animated) {
-      this.picker.transitionTo({ height: 0 });
-    }
-  }
-
   onWheelChange = (id, data) => {
     this.setState({ [id]: data }, () => {
       this.props.onChange(this.state);
     });
   }
 
-  setPickerRef = v => {
-    this.picker = v;
-  }
-
-  open = () => {
-    if (this.props.animated) {
-      this.picker.transitionTo({ height: 240 });
-      setTimeout(() => {
-        this.props.onOpen();
-      }, 300);
-    } else {
-      this.props.onOpen();
-    }
-  }
-
-  close = () => {
-    if (this.props.animated) {
-      this.picker.transitionTo({ height: 0 });
-      setTimeout(() => {
-        this.props.onClose();
-      }, 300);
-    } else {
-      this.props.onClose();
-    }
-  }
-
   getValue = (id) => {
     return this.props.value ? (this.props.value[id] || this.props.value) : '0';
   }
 
-  renderWheels = () => {
-    return this.props.wheels.map(({ id, values, selectedIndex }, index) => (
-      <View style={styles.wheel} key={id}>
-        <ScrollPicker
-          style={{ width: 50 }}
-          dataSource={values}
-          selectedIndex={values.indexOf(this.getValue(id))}
-          itemHeight={50}
-          wrapperHeight={240}
-          highlightColor={colors.DARK_GREY}
-          renderItem={renderItem}
-          onValueChange={(data) => this.onWheelChange(id, data)} />
-      </View>
-    ));
-  }
-
   render () {
-    if (this.props.animated) {
-      return (
-        <Animatable.View
-          ref={this.setPickerRef}
-          style={styles.container}>
-          {this.renderWheels()}
-        </Animatable.View >
-      );
-    } else {
-      return (
-        <View
-          ref={this.setPickerRef}
-          style={styles.container}>
-          {this.renderWheels()}
-        </View>
-      );
-    }
+    const { height, backgroundColor, wheelWidth, itemHeight, highlightColor, spacingHorizontal, wheelSpacing, selectedItemBorderColor,
+      selectedItemBorderWidth, selectedItemBorderRadius, ...rest } = this.context.mergeStyle('WheelPicker', this.props);
+    return (
+      <Row
+        ref={this.setPickerRef}
+        justifyContent='center'
+        backgroundColor={backgroundColor}
+        style={{ height, overflow: 'hidden' }}>
+        {
+          this.props.wheels.map(({ id, values }, index) => (
+            <Col alignItems='stretch' style={{ width: wheelWidth, marginHorizontal: wheelSpacing }} key={id}>
+              <ScrollPicker
+                style={{ width: wheelWidth }}
+                dataSource={values}
+                selectedIndex={values.indexOf(this.getValue(id))}
+                itemHeight={itemHeight}
+                wrapperHeight={height}
+                highlightColor={selectedItemBorderColor}
+                highlightBorderRadius={selectedItemBorderRadius}
+                highlightBorderWidth={selectedItemBorderWidth}
+                renderItem={(data, index, isSelected) => renderItem({ data, index, isSelected, ...rest })}
+                onValueChange={(data) => this.onWheelChange(id, data)} />
+            </Col>
+          ))
+        }
+      </Row>
+    );
   }
 }
 
 WheelPicker.defaultProps = {
-  onOpen: () => {},
-  onClose: () => {},
   onChange: () => {},
-  getRef: () => {},
   wheels: [],
   value: null,
-  animated: false,
-  defaultOpened: false
+  ...BaseTheme.WheelPicker
+};
+
+WheelPicker.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
 };
 
 WheelPicker.propTypes = {
-  getRef: PropTypes.func,
-  onOpen: PropTypes.func,
   onChange: PropTypes.func,
-  onClose: PropTypes.func,
-  wheels: PropTypes.array,
+  wheels: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    values: PropTypes.arrayOf(PropTypes.string)
+  })),
   value: PropTypes.any,
-  animated: PropTypes.bool,
-  defaultOpened: PropTypes.bool
+  selectedTextColor: PropTypes.string,
+  textColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  highlightColor: PropTypes.string,
+  selectedTextSize: PropTypes.number,
+  textSize: PropTypes.number,
+  height: PropTypes.number,
+  wheelWidth: PropTypes.number,
+  itemHeight: PropTypes.number,
+  spacingHorizontal: PropTypes.number,
+  wheelSpacing: PropTypes.number,
+  selectedItemBorderColor: PropTypes.string,
+  selectedItemBorderWidth: PropTypes.number,
+  selectedItemBorderRadius: PropTypes.number
 };
 
 WheelPicker.demoProps = {
-  defaultOpened: true,
-  value: { numbers: '30' },
-  wheels: [{ id: 'numbers', values: ['10', '20', '30', '40', '50'] }]
+  value: { numbers: '30', strings: 'c' },
+  height: 120,
+  wheelSpacing: 20,
+  wheels: [{ id: 'numbers', values: ['10', '20', '30', '40', '50'] }, { id: 'strings', values: ['a', 'b', 'c', 'd', 'e'] }]
 };
-
-const styles = StyleSheet.create({
-  container: { flexDirection: 'row', justifyContent: 'center', height: 240, overflow: 'hidden' },
-  wheel: { width: 50, marginHorizontal: 36 },
-  wheelInner: { width: 50 }
-});
 
 export default WheelPicker;

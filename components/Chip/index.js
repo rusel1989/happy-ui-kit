@@ -6,28 +6,53 @@ import PropTypes from 'prop-types';
 import Text from '../Text';
 import Touchable from '../Touchable';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import { toTitleCase } from '@happy/utils';
 
-const getTintColor = (active) => active ? colors.DARK_GREY : colors.MEDIUM_GREY;
-
-const BaseChip = ({ label, value, active, style, animated, onPress }) => {
-  const tintColor = getTintColor(active);
+const BaseChip = ({ label, value, active, animated, onPress, spacingHorizontal, ...rest }, context) => {
+  const { activeTintColor, tintColor, backgroundColor, height, borderRadius, borderWidth, textSize } = context.mergeStyle('Chip', rest);
+  const tintColorF = active ? activeTintColor : tintColor;
   return (
-    <View style={styles.chipContainer}>
-      <View style={[ styles.chip, { borderColor: tintColor }, style ]} >
+    <View style={[styles.chipContainer, { marginHorizontal: spacingHorizontal }]}>
+      <View style={{ borderColor: tintColor, backgroundColor, height, borderRadius, borderWidth }} >
         <Touchable.Highlight
-          hitSlop={{ top: 10, left: 5, bottom: 10, right: 5 }}
-          underlayColor={colors.EXTRA_LIGHT_GREY}
-          style={{ paddingHorizontal: 17, flex: 1, justifyContent: 'center' }}
+          style={{ paddingHorizontal: 17, flex: 1, justifyContent: 'center', borderRadius }}
           onPress={() => onPress(value)}>
-          <Text.Regular size={16} color={tintColor}>
-            {label || toTitleCase(value)}
+          <Text.Regular size={textSize} color={tintColorF}>
+            {toTitleCase(label)}
           </Text.Regular>
         </Touchable.Highlight>
       </View>
     </View>
   );
+};
+
+BaseChip.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
+BaseChip.propTypes = {
+  label: PropTypes.string,
+  active: PropTypes.bool,
+  style: PropTypes.object,
+  onPress: PropTypes.func,
+  activeTintColor: PropTypes.string,
+  tintColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  height: PropTypes.number,
+  borderRadius: PropTypes.number,
+  borderWidth: PropTypes.number,
+  textSize: PropTypes.number,
+  spacingHorizontal: PropTypes.number
+};
+
+BaseChip.defaultProps = {
+  label: '',
+  value: '',
+  active: false,
+  onPress: () => {},
+  ...BaseTheme.Chip
 };
 
 class Chip extends Component {
@@ -42,9 +67,7 @@ class Chip extends Component {
 
   render () {
     if (!this.props.animated) {
-      return (
-        <BaseChip
-          {...this.props} />)
+      return (<BaseChip {...this.props} />);
     }
     return (
       <Animatable.View
@@ -57,21 +80,21 @@ class Chip extends Component {
   }
 }
 
+Chip.demoFlexDirection = 'row';
+
+Chip.contextTypes = {
+  theme: PropTypes.object,
+  mergeStyle: PropTypes.func
+};
+
 Chip.propTypes = {
-  label: PropTypes.string,
-  value: PropTypes.string,
-  active: PropTypes.bool,
   animated: PropTypes.bool,
-  style: PropTypes.object,
-  onPress: PropTypes.func
+  ...BaseChip.propTypes
 };
 
 Chip.defaultProps = {
-  label: '',
-  value: '',
-  active: false,
   animated: false,
-  onPress: () => {}
+  ...BaseChip.defaultProps
 };
 
 Chip.demoProps = [{
@@ -81,24 +104,17 @@ Chip.demoProps = [{
   label: 'Active Chip',
   active: true
 }, {
-  label: 'Animated Chip',
-  animated: true
+  label: 'Custom Chip',
+  animated: true,
+  textSize: 18,
+  tintColor: BaseTheme.palette.APP_PRIMARY,
+  backgroundColor: BaseTheme.palette.APP_LIGHT_GREY
 }];
 
 const styles = StyleSheet.create({
   chipContainer: {
     height: 60,
     justifyContent: 'center'
-  },
-  chip: {
-    height: 36,
-    borderRadius: 20,
-    borderWidth: 2,
-    overflow: 'hidden',
-    backgroundColor: colors.WHITE
-  },
-  chipText: {
-    fontSize: 16
   }
 });
 

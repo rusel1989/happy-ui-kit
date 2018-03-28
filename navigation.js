@@ -23,14 +23,12 @@ import Overlay from './components/Overlay';
 import ParallaxView from './components/ParallaxView';
 import ProgressBar from './components/ProgressBar';
 import PullToRefreshView from './components/PullToRefreshView';
-import RoundButton from './components/RoundButton';
 import Row from './components/Row';
 import Section from './components/Section';
 import SectionHeader from './components/SectionHeader';
 import SectionList from './components/SectionList';
 import SegmentedControl from './components/SegmentedControl';
 import Separator from './components/Separator';
-import SwipeRow from './components/SwipeRow';
 import Text from './components/Text';
 import TextField from './components/TextField';
 import Toast from './components/Toast';
@@ -158,12 +156,6 @@ const RootNavigator = StackNavigator({
       title: 'Pull To Refresh View'
     }
   },
-  RoundButton: {
-    screen: createComponentScreen(RoundButton),
-    navigationOptions: {
-      title: 'Round Button'
-    }
-  },
   Row: {
     screen: createComponentScreen(Row),
     navigationOptions: {
@@ -198,12 +190,6 @@ const RootNavigator = StackNavigator({
     screen: createComponentScreen(Separator),
     navigationOptions: {
       title: 'Separator'
-    }
-  },
-  SwipeRow: {
-    screen: createComponentScreen(SwipeRow),
-    navigationOptions: {
-      title: 'Swipe Row'
     }
   },
   Text: {

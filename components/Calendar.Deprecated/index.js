@@ -4,7 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import range from 'lodash/range';
 import PropTypes from 'prop-types';
 
-import { colors } from '@happy/components/theme';
+import BaseTheme from '../../theme/base';
 import WheelPicker from '../WheelPicker';
 import SegmentedControl from '../SegmentedControl';
 
@@ -127,7 +127,7 @@ class Calendar extends Component {
 
 const styles = StyleSheet.create({
   overlay: { backgroundColor: 'rgba(0,0,0,0.4)', ...StyleSheet.absoluteFillObject, opacity: 0 },
-  content: { backgroundColor: colors.WHITE, position: 'absolute', left: 0, right: 0 }
+  content: { backgroundColor: BaseTheme.palette.WHITE, position: 'absolute', left: 0, right: 0 }
 });
 
 export default Calendar;

@@ -1,13 +1,18 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import BaseTheme from '../../theme/base';
 
-const Row = ({ style, children, justifyContent, alignItems }) => {
+const Row = ({ style, children, justifyContent, alignItems, backgroundColor }) => {
   return (
-    <View style={[{ flexDirection: 'row', alignItems, justifyContent }, style]}>
+    <View style={[{ flexDirection: 'row', alignItems, justifyContent, backgroundColor }, style]}>
       {children}
     </View>
   );
+};
+
+Row.contextTypes = {
+  theme: PropTypes.object
 };
 
 Row.propTypes = {
@@ -19,7 +24,8 @@ Row.propTypes = {
 
 Row.defaultProps = {
   justifyContent: 'space-between',
-  alignItems: 'center'
+  alignItems: 'center',
+  backgroundColor: BaseTheme.palette.WHITE
 };
 
 const demoStyle = {
