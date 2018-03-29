@@ -13,16 +13,18 @@ const demo = {
         label: 'Default Button'
       }
     }, {
-      label: 'Custom Buttom',
+      label: 'Custom Button',
       props: {
-        label: 'Custom Buttom',
+        label: 'Custom Button',
         backgroundColor: BaseTheme.palette.APP_DARK_GREY,
-        color: BaseTheme.palette.WHITE,
+        labelColor: BaseTheme.palette.WHITE,
+        labelFont: 'RobotoCondensed-Regular',
         borderRadius: 20,
         height: 40,
         labelSize: 14,
         uppercaseLabel: false,
-        fullWidth: false
+        fullWidth: false,
+        raised: true
       }
     }]
   }]

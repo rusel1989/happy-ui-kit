@@ -4,6 +4,7 @@ import Dropdown from './index';
 const demo = {
   containerHeight: 200,
   containerType: 'column',
+  containerAlignment: { justifyContent: 'flex-start' },
   components: [{
     Component: Dropdown,
     items: [{

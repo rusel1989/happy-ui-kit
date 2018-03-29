@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import BaseTheme from '../../theme/base';
 
-const Separator = (props, context) => {
+const Separator = ({ style, ...props }, context) => {
   const { width, color, spacingHorizontal, spacingVertical } = context.mergeStyle('Separator', props);
   return (
-    <View style={{ height: width, backgroundColor: color, marginHorizontal: spacingHorizontal, marginTop: spacingVertical }} />
+    <View style={{ height: width, backgroundColor: color, marginHorizontal: spacingHorizontal, marginTop: spacingVertical, ...style }} />
   );
 };
 

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { AppLoading, Asset, Font } from 'expo';
-import { Platform, Image } from 'react-native';
+import { Platform, Image, UIManager } from 'react-native';
 
 import { getImagesArray } from './images';
 import * as fonts from './fonts';
@@ -36,6 +36,7 @@ export default class App extends React.Component {
   }
 
   startApp = () => {
+    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     return Promise.all([ ...this.getImageAssets(), this.getFontAssets() ]);
   }
 

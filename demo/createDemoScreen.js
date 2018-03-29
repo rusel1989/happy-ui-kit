@@ -1,18 +1,46 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, LayoutAnimation } from 'react-native';
 import { TabViewAnimated } from 'react-native-tab-view';
 import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
 import color from 'color';
+import merge from 'lodash/merge';
 
 import Col from '../components/Col';
 import Row from '../components/Row';
+import Separator from '../components/Separator';
 import Button from '../components/Button';
 import Text from '../components/Text';
 import ParallaxView from '../components/ParallaxView';
 import BaseTheme from '../theme/base';
 import * as componentProps from '../demo/props';
 import { saveDemoProps } from '../utils'; // eslint-disable-line
+
+const CustomLayoutSpring = {
+  duration: 400,
+  create: {
+    type: LayoutAnimation.Types.spring,
+    property: LayoutAnimation.Properties.scaleXY,
+    springDamping: 0.7
+  },
+  update: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.7
+  }
+};
+
+// Linear with easing
+// eslint-disable-next-line
+const CustomLayoutLinear = {
+  duration: 200,
+  create: {
+    type: LayoutAnimation.Types.linear,
+    property: LayoutAnimation.Properties.opacity
+  },
+  update: {
+    type: LayoutAnimation.Types.curveEaseInEaseOut
+  }
+};
 
 const getTonedColor = (hex, amount = 0.7) => {
   return color(hex).isDark() ? color(hex).lighten(amount).hex() : color(hex).darken(amount).hex();
@@ -40,7 +68,6 @@ const MonospaceText = ({ children, textAlign, backgroundColor, color, fontWeight
       numberOfLines={1}
       color={color}
       fontWeight={fontWeight}
-      adjustsFontSizeToFit
       size={fontSize}
       style={{ backgroundColor, paddingHorizontal: 4, paddingVertical: 2, textAlign }}>
       {children}
@@ -69,6 +96,11 @@ const getPropsObjectName = (displayName) => {
 
 const createDemoScreen = (demoConfig) => {
   const sceneConfig = {};
+  const defaultAlignment = demoConfig.containerType === 'row'
+    ? { justifyContent: 'flex-start', alignItems: 'center' }
+    : { alignItems: 'stretch', justifyContent: 'center' };
+  const headerAlignment = merge({}, defaultAlignment, demoConfig.containerAlignment);
+
   demoConfig.components.forEach((demoComp, i) => {
     const { Component } = demoComp;
     const displayName = getDisplayName(Component);
@@ -103,7 +135,8 @@ const createDemoScreen = (demoConfig) => {
     sortProps = (key) => {
       const selectedComponent = demoConfig.components[this.state.selectedIndex];
       demoConfig.components[this.state.selectedIndex].parsedProps = selectedComponent.parsedProps.sort(propsSorter(key));
-      this.forceUpdate();
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ sortBy: key });
     }
 
     invokeMethodWithArgs = (method, args = []) => {
@@ -114,8 +147,9 @@ const createDemoScreen = (demoConfig) => {
 
     renderComponentDemo = (config = {}) => {
       const { Component, items, methods, renderAtBottom } = config;
+
       return (
-        <View style={{ flex: 1, flexDirection: demoConfig.containerType }}>
+        <View style={{ flex: 1, flexDirection: demoConfig.containerType, ...headerAlignment }}>
           {!renderAtBottom && items.map((item, index) => {
             const { props } = item;
             const ref = methods ? { ref: this.setElRef } : {};
@@ -128,7 +162,6 @@ const createDemoScreen = (demoConfig) => {
           {methods && methods.map((item, i) => {
             return (
               <Button
-                style={{ marginTop: 10 }}
                 key={i}
                 labelSize={16}
                 fullWidth={false}
@@ -136,6 +169,7 @@ const createDemoScreen = (demoConfig) => {
                 label={item.label}
                 borderRadius={10}
                 height={40}
+                raised
                 onPress={() => this.invokeMethodWithArgs(item.name, item.args)} />
             );
           })}
@@ -147,14 +181,19 @@ const createDemoScreen = (demoConfig) => {
       return this.renderComponentDemo(sceneConfig[route.key]);
     }
 
+    onIndexChange = (selectedIndex) => {
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ selectedIndex });
+    }
+
     renderHeader = () => {
       return (
-        <View style={{ height: demoConfig.containerHeight, flexDirection: demoConfig.containerType }}>
+        <View style={{ paddingHorizontal: 2, height: demoConfig.containerHeight, flexDirection: demoConfig.containerType }}>
           {demoConfig.components.length > 1
             ? <TabViewAnimated
               navigationState={{ index: this.state.selectedIndex, routes: this.state.routes }}
               renderScene={this.renderScene}
-              onIndexChange={(selectedIndex) => this.setState({ selectedIndex })} />
+              onIndexChange={this.onIndexChange} />
             : this.renderComponentDemo(demoConfig.components[this.state.selectedIndex])}
         </View>
       );
@@ -163,58 +202,60 @@ const createDemoScreen = (demoConfig) => {
     render () {
       const { parsedProps, Component, items, renderAtBottom, methods } = demoConfig.components[this.state.selectedIndex];
       return (
-        <View style={{ flex: 1, backgroundColor: BaseTheme.palette.APP_SEPARATOR }}>
+        <View style={{ flex: 1 }} >
           <ParallaxView
             teaserHeight={demoConfig.containerHeight}
             backgroundColor={BaseTheme.palette.APP_SEPARATOR}
-            headerBackgroundColor={BaseTheme.palette.APP_SEPARATOR}
-            cardStyle={{ marginHorizontal: 8, marginBottom: 80 }}
-            cardSpacingVertical={0}
-            cardSpacingHorizontal={0}
+            headerBackgroundColor={'transparent'}
+            cardStyle={{ marginHorizontal: 8, marginBottom: 80, elevation: 5 }}
+            cardSpacingVertical={10}
+            cardSpacingHorizontal={16}
             cardBorderRadius={5}
             header={this.renderHeader()}>
-            <View style={{ paddingHorizontal: 16, paddingVertical: 10, borderRadius: 5, backgroundColor: BaseTheme.palette.WHITE, elevation: 2, borderTopWidth: 1, borderTopColor: '#CCC' }}>
-              <Text.Light size='xlarge'>Props</Text.Light>
+            <Text.Light size='xlarge'>Props</Text.Light>
 
-              <Col style={{ flex: 1, marginTop: 10 }} alignItems='stretch' justifyContent='center'>
-
-                <Row style={{ height: 30, marginBottom: 10, borderBottomWidth: 1, borderBottomColor: BaseTheme.palette.APP_SEPARATOR }}>
-                  <Col style={{ width: 55 }}alignItems='flex-start'>
-                    <Text.Medium onPress={() => this.sortProps('typeName')}>Type</Text.Medium>
-                  </Col>
-                  <Col style={{ flex: 1.35 }} alignItems='flex-start'>
-                    <Text.Medium onPress={() => this.sortProps('key')}>Name</Text.Medium>
-                  </Col>
-                  <Col style={{ flex: 1 }} alignItems='flex-end'>
-                    <Text.Medium onPress={() => this.sortProps('def')}>Default value</Text.Medium>
+            <Row style={{ height: 30 }}>
+              <Row>
+                <Col style={{ width: 60 }} alignItems='flex-start'>
+                  <Text.Medium onPress={() => this.sortProps('typeName')}>
+                    Type
+                  </Text.Medium>
+                </Col>
+                <Text.Medium onPress={() => this.sortProps('key')}>
+                  Name
+                </Text.Medium>
+              </Row>
+              <Text.Medium stle={{ alignSelf: 'flex-end' }} onPress={() => this.sortProps('def')}>
+                Default value
+              </Text.Medium>
+            </Row>
+            <Separator style={{ marginBottom: 10 }} />
+            {parsedProps.map((item, index) => {
+              const [ textColor, backgroundColor ] = getTextColors(item.def);
+              return (
+                <Row key={item.key} style={{ height: 30 }} alignItems='stretch'>
+                  <Row>
+                    <Col
+                      alignItems='center'
+                      style={{ width: 50, borderRadius: 2, marginVertical: 4, marginRight: 10 }}
+                      backgroundColor={BaseTheme.palette.APP_PRIMARY_DARKER}>
+                      <MonospaceText color={BaseTheme.palette.WHITE} fontSize={12}>
+                        {padEnd(item.typeName, 6, ' ')}
+                      </MonospaceText>
+                    </Col>
+                    <Text.Regular>
+                      {item.key}
+                    </Text.Regular>
+                  </Row>
+                  <Col style={{ borderRadius: 2, marginVertical: 4 }} backgroundColor={backgroundColor}>
+                    <MonospaceText color={textColor} fontSize={12} >
+                      {item.def}
+                    </MonospaceText>
                   </Col>
                 </Row>
+              );
+            })}
 
-                {parsedProps.map((item, index) => {
-                  const [ textColor, backgroundColor ] = getTextColors(item.def);
-                  return (
-                    <Row key={item.key} style={{ height: 30, flexShrink: 2 }} justifyContent='space-around'>
-                      <Col alignItems='center' style={{ borderRadius: 2 }} backgroundColor={BaseTheme.palette.APP_PRIMARY_DARKER}>
-                        <MonospaceText fontSize={10} fontWeight='300' color={BaseTheme.palette.WHITE}>
-                          {padEnd(item.typeName, 6, ' ')}
-                        </MonospaceText>
-                      </Col>
-                      <Col style={{ flex: 1 }} alignItems='baseline'>
-                        <Text.Regular style={{ paddingLeft: 8 }} >
-                          {item.key}
-                        </Text.Regular>
-                      </Col>
-                      <Col style={{ borderRadius: 2 }} backgroundColor={backgroundColor} alignItems='flex-end'>
-                        <MonospaceText color={textColor} fontSize={12} >
-                          {item.def}
-                        </MonospaceText>
-                      </Col>
-                    </Row>
-                  );
-                })}
-              </Col>
-
-            </View>
           </ParallaxView>
           {renderAtBottom && items.map((item, index) => {
             const { props } = item;

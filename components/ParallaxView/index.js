@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
+import {LinearGradient} from 'expo';
+import color from 'color';
 
 import BaseTheme from '../../theme/base';
 import { renderRefreshControl } from '../../utils';
@@ -28,7 +30,9 @@ class ParallaxView extends Component {
       cardSpacingVertical, cardSpacingHorizontal, cardBorderRadius, cardShadow } = this.context.mergeStyle('ParallaxView', rest);
 
     return (
-      <View style={[ { backgroundColor, flex: 1 }, style ]}>
+      <LinearGradient
+        style={[ { backgroundColor, flex: 1 }, style ]}
+        colors={[ backgroundColor, color(backgroundColor).darken(0.3).hex() ]}>
         <KeyboardAwareScrollView
           style={{ flex: 1 }}
           innerRef={scrollViewRef}
@@ -52,7 +56,7 @@ class ParallaxView extends Component {
         <Animated.View style={[ styles.header, { backgroundColor: headerBackgroundColor, height: headerHeight, zIndex: headerZIndex } ]}>
           {header}
         </Animated.View>
-      </View>
+      </LinearGradient>
     );
   }
 }

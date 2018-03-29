@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Text from '../Text';
 import Col from '../Col';
+import Row from '../Row';
 import Touchable from '../Touchable';
 import BaseTheme from '../../theme/base';
 
@@ -14,16 +15,23 @@ const Button = ({
   style,
   ...rest
 }, context) => {
-  const { backgroundColor, color, uppercaseLabel, height,
-    borderRadius, labelSize, spacingHorizontal } = context.mergeStyle('Button', rest);
+  const { backgroundColor, labelColor, labelFont, labelFontWeight, uppercaseLabel, height,
+    borderRadius, labelSize, spacingHorizontal, raised } = context.mergeStyle('Button', rest);
   return (
-    <Col style={{ backgroundColor, height, borderRadius, alignSelf: fullWidth ? null : align, paddingHorizontal: spacingHorizontal, ...style }}>
+    <Col
+      alignItems='stretch'
+      justifyContent='center'
+      style={{ backgroundColor, borderRadius, alignSelf: fullWidth ? null : align, overflow: 'hidden', elevation: raised ? 2 : null }}>
       <Touchable onPress={onPress}>
-        <Text.Bold
-          color={color}
-          size={labelSize}>
-          {uppercaseLabel ? label.toUpperCase() : label}
-        </Text.Bold>
+        <Row style={{ height, paddingHorizontal: spacingHorizontal }} justifyContent='center'>
+          <Text.Custom
+            fontFamily={labelFont}
+            fontWeight={labelFontWeight}
+            color={labelColor}
+            size={labelSize}>
+            {uppercaseLabel ? label.toUpperCase() : label}
+          </Text.Custom>
+        </Row>
       </Touchable>
     </Col>
   );
@@ -46,14 +54,19 @@ Button.contextTypes = {
 
 Button.propTypes = {
   onPress: PropTypes.func,
-  label: PropTypes.string,
   backgroundColor: PropTypes.string,
-  color: PropTypes.string,
-  uppercaseLabel: PropTypes.bool,
-  labelSize: PropTypes.number,
   borderRadius: PropTypes.number,
   height: PropTypes.number,
-  spacingHorizontal: PropTypes.number
+  spacingHorizontal: PropTypes.number,
+  raised: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  align: PropTypes.string,
+  label: PropTypes.string,
+  labelColor: PropTypes.string,
+  labelSize: PropTypes.number,
+  labelFont: PropTypes.string,
+  labelFontWeight: PropTypes.string,
+  uppercaseLabel: PropTypes.bool
 };
 
 export default Button;

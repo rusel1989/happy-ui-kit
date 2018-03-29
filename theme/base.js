@@ -42,12 +42,15 @@ export const components = {
   },
   Button: {
     backgroundColor: palette.APP_PRIMARY,
-    color: palette.WHITE,
+    labelColor: palette.WHITE,
+    labelFont: 'System',
+    labelFontWeight: '400',
     uppercaseLabel: true,
-    labelSize: 20,
+    labelSize: 16,
     borderRadius: 0,
-    height: 60,
-    spacingHorizontal: spacing.medium
+    height: 50,
+    spacingHorizontal: spacing.medium,
+    raised: false
   },
   Card: {
     backgroundColor: palette.WHITE,

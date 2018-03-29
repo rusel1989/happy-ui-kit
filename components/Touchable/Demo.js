@@ -2,6 +2,7 @@
 /* eslint-disable */
 import React from 'react';
 import Touchable from './index';
+import Text from '../Text'
 import BaseTheme from '../../theme/base';
 
 const demo = {
@@ -11,7 +12,9 @@ const demo = {
     Component: Touchable,
     items: [{
       label: 'Default',
-      props: {}
+      props: {
+        children: <Text style={{ padding: 16 }}>Touch Me !</Text>
+      }
     }]
   }]
 };

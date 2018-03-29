@@ -18,7 +18,7 @@ const BaseChip = ({ label, active, animated, onPress, spacingHorizontal, ...rest
       <View style={{ borderColor: tintColor, backgroundColor, height, borderRadius, borderWidth }} >
         <Touchable.Highlight
           style={{ paddingHorizontal: 17, flex: 1, justifyContent: 'center', borderRadius }}
-          underlayColor={color(backgroundColor).darken(0.1)}
+          underlayColor={color(backgroundColor).darken(0.1).hex()}
           onPress={() => onPress(label)}>
           <Text.Regular size={textSize} color={tintColorF}>
             {toTitleCase(label)}
