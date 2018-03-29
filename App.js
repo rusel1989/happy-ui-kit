@@ -1,12 +1,14 @@
 
 import React from 'react';
 import { AppLoading, Asset, Font } from 'expo';
-import { Platform, Image, UIManager } from 'react-native';
+import { Platform, Image, UIManager, StatusBar } from 'react-native';
 
 import { getImagesArray } from './images';
 import * as fonts from './fonts';
 import RootNavigator from './navigation';
 import ThemeProvider from './theme/Provider';
+
+StatusBar.setBarStyle('light-content');
 
 export default class App extends React.Component {
   state = {
