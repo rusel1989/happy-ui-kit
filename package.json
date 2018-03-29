@@ -17,6 +17,7 @@
     "react-native-segmented-control-tab": "^3.2.2",
     "react-native-smart-timer-enhance": "^1.0.3",
     "react-native-swipe-list-view": "^1.0.6",
+    "react-native-tab-view": "^0.0.77",
     "react-navigation": "^1.5.8"
   },
   "scripts": {
@@ -33,10 +34,10 @@
     ]
   },
   "devDependencies": {
-    "parse-prop-types": "^0.2.0",
-    "express": "^4.16.3",
     "body-parser": "^1.18.2",
+    "express": "^4.16.3",
     "fs-walk": "^0.0.2",
+    "parse-prop-types": "^0.2.0",
     "semistandard": "^12.0.1"
   }
 }

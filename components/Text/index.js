@@ -80,7 +80,7 @@ CustomText.propTypes = {
   color: PropTypes.string,
   fontFamily: PropTypes.string,
   fontWeight: PropTypes.oneOf([ '100', '200', '300', '400', '500', '600', '700', '800', '900' ]),
-  style: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   children: PropTypes.node
 };

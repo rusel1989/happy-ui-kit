@@ -1,6 +1,8 @@
 import React from 'react';
 import { Asset, Font } from 'expo';
 import { Image, Alert, RefreshControl } from 'react-native';
+import isPlainObject from 'lodash/isPlainObject';
+
 import BaseTheme from '../theme/base';
 
 export const cacheImages = (images) => {
@@ -67,4 +69,24 @@ export const saveDemoProps = (name, props) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const formatPropValue = (value) => {
+  if (typeof value === 'string') {
+    return /^#[a-fA-F0-9]{6}$/.test(value) ? value.toUpperCase() : value.length ? `'${value}'` : `' '`;
+  } else if (typeof value === 'undefined') {
+    return 'n/a';
+  } else if (typeof value === 'number') {
+    return `${value}`;
+  } else if (typeof value === 'boolean') {
+    return value ? 'true' : 'false';
+  } else if (typeof value === 'function') {
+    return '() => {}';
+  } else if (Array.isArray(value)) {
+    return value.length ? `[${value.join(', ')}]` : '[]';
+  } else if (isPlainObject(value)) {
+    return JSON.stringify(value);
+  } else {
+    return '?';
+  }
 };

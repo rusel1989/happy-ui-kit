@@ -11,12 +11,13 @@ const Button = ({
   label,
   fullWidth,
   align,
+  style,
   ...rest
 }, context) => {
   const { backgroundColor, color, uppercaseLabel, height,
     borderRadius, labelSize, spacingHorizontal } = context.mergeStyle('Button', rest);
   return (
-    <Col style={{ backgroundColor, height, borderRadius, alignSelf: fullWidth ? null : align, paddingHorizontal: spacingHorizontal }}>
+    <Col style={{ backgroundColor, height, borderRadius, alignSelf: fullWidth ? null : align, paddingHorizontal: spacingHorizontal, ...style }}>
       <Touchable onPress={onPress}>
         <Text.Bold
           color={color}

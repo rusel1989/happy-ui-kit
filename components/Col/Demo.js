@@ -34,7 +34,7 @@ const items = [
 });
 
 const demo = {
-  containerHeight: 300,
+  containerHeight: 250,
   containerType: 'column',
   components: [{
     Component: Col,
