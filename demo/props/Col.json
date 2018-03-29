@@ -30,7 +30,7 @@
     "required": false,
     "def": "n/a",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {

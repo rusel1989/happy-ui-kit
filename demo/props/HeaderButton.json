@@ -55,7 +55,7 @@
     },
     "def": "#FFFFFF",
     "key": "iconColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -67,6 +67,6 @@
     },
     "def": "'transparent'",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

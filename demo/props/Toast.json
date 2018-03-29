@@ -134,7 +134,7 @@
     },
     "def": "#FFFFFF",
     "key": "textColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -158,6 +158,6 @@
     },
     "def": "#424242",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

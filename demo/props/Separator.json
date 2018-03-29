@@ -45,6 +45,6 @@
     },
     "def": "#BDBDBD",
     "key": "color",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

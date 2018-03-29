@@ -167,7 +167,7 @@
     },
     "def": "#E0E0E0",
     "key": "railColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -179,7 +179,7 @@
     },
     "def": "#212121",
     "key": "textColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -188,6 +188,6 @@
     "required": false,
     "def": "n/a",
     "key": "meterColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

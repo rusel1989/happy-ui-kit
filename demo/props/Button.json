@@ -91,7 +91,7 @@
     },
     "def": "#2196F3",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -103,6 +103,6 @@
     },
     "def": "#FFFFFF",
     "key": "color",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

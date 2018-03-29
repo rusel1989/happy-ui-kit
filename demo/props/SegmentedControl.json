@@ -70,7 +70,7 @@
     },
     "def": "#2196F3",
     "key": "tintColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -82,6 +82,6 @@
     },
     "def": "#FFFFFF",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

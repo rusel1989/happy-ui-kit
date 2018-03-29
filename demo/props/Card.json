@@ -81,7 +81,7 @@
     },
     "def": "#FFFFFF",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {

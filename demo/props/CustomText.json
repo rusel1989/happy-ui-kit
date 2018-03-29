@@ -78,7 +78,7 @@
     },
     "def": "#212121",
     "key": "color",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -183,7 +183,7 @@
     "required": false,
     "def": "n/a",
     "key": "selectionColor",
-    "typeName": "custom"
+    "typeName": "color"
   },
   {
     "type": {

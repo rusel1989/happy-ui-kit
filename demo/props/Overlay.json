@@ -41,7 +41,7 @@
     },
     "def": "'rgba(38,50,56,0.4)'",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {

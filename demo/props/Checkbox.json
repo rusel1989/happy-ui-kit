@@ -45,7 +45,7 @@
     },
     "def": "#212121",
     "key": "selectedTintColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -81,6 +81,6 @@
     },
     "def": "#757575",
     "key": "tintColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

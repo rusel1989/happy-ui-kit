@@ -171,7 +171,7 @@
     },
     "def": "#424242",
     "key": "selectedTextColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -183,7 +183,7 @@
     },
     "def": "#E0E0E0",
     "key": "textColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -195,7 +195,7 @@
     },
     "def": "#FFFFFF",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -207,7 +207,7 @@
     },
     "def": "#424242",
     "key": "selectedItemBorderColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -216,6 +216,6 @@
     "required": false,
     "def": "n/a",
     "key": "highlightColor",
-    "typeName": "string"
+    "typeName": "color"
   }
 ]

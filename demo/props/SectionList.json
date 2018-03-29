@@ -187,7 +187,7 @@
     },
     "def": "#686868",
     "key": "sectionHeaderTextColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -199,7 +199,7 @@
     },
     "def": "#E0E0E0",
     "key": "sectionHeaderBackgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -211,7 +211,7 @@
     },
     "def": "#BDBDBD",
     "key": "separatorColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -223,7 +223,7 @@
     },
     "def": "#2196F3",
     "key": "spinnerColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {

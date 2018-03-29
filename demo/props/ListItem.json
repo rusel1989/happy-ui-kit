@@ -88,7 +88,7 @@
     },
     "def": "#686868",
     "key": "labelColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -100,7 +100,7 @@
     },
     "def": "#686868",
     "key": "iconColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -112,7 +112,7 @@
     },
     "def": "#FFFFFF",
     "key": "backgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
@@ -124,7 +124,7 @@
     },
     "def": "#E0E0E0",
     "key": "activeBackgroundColor",
-    "typeName": "string"
+    "typeName": "color"
   },
   {
     "type": {
