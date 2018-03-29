@@ -179,7 +179,7 @@ class ActionSheet extends Component {
           <Button
             borderRadius={itemBorderRadius}
             backgroundColor={itemBackgroundColor}
-            color={labelColor}
+            labelColor={labelColor}
             height={itemHeight}
             uppercaseLabel={false}
             label={this.canSaveValue() ? 'Save' : 'Cancel'}
