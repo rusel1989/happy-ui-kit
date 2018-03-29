@@ -30,7 +30,7 @@ IconButton.contextTypes = {
 };
 
 IconButton.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   color: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.number,

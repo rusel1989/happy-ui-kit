@@ -37,7 +37,7 @@ BaseChip.contextTypes = {
 BaseChip.propTypes = {
   label: PropTypes.string,
   active: PropTypes.bool,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   onPress: PropTypes.func,
   activeTintColor: PropTypes.string,
   tintColor: PropTypes.string,

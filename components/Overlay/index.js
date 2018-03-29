@@ -27,7 +27,7 @@ Overlay.contextTypes = {
 
 Overlay.propTypes = {
   getRef: PropTypes.func,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   onPress: PropTypes.func,
   backgroundColor: PropTypes.string,
   animation: PropTypes.string,

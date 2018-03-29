@@ -40,7 +40,7 @@ class ParallaxView extends Component {
           showsVerticalScrollIndicator={showIndicator}
           scrollEnabled={scrollEnabled}
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }])}
-          refreshControl={renderRefreshControl({ onRefresh, refreshing, spinnerColor })}>
+          refreshControl={scrollEnabled && renderRefreshControl({ onRefresh, refreshing, spinnerColor })}>
           <View style={{ marginTop: teaserHeight }}>
             <Card
               backgroundColor={cardBackgroundColor}

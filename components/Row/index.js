@@ -17,7 +17,7 @@ Row.contextTypes = {
 };
 
 Row.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   children: PropTypes.node,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,

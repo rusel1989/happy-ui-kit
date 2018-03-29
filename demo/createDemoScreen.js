@@ -10,10 +10,13 @@ import Col from '../components/Col';
 import Row from '../components/Row';
 import Separator from '../components/Separator';
 import Button from '../components/Button';
+import WheelPicker from '../components/WheelPicker';
+import IconButton from '../components/IconButton';
 import Text from '../components/Text';
 import ParallaxView from '../components/ParallaxView';
 import BaseTheme from '../theme/base';
 import * as componentProps from '../demo/props';
+import PropEditor from './PropEditor'
 import { saveDemoProps } from '../utils'; // eslint-disable-line
 
 const CustomLayoutSpring = {
@@ -145,8 +148,46 @@ const createDemoScreen = (demoConfig) => {
       }
     }
 
+    onIndexChange = (selectedIndex) => {
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ selectedIndex });
+    }
+
+    getEditingOptions = (Component, parsedProps) => {
+      return parsedProps
+        .map(({ key, typeName }) =>
+          ({ name: key, type: typeName, defaultValue: Component.defaultProps[key] })
+        ).filter((item) => item.type !== 'func');
+    }
+
+    editComponent = () => {
+      const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({
+        isEditing: true,
+        customProps: Component.defaultProps,
+        editingOptions: this.getEditingOptions(Component, parsedProps)
+      });
+    }
+
+    toggleComponentEditor = () => {
+      if (this.state.isEditing) {
+        LayoutAnimation.configureNext(CustomLayoutSpring);
+        this.setState({ isEditing: false, editingOptions: [], customProps: {} });
+      } else {
+        this.editComponent();
+      }
+    }
+
     renderComponentDemo = (config = {}) => {
       const { Component, items, methods, renderAtBottom } = config;
+      if (this.state.isEditing) {
+        return (
+          <View style={{ margin: 10, justifyContent: 'center', alignItems: 'stretch', flexDirection: 'column', flex: 1 }}>
+            <Component {...this.state.customProps} />
+          </View>
+        );
+      }
 
       return (
         <View style={{ flex: 1, flexDirection: demoConfig.containerType, ...headerAlignment }}>
@@ -181,15 +222,10 @@ const createDemoScreen = (demoConfig) => {
       return this.renderComponentDemo(sceneConfig[route.key]);
     }
 
-    onIndexChange = (selectedIndex) => {
-      LayoutAnimation.configureNext(CustomLayoutSpring);
-      this.setState({ selectedIndex });
-    }
-
     renderHeader = () => {
       return (
         <View style={{ paddingHorizontal: 2, height: demoConfig.containerHeight, flexDirection: demoConfig.containerType }}>
-          {demoConfig.components.length > 1
+          {!this.state.isEditing && demoConfig.components.length > 1
             ? <TabViewAnimated
               navigationState={{ index: this.state.selectedIndex, routes: this.state.routes }}
               renderScene={this.renderScene}
@@ -199,8 +235,92 @@ const createDemoScreen = (demoConfig) => {
       );
     }
 
+    renderPropsList = () => {
+      const { parsedProps } = demoConfig.components[this.state.selectedIndex];
+      return (
+        <View>
+          <Row style={{ height: 35 }}>
+            <Row>
+              <Col style={{ width: 60 }} alignItems='flex-start'>
+                <Text.Medium onPress={() => this.sortProps('typeName')}>
+                  Type
+                </Text.Medium>
+              </Col>
+              <Text.Medium onPress={() => this.sortProps('key')}>
+                Name
+              </Text.Medium>
+            </Row>
+            <Text.Medium stle={{ alignSelf: 'flex-end' }} onPress={() => this.sortProps('def')}>
+              Default value
+            </Text.Medium>
+          </Row>
+          <Separator style={{ marginBottom: 10 }} />
+          {parsedProps.map((item, index) => {
+            const [ textColor, backgroundColor ] = getTextColors(item.def);
+            return (
+              <Row key={item.key} style={{ height: 35 }} alignItems='stretch'>
+                <Row>
+                  <Col
+                    alignItems='center'
+                    style={{ width: 50, borderRadius: 2, marginVertical: 4, marginRight: 10 }}
+                    backgroundColor={BaseTheme.palette.APP_PRIMARY_DARKER}>
+                    <MonospaceText color={BaseTheme.palette.WHITE} fontSize={12}>
+                      {padEnd(item.typeName, 6, ' ')}
+                    </MonospaceText>
+                  </Col>
+                  <Text.Regular>
+                    {item.key}
+                  </Text.Regular>
+                </Row>
+                <Col style={{ borderRadius: 2, marginVertical: 4 }} backgroundColor={backgroundColor}>
+                  <MonospaceText color={textColor} fontSize={12} >
+                    {item.def}
+                  </MonospaceText>
+                </Col>
+              </Row>
+            );
+          })}
+        </View>);
+    }
+
+    getSelectedPropParams = () => {
+      return this.state.editingOptions.find((o) => o.name === this.state.selectedProp);
+    }
+
+    onSelectedPropChange = (val) => {
+      const customProps = { ...this.state.customProps, [this.state.selectedProp]: val };
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ customProps });
+    }
+
+    renderSelectedPropertyEditor = () => {
+      const selectedPropParams = this.getSelectedPropParams();
+      return (
+        <PropEditor
+          {...selectedPropParams}
+          onChange={this.onSelectedPropChange}
+          value={this.state.customProps[this.state.selectedProp]} />
+      );
+    }
+
+    renderPropsEditor = () => {
+      const wheelValues = this.state.editingOptions.map(({ name }) => name);
+      return (
+        <View>
+          {this.renderSelectedPropertyEditor()}
+          <WheelPicker
+            height={120}
+            wheelWidth={180}
+            onChange={(val) => this.setState(val)}
+            value={{ selectedProp: wheelValues[0] }}
+            wheels={[{ id: 'selectedProp', values: wheelValues }]} />
+        </View>
+      );
+    }
+
     render () {
-      const { parsedProps, Component, items, renderAtBottom, methods } = demoConfig.components[this.state.selectedIndex];
+      const { Component, items, renderAtBottom, methods } = demoConfig.components[this.state.selectedIndex];
+      const toggleEditIcon = this.state.isEditing ? 'remove' : 'category';
       return (
         <View style={{ flex: 1 }} >
           <ParallaxView
@@ -211,51 +331,19 @@ const createDemoScreen = (demoConfig) => {
             cardSpacingVertical={10}
             cardSpacingHorizontal={16}
             cardBorderRadius={5}
+            scrollEnabled={!this.state.isEditing}
             header={this.renderHeader()}>
-            <Text.Light size='xlarge'>Props</Text.Light>
-
-            <Row style={{ height: 30 }}>
-              <Row>
-                <Col style={{ width: 60 }} alignItems='flex-start'>
-                  <Text.Medium onPress={() => this.sortProps('typeName')}>
-                    Type
-                  </Text.Medium>
-                </Col>
-                <Text.Medium onPress={() => this.sortProps('key')}>
-                  Name
-                </Text.Medium>
-              </Row>
-              <Text.Medium stle={{ alignSelf: 'flex-end' }} onPress={() => this.sortProps('def')}>
-                Default value
-              </Text.Medium>
+            <Row>
+              <Text.Light size='xlarge'>{this.state.isEditing ? 'Editor' : 'Props'}</Text.Light>
+              <IconButton
+                size={30}
+                name={toggleEditIcon}
+                color={BaseTheme.palette.APP_DARK_GREY}
+                onPress={this.toggleComponentEditor} />
             </Row>
-            <Separator style={{ marginBottom: 10 }} />
-            {parsedProps.map((item, index) => {
-              const [ textColor, backgroundColor ] = getTextColors(item.def);
-              return (
-                <Row key={item.key} style={{ height: 30 }} alignItems='stretch'>
-                  <Row>
-                    <Col
-                      alignItems='center'
-                      style={{ width: 50, borderRadius: 2, marginVertical: 4, marginRight: 10 }}
-                      backgroundColor={BaseTheme.palette.APP_PRIMARY_DARKER}>
-                      <MonospaceText color={BaseTheme.palette.WHITE} fontSize={12}>
-                        {padEnd(item.typeName, 6, ' ')}
-                      </MonospaceText>
-                    </Col>
-                    <Text.Regular>
-                      {item.key}
-                    </Text.Regular>
-                  </Row>
-                  <Col style={{ borderRadius: 2, marginVertical: 4 }} backgroundColor={backgroundColor}>
-                    <MonospaceText color={textColor} fontSize={12} >
-                      {item.def}
-                    </MonospaceText>
-                  </Col>
-                </Row>
-              );
-            })}
-
+            {this.state.isEditing
+              ? this.renderPropsEditor()
+              : this.renderPropsList()}
           </ParallaxView>
           {renderAtBottom && items.map((item, index) => {
             const { props } = item;

@@ -29,7 +29,7 @@ PullToRefreshView.propTypes = {
   children: PropTypes.node,
   getRef: PropTypes.func,
   scrollEnabled: PropTypes.bool,
-  style: PropTypes.object
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ])
 };
 
 PullToRefreshView.defaultProps = {

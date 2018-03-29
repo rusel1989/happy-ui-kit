@@ -23,7 +23,7 @@ Icon.contextTypes = {
 };
 
 Icon.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   color: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.number

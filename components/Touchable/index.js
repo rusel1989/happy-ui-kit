@@ -39,7 +39,7 @@ Touchable.contextTypes = {
 Touchable.propTypes = {
   onPress: PropTypes.func,
   children: PropTypes.node,
-  style: PropTypes.object
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ])
 };
 
 Touchable.defaultProps = {
@@ -51,7 +51,7 @@ Touchable.Highlight.displayName = 'Touchable.Highlight';
 
 Touchable.Highlight.propTypes = {
   onPress: PropTypes.func,
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   underlayColor: PropTypes.string
 };
 
