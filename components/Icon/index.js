@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import { getImage } from '../../images';
 
@@ -24,7 +25,7 @@ Icon.contextTypes = {
 
 Icon.propTypes = {
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
-  color: PropTypes.string,
+  color: ExtraPropTypes.color,
   name: PropTypes.string,
   size: PropTypes.number
 };

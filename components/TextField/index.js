@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 
@@ -26,12 +27,12 @@ TextField.contextTypes = {
 
 TextField.propTypes = {
   getRef: PropTypes.func,
-  textColor: PropTypes.string,
+  textColor: ExtraPropTypes.color,
   textSize: PropTypes.number,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   font: PropTypes.string,
   borderRadius: PropTypes.number,
-  borderColor: PropTypes.string,
+  borderColor: ExtraPropTypes.color,
   borderWidth: PropTypes.number,
   spacingVertical: PropTypes.number,
   spacingHorizontal: PropTypes.number

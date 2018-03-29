@@ -3,6 +3,7 @@ import { PanResponder, View, StyleSheet } from 'react-native';
 import { Svg } from 'expo';
 import interpolate from 'color-interpolate';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import Text from '../Text';
@@ -142,11 +143,11 @@ CircularSlider.propTypes = {
   btnStroke: PropTypes.string,
   btnStrokeWidth: PropTypes.number,
   railWidth: PropTypes.number,
-  railColor: PropTypes.string,
+  railColor: ExtraPropTypes.color,
   meterWidth: PropTypes.number,
-  meterColor: PropTypes.string,
+  meterColor: ExtraPropTypes.color,
   meterColors: PropTypes.arrayOf(PropTypes.string),
-  textColor: PropTypes.string,
+  textColor: ExtraPropTypes.color,
   textSize: PropTypes.number,
   initialValue: PropTypes.number,
   onValueSelected: PropTypes.func,

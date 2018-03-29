@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import PropTypes from 'prop-types'; // eslint-disable-line
+import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types' // eslint-disable-line
 import BaseTheme from '../../theme/base';
 import { renderRefreshControl } from '../../utils';
 

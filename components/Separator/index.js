@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 
@@ -28,7 +29,7 @@ Separator.propTypes = {
   spacingHorizontal: PropTypes.number,
   spacingVertical: PropTypes.number,
   width: PropTypes.number,
-  color: PropTypes.string
+  color: ExtraPropTypes.color
 };
 
 Separator.defaultProps = {

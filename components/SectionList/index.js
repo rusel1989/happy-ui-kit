@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, SectionList, ActivityIndicator } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import SectionHeader from '../SectionHeader';
@@ -129,10 +130,10 @@ CustomSectionList.propTypes = {
   loading: PropTypes.bool,
   animated: PropTypes.bool,
   getRef: PropTypes.func,
-  sectionHeaderTextColor: PropTypes.string,
-  sectionHeaderBackgroundColor: PropTypes.string,
-  separatorColor: PropTypes.string,
-  spinnerColor: PropTypes.string,
+  sectionHeaderTextColor: ExtraPropTypes.color,
+  sectionHeaderBackgroundColor: ExtraPropTypes.color,
+  separatorColor: ExtraPropTypes.color,
+  spinnerColor: ExtraPropTypes.color,
   animation: PropTypes.string,
   showSeparator: PropTypes.bool,
   showFooter: PropTypes.bool,

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Col from '../Col';
 import Text from '../Text';
@@ -29,9 +30,9 @@ Notification.contextTypes = {
 
 Notification.propTypes = {
   message: PropTypes.string,
-  tintColor: PropTypes.string,
+  tintColor: ExtraPropTypes.color,
   icon: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   spacingVertical: PropTypes.number,
   spacingHorizontal: PropTypes.number,
   textSize: PropTypes.number,

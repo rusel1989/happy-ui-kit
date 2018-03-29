@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Icon from '../Icon';
 import BaseTheme from '../../theme/base';
@@ -35,10 +36,10 @@ Checkbox.contextTypes = {
 Checkbox.propTypes = {
   selected: PropTypes.bool,
   selectedIcon: PropTypes.string,
-  selectedTintColor: PropTypes.string,
+  selectedTintColor: ExtraPropTypes.color,
   animation: PropTypes.string,
   icon: PropTypes.string,
-  tintColor: PropTypes.string,
+  tintColor: ExtraPropTypes.color,
   iconSize: PropTypes.number
 };
 

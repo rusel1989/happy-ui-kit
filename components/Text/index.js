@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import keys from 'lodash/keys';
 
 import * as fonts from '../../fonts';
@@ -77,7 +78,7 @@ CustomText.contextTypes = {
 CustomText.propTypes = {
   ...Text.propTypes,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  color: PropTypes.string,
+  color: ExtraPropTypes.color,
   fontFamily: PropTypes.string,
   fontWeight: PropTypes.oneOf([ '100', '200', '300', '400', '500', '600', '700', '800', '900' ]),
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),

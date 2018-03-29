@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Icon from '../Icon';
 import Touchable from '../Touchable';
@@ -31,7 +32,7 @@ IconButton.contextTypes = {
 
 IconButton.propTypes = {
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
-  color: PropTypes.string,
+  color: ExtraPropTypes.color,
   name: PropTypes.string,
   size: PropTypes.number,
   iconSize: PropTypes.number,

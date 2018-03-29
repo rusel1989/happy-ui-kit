@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import SegmentedControl from 'react-native-segmented-control-tab';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import { toTitleCase } from '../../utils';
@@ -36,8 +37,8 @@ CustomSegmentedControl.propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.string),
   selectedIndex: PropTypes.number,
-  tintColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  tintColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
   spacingVertical: PropTypes.number,
   spacingHorizontal: PropTypes.number
 };

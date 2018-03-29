@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import merge from 'lodash/merge';
 import keys from 'lodash/keys';
 import pick from 'lodash/pick';

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import SectionHeader from '../SectionHeader';
 import Col from '../Col';
@@ -43,9 +44,9 @@ Section.propTypes = {
   headerUppercase: PropTypes.bool,
   headerHeight: PropTypes.number,
   headerTextSize: PropTypes.number,
-  headerTextColor: PropTypes.string,
-  headerBackgroundColor: PropTypes.string,
-  contentBackgroundColor: PropTypes.string,
+  headerTextColor: ExtraPropTypes.color,
+  headerBackgroundColor: ExtraPropTypes.color,
+  contentBackgroundColor: ExtraPropTypes.color,
   contentSpacingVertical: PropTypes.number,
   contentSpacingHorizontal: PropTypes.number
 };

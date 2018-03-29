@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Row from '../Row';
 import Text from '../Text';
@@ -25,10 +26,10 @@ SectionHeader.propTypes = {
   title: PropTypes.string,
   uppercase: PropTypes.bool,
   height: PropTypes.number,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   spacingHorizontal: PropTypes.number,
   textSize: PropTypes.string,
-  textColor: PropTypes.string
+  textColor: ExtraPropTypes.color
 };
 
 SectionHeader.defaultProps = {

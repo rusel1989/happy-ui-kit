@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import IconButton from '../IconButton';
@@ -24,8 +25,8 @@ HeaderButton.contextTypes = {
 HeaderButton.propTypes = {
   onPress: PropTypes.func,
   iconName: PropTypes.string,
-  iconColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  iconColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
   width: PropTypes.number,
   height: PropTypes.number
 };

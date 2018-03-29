@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableNativeFeedback, TouchableOpacity, Platform, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 
@@ -52,7 +53,7 @@ Touchable.Highlight.displayName = 'Touchable.Highlight';
 Touchable.Highlight.propTypes = {
   onPress: PropTypes.func,
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
-  underlayColor: PropTypes.string
+  underlayColor: ExtraPropTypes.color
 };
 
 Touchable.Highlight.defaultProps = {

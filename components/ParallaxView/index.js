@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import {LinearGradient} from 'expo';
 import color from 'color';
 
@@ -86,10 +87,10 @@ ParallaxView.propTypes = {
   teaserHeight: PropTypes.number,
   header: PropTypes.node,
   children: PropTypes.node,
-  backgroundColor: PropTypes.string,
-  headerBackgroundColor: PropTypes.string,
-  spinnerColor: PropTypes.string,
-  cardBackgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
+  headerBackgroundColor: ExtraPropTypes.color,
+  spinnerColor: ExtraPropTypes.color,
+  cardBackgroundColor: ExtraPropTypes.color,
   showIndicator: PropTypes.bool,
   cardShadow: PropTypes.bool,
   cardSpacingHorizontal: PropTypes.number,

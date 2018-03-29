@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 const CustomSwipeRow = ({ leftOpenValue, rightOpenValue, disableSwipe, children, onRowOpen, onRowClose, rowRef, setScrollEnabled }) => (
   <SwipeRow

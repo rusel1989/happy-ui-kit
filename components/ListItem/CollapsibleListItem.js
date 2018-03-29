@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import { Animated } from 'react-native';
 
 import ListItem from './ListItem';

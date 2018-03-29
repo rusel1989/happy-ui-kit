@@ -11,6 +11,7 @@ import {
   ViewPropTypes
 } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -183,7 +184,7 @@ ScrollPicker.propTypes = {
   selectedIndex: PropTypes.number,
   onValueChange: PropTypes.func,
   renderItem: PropTypes.func,
-  highlightColor: PropTypes.string,
+  highlightColor: ExtraPropTypes.color,
   itemHeight: PropTypes.number,
   wrapperHeight: PropTypes.number
 };

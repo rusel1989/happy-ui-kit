@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 
@@ -29,7 +30,7 @@ Overlay.propTypes = {
   getRef: PropTypes.func,
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   onPress: PropTypes.func,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   animation: PropTypes.string,
   duration: PropTypes.number
 };

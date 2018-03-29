@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Row from '../Row';
 import Col from '../Col';
@@ -56,9 +57,9 @@ ListItem.contextTypes = {
 
 ListItem.propTypes = {
   label: PropTypes.string,
-  labelColor: PropTypes.string,
-  iconColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  labelColor: ExtraPropTypes.color,
+  iconColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
   icon: PropTypes.string,
   children: PropTypes.node,
   showSeparator: PropTypes.bool,
@@ -66,7 +67,7 @@ ListItem.propTypes = {
   spacingHorizontal: PropTypes.number,
   labelSize: PropTypes.number,
   onPress: PropTypes.func,
-  activeBackgroundColor: PropTypes.string
+  activeBackgroundColor: ExtraPropTypes.color
 };
 
 ListItem.defaultProps = {

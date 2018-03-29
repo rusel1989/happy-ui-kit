@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import Col from '../Col';
 
 import BaseTheme from '../../theme/base';
@@ -24,7 +25,7 @@ Card.contextTypes = {
 
 Card.propTypes = {
   ...Col.propTypes,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   spacingVertical: PropTypes.number,
   spacingHorizontal: PropTypes.number,
   borderRadius: PropTypes.number,

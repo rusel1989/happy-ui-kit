@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import color from 'color';
 
 import Text from '../Text';
@@ -39,9 +40,9 @@ BaseChip.propTypes = {
   active: PropTypes.bool,
   style: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
   onPress: PropTypes.func,
-  activeTintColor: PropTypes.string,
-  tintColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  activeTintColor: ExtraPropTypes.color,
+  tintColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
   height: PropTypes.number,
   borderRadius: PropTypes.number,
   borderWidth: PropTypes.number,

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Text from '../Text';
 import Col from '../Col';
@@ -54,7 +55,7 @@ Button.contextTypes = {
 
 Button.propTypes = {
   onPress: PropTypes.func,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   borderRadius: PropTypes.number,
   height: PropTypes.number,
   spacingHorizontal: PropTypes.number,
@@ -62,7 +63,7 @@ Button.propTypes = {
   fullWidth: PropTypes.bool,
   align: PropTypes.string,
   label: PropTypes.string,
-  labelColor: PropTypes.string,
+  labelColor: ExtraPropTypes.color,
   labelSize: PropTypes.number,
   labelFont: PropTypes.string,
   labelFontWeight: PropTypes.string,

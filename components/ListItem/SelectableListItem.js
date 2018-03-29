@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import * as Animatable from 'react-native-animatable';
 
 import ListItem from './ListItem';
@@ -69,9 +70,9 @@ SelectableListItem.propTypes = {
   ...ListItem.propTypes,
   animated: PropTypes.bool,
   isSelected: PropTypes.bool,
-  selectedBackgroundColor: PropTypes.string,
-  selectedIconColor: PropTypes.string,
-  selectedLabelColor: PropTypes.string,
+  selectedBackgroundColor: ExtraPropTypes.color,
+  selectedIconColor: ExtraPropTypes.color,
+  selectedLabelColor: ExtraPropTypes.color,
   selectedIcon: PropTypes.string,
   rightButton: PropTypes.node
 };

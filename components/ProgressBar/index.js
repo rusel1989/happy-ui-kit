@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Row from '../Row';
 import Col from '../Col';
@@ -31,10 +32,10 @@ ProgressBar.contextTypes = {
 
 ProgressBar.propTypes = {
   progress: PropTypes.number,
-  backgroundColor: PropTypes.string,
-  barColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
+  barColor: ExtraPropTypes.color,
   height: PropTypes.number,
-  textColor: PropTypes.string,
+  textColor: ExtraPropTypes.color,
   showText: PropTypes.bool,
   borderRadius: PropTypes.number
 };

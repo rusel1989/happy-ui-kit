@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import Text from '../Text';
 import BaseTheme from '../../theme/base';
@@ -39,10 +40,10 @@ CircleChart.propTypes = {
   lineWidth: PropTypes.number,
   showText: PropTypes.bool,
   textSize: PropTypes.number,
-  textColor: PropTypes.string,
+  textColor: ExtraPropTypes.color,
   formatText: PropTypes.func,
-  tintColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
+  tintColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
   rotation: PropTypes.number,
   linecap: PropTypes.string
 };

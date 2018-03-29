@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Modal, StyleSheet, Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import ChipGroup from '../ChipGroup';
@@ -201,12 +202,12 @@ ActionSheet.propTypes = {
   duration: PropTypes.number,
   easing: PropTypes.func,
   onSelectionFinished: PropTypes.func,
-  labelColor: PropTypes.string,
-  itemBackgroundColor: PropTypes.string,
-  selectedBackgroundColor: PropTypes.string,
-  selectedIconColor: PropTypes.string,
-  selectedTextColor: PropTypes.string,
-  iconColor: PropTypes.string,
+  labelColor: ExtraPropTypes.color,
+  itemBackgroundColor: ExtraPropTypes.color,
+  selectedBackgroundColor: ExtraPropTypes.color,
+  selectedIconColor: ExtraPropTypes.color,
+  selectedTextColor: ExtraPropTypes.color,
+  iconColor: ExtraPropTypes.color,
   itemBorderRadius: PropTypes.number,
   itemHeight: PropTypes.number
 };

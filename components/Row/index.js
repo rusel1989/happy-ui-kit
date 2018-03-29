@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 const Row = ({ style, children, justifyContent, alignItems, backgroundColor }) => {
   return (
@@ -21,7 +22,7 @@ Row.propTypes = {
   children: PropTypes.node,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,
-  backgroundColor: PropTypes.string
+  backgroundColor: ExtraPropTypes.color
 };
 
 Row.defaultProps = {

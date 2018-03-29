@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import Text from '../Text';
@@ -97,10 +98,10 @@ WheelPicker.propTypes = {
     values: PropTypes.arrayOf(PropTypes.string)
   })),
   value: PropTypes.any,
-  selectedTextColor: PropTypes.string,
-  textColor: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  highlightColor: PropTypes.string,
+  selectedTextColor: ExtraPropTypes.color,
+  textColor: ExtraPropTypes.color,
+  backgroundColor: ExtraPropTypes.color,
+  highlightColor: ExtraPropTypes.color,
   selectedTextSize: PropTypes.number,
   textSize: PropTypes.number,
   height: PropTypes.number,
@@ -108,7 +109,7 @@ WheelPicker.propTypes = {
   itemHeight: PropTypes.number,
   spacingHorizontal: PropTypes.number,
   wheelSpacing: PropTypes.number,
-  selectedItemBorderColor: PropTypes.string,
+  selectedItemBorderColor: ExtraPropTypes.color,
   selectedItemBorderWidth: PropTypes.number,
   selectedItemBorderRadius: PropTypes.number
 };

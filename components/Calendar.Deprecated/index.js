@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import range from 'lodash/range';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 import WheelPicker from '../WheelPicker';

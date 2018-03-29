@@ -9,6 +9,7 @@ import React, {
   Component
 } from 'react';
 import PropTypes from 'prop-types';
+import ExtraPropTypes from 'react-extra-prop-types'
 import {
   StyleSheet,
   Animated,
@@ -190,12 +191,12 @@ Toast.propTypes = {
   animatedDuration: PropTypes.number,
   delay: PropTypes.number,
   marginTop: PropTypes.number,
-  textColor: PropTypes.string,
+  textColor: ExtraPropTypes.color,
   textSize: PropTypes.number,
   font: PropTypes.string,
   spacingVertical: PropTypes.number,
   spacingHorizontal: PropTypes.number,
-  backgroundColor: PropTypes.string,
+  backgroundColor: ExtraPropTypes.color,
   borderRadius: PropTypes.number
 };
 
