@@ -25,4 +25,64 @@ app.post('/save-parsed-props/:componentName', (req, res, next) => {
   res.json({ message: 'Success !' });
 });
 
+const propTypesTpl = (propTypes) => {
+  return propTypes.map(({ name, type }) => {
+    return `  ${name}: PropTypes.${type}`;
+  }).join(',\n');
+};
+
+const defaultPropValueTpl = (value, type) => {
+  console.log(value, type);
+  if (!type || type === 'string' || type === 'color') {
+    return `'${value}'`;
+  } else {
+    return value;
+  }
+};
+
+const defaultPropsTpl = (defaultProps, propTypes) => {
+  return Object.keys(defaultProps).map((propName) => {
+    console.log(propName);
+    if (typeof defaultProps[propName] === 'undefined') {
+      return null;
+    }
+    const type = propTypes.find(({ name }) => name === propName);
+    return `  ${propName}: ${defaultPropValueTpl(defaultProps[propName], type && type.type)}`;
+  }).filter(s => !!s).join(',\n');
+};
+
+const compTpl = (compName, compConfig) => {
+  return `import React from 'react';
+import PropTypes from 'prop-types';
+import ${compConfig.baseComponentName} from '../${compConfig.baseComponentName}';
+
+const ${compName} = (props) => {
+  return (
+    <${compConfig.baseComponentName} {...props} />
+  );
+};
+
+${compName}.displayName = '${compName}';
+
+${compName}.propTypes = {
+${propTypesTpl(compConfig.propTypes)}
+};
+
+${compName}.defaultProps = {
+${defaultPropsTpl(compConfig.defaultProps, compConfig.propTypes)}
+};
+
+export default ${compName};
+`;
+};
+
+app.post('/save-component/:name', (req, res, next) => {
+  const compDir = path.join(__dirname, '..', 'components', req.params.name);
+  if (!fs.existsSync(compDir)) {
+    fs.mkdirSync(compDir);
+  }
+  fs.writeFileSync(path.join(compDir, 'index.js'), compTpl(req.params.name, req.body));
+  res.json({ message: 'Success !' });
+});
+
 app.listen(59590);

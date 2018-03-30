@@ -8,6 +8,7 @@ const demo = {
   containerType: 'column',
   components: [{
     Component: Toast,
+    modal: true,
     renderAtBottom: true,
     items: [{
       label: 'Toast',

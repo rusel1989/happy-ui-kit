@@ -6,6 +6,7 @@ const demo = {
   components: [{
     Component: ActionSheet,
     renderAtBottom: true,
+    modal: true,
     label: 'Default',
     items: [{
       label: 'ActionSheet',

@@ -9,7 +9,7 @@ import RootNavigator from './navigation';
 import ThemeProvider from './theme/Provider';
 
 StatusBar.setBarStyle('light-content');
-
+console.disableYellowBox = true;
 export default class App extends React.Component {
   state = {
     ready: false

@@ -5,7 +5,7 @@ import ExtraPropTypes from 'react-extra-prop-types'
 
 import BaseTheme from '../../theme/base';
 
-const TextField = ({ style, getRef, onChangeText, placeholder, ...rest }, context) => {
+const TextField = ({ style, getRef, onChangeText, placeholder, value, ...rest }, context) => {
   const { textColor, textSize, backgroundColor, font, borderRadius, borderColor,
     borderWidth, spacingVertical, spacingHorizontal } = context.mergeStyle('TextField', rest);
   return (
@@ -14,6 +14,7 @@ const TextField = ({ style, getRef, onChangeText, placeholder, ...rest }, contex
       placeholder={placeholder}
       onChangeText={onChangeText}
       underlineColorAndroid='transparent'
+      value={value}
       style={[ { fontSize: textSize, color: textColor, backgroundColor, fontFamily: font, borderRadius, borderWidth, borderColor, paddingVertical: spacingVertical, paddingHorizontal: spacingHorizontal }, style ]} />
   );
 };

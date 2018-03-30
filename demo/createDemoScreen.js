@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, LayoutAnimation } from 'react-native';
+import { View, LayoutAnimation, Platform, Picker } from 'react-native';
 import { TabViewAnimated } from 'react-native-tab-view';
 import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
@@ -13,11 +13,13 @@ import Button from '../components/Button';
 import WheelPicker from '../components/WheelPicker';
 import IconButton from '../components/IconButton';
 import Text from '../components/Text';
+import TextField from '../components/TextField';
 import ParallaxView from '../components/ParallaxView';
 import BaseTheme from '../theme/base';
 import * as componentProps from '../demo/props';
-import PropEditor from './PropEditor'
-import { saveDemoProps } from '../utils'; // eslint-disable-line
+import PropEditor from './PropEditor';
+import { saveDemoProps, saveComponent } from '../utils'; // eslint-disable-line
+import HeaderButton from '../components/HeaderButton';
 
 const CustomLayoutSpring = {
   duration: 400,
@@ -108,7 +110,9 @@ const createDemoScreen = (demoConfig) => {
     const { Component } = demoComp;
     const displayName = getDisplayName(Component);
     const propsDocName = getPropsObjectName(displayName);
-
+    if (Component.defaultProps) {
+      Component.defaultProps.label = 'Label';
+    }
     sceneConfig[displayName] = demoComp;
     demoComp.parsedProps = [];
 
@@ -124,6 +128,13 @@ const createDemoScreen = (demoConfig) => {
   }
 
   class DemoScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+      const isEditing = navigation.getParam('isEditing');
+      return isEditing ? {
+        headerLeft: <HeaderButton.Close onPress={navigation.getParam('onClosePress')} />,
+        headerRight: <HeaderButton.Save onPress={navigation.getParam('onSavePress')} />
+      } : {};
+    }
     state = {
       selectedIndex: 0,
       routes: compRoutes,
@@ -160,69 +171,126 @@ const createDemoScreen = (demoConfig) => {
         ).filter((item) => item.type !== 'func');
     }
 
-    editComponent = () => {
+    showComponentEditor = () => {
       const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
+      const editableProps = this.getEditingOptions(Component, parsedProps);
       LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.props.navigation.setParams({
+        isEditing: true,
+        onSavePress: this.showSaveConfirmation,
+        onClosePress: this.hideComponentEditor
+      });
       this.setState({
         isEditing: true,
+        selectedProp: editableProps[0].name,
         customProps: Component.defaultProps,
-        editingOptions: this.getEditingOptions(Component, parsedProps)
+        editingOptions: editableProps
       });
+    }
+
+    showSaveConfirmation = () => {
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ showSaveConfirmation: true, newComponentName: '' });
+    }
+
+    saveComponent = () => {
+      if (!this.state.newComponentName) {
+        this.setState({ saveError: 'You must enter component name' });
+        return;
+      }
+      const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
+      const editableProps = this.getEditingOptions(Component, parsedProps);
+      const conf = {
+        baseComponentName: Component.displayName,
+        propTypes: editableProps,
+        defaultProps: { ...this.state.customProps }
+      };
+      saveComponent(this.state.newComponentName, conf);
+      this.hideComponentEditor();
+    }
+
+    hideComponentEditor = () => {
+      this.props.navigation.setParams({
+        isEditing: false,
+        showSaveConfirmation: false,
+        newComponentName: '',
+        saveError: ''
+      });
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ isEditing: false, editingOptions: [], customProps: {} });
+    }
+
+    resetCustomProps = () => {
+      const { Component } = demoConfig.components[this.state.selectedIndex];
+      this.setState({ customProps: Component.defaultProps });
     }
 
     toggleComponentEditor = () => {
       if (this.state.isEditing) {
-        LayoutAnimation.configureNext(CustomLayoutSpring);
-        this.setState({ isEditing: false, editingOptions: [], customProps: {} });
+        this.hideComponentEditor();
       } else {
-        this.editComponent();
+        this.showComponentEditor();
       }
     }
 
-    renderComponentDemo = (config = {}) => {
-      const { Component, items, methods, renderAtBottom } = config;
-      if (this.state.isEditing) {
-        return (
-          <View style={{ margin: 10, justifyContent: 'center', alignItems: 'stretch', flexDirection: 'column', flex: 1 }}>
-            <Component {...this.state.customProps} />
-          </View>
-        );
-      }
+    getSelectedPropParams = () => {
+      return this.state.editingOptions.find((o) => o.name === this.state.selectedProp);
+    }
 
+    onSelectedPropChange = (val) => {
+      const customProps = { ...this.state.customProps, [this.state.selectedProp]: val };
+      // console.log(customProps);
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ customProps });
+    }
+
+    updateSelectedProp = (selectedProp) => {
+      LayoutAnimation.configureNext(CustomLayoutSpring);
+      this.setState({ selectedProp });
+    }
+
+    renderComponentMethodTrigger = (methods) => {
+      if (!methods || !methods.length) {
+        return null;
+      }
+      return methods.map((item, i) => {
+        return (
+          <Button
+            key={i}
+            labelSize={16}
+            fullWidth={false}
+            uppercaseLabel={false}
+            label={item.label}
+            borderRadius={10}
+            height={40}
+            raised
+            onPress={() => this.invokeMethodWithArgs(item.name, item.args)} />
+        );
+      });
+    }
+
+    renderComponentDemo = (config = {}) => {
+      const { Component, items } = config;
       return (
-        <View style={{ flex: 1, flexDirection: demoConfig.containerType, ...headerAlignment }}>
-          {!renderAtBottom && items.map((item, index) => {
-            const { props } = item;
-            const ref = methods ? { ref: this.setElRef } : {};
-            return (
+        <View style={{ flex: 1, margin: 10, flexDirection: demoConfig.containerType, ...headerAlignment }}>
+          {this.state.isEditing
+            ? <Component {...this.state.customProps} />
+            : items.map((item, index) => (
               <View key={index} style={{ margin: 10, ...demoConfig.componentContainerStyle }}>
-                <Component {...props} {...ref} />
+                <Component {...item.props} />
               </View>
-            );
-          })}
-          {methods && methods.map((item, i) => {
-            return (
-              <Button
-                key={i}
-                labelSize={16}
-                fullWidth={false}
-                uppercaseLabel={false}
-                label={item.label}
-                borderRadius={10}
-                height={40}
-                raised
-                onPress={() => this.invokeMethodWithArgs(item.name, item.args)} />
-            );
-          })}
-        </View>
-      );
+            ))}
+        </View>);
     }
 
     renderScene = ({ route }) => {
       return this.renderComponentDemo(sceneConfig[route.key]);
     }
 
-    renderHeader = () => {
+    renderHeader = (compConfig) => {
+      if (compConfig.modal) {
+        return this.renderComponentMethodTrigger(compConfig.methods);
+      }
       return (
         <View style={{ paddingHorizontal: 2, height: demoConfig.containerHeight, flexDirection: demoConfig.containerType }}>
           {!this.state.isEditing && demoConfig.components.length > 1
@@ -230,15 +298,22 @@ const createDemoScreen = (demoConfig) => {
               navigationState={{ index: this.state.selectedIndex, routes: this.state.routes }}
               renderScene={this.renderScene}
               onIndexChange={this.onIndexChange} />
-            : this.renderComponentDemo(demoConfig.components[this.state.selectedIndex])}
+            : this.renderComponentDemo(compConfig)}
         </View>
       );
     }
 
-    renderPropsList = () => {
-      const { parsedProps } = demoConfig.components[this.state.selectedIndex];
+    renderPropsList = ({ parsedProps }) => {
       return (
         <View>
+          <Row>
+            <Text.Light size='xlarge'>Props</Text.Light>
+            <IconButton
+              size={30}
+              name='category'
+              color={BaseTheme.palette.APP_DARK_GREY}
+              onPress={this.toggleComponentEditor} />
+          </Row>
           <Row style={{ height: 35 }}>
             <Row>
               <Col style={{ width: 60 }} alignItems='flex-start'>
@@ -283,44 +358,93 @@ const createDemoScreen = (demoConfig) => {
         </View>);
     }
 
-    getSelectedPropParams = () => {
-      return this.state.editingOptions.find((o) => o.name === this.state.selectedProp);
-    }
-
-    onSelectedPropChange = (val) => {
-      const customProps = { ...this.state.customProps, [this.state.selectedProp]: val };
-      LayoutAnimation.configureNext(CustomLayoutSpring);
-      this.setState({ customProps });
-    }
-
     renderSelectedPropertyEditor = () => {
       const selectedPropParams = this.getSelectedPropParams();
+      // console.log('test', selectedPropParams);
       return (
         <PropEditor
           {...selectedPropParams}
+          onClosePress={this.toggleComponentEditor}
           onChange={this.onSelectedPropChange}
+          onResetPress={this.resetCustomProps}
           value={this.state.customProps[this.state.selectedProp]} />
       );
     }
 
+    renderSaveConfirmation = () => {
+      return (
+        <View>
+          <Row style={{ height: 50 }}>
+            <Text.Light size='large'>Enter new component name</Text.Light>
+          </Row>
+          <TextField
+            style={{ flex: 1, borderRadius: 4, height: 40 }}
+            backgroundColor={BaseTheme.palette.APP_LIGHT_GREY}
+            onChangeText={(val) => this.setState({ newComponentName: val })}
+            value={this.state.newComponentName} />
+          <Row>
+            <Button
+              labelColor={BaseTheme.palette.APP_DANGER}
+              uppercaseLabel={false}
+              backgroundColor='white'
+              labelSize={20}
+              label='Cancel'
+              onPress={() => this.setState({ showSaveConfirmation: false })} />
+            <Button
+              uppercaseLabel={false}
+              backgroundColor='white'
+              labelSize={20}
+              label='Save'
+              labelColor={BaseTheme.palette.APP_PRIMARY_DARKER}
+              onPress={this.saveComponent} />
+          </Row>
+          {this.state.saveError && <Text.Light textAlign='center' color={BaseTheme.palette.APP_DANGER}>{this.state.saveError}</Text.Light>}
+        </View>
+      );
+    }
+
     renderPropsEditor = () => {
+      if (this.state.showSaveConfirmation) {
+        return this.renderSaveConfirmation();
+      }
       const wheelValues = this.state.editingOptions.map(({ name }) => name);
       return (
         <View>
           {this.renderSelectedPropertyEditor()}
-          <WheelPicker
-            height={120}
-            wheelWidth={180}
-            onChange={(val) => this.setState(val)}
-            value={{ selectedProp: wheelValues[0] }}
-            wheels={[{ id: 'selectedProp', values: wheelValues }]} />
+          <Row style={{ height: 140, zIndex: -1 }} justifyContent='center'>
+            {Platform.OS === 'ios' ? (
+              <Picker
+                style={{ flex: 1 }}
+                selectedValue={this.state.selectedProp}
+                onValueChange={this.updateSelectedProp}>
+                {wheelValues.map((prop, i) => {
+                  return (
+                    <Picker.Item label={prop} value={prop} key={i} />
+                  );
+                })}
+              </Picker>
+            ) : (
+              <WheelPicker
+                height={120}
+                wheelWidth={180}
+                onChange={({ selectedProp }) => this.updateSelectedProp(selectedProp)}
+                value={{ selectedProp: wheelValues[0] }}
+                wheels={[{ id: 'selectedProp', values: wheelValues }]} />
+            )}
+          </Row>
+          <Button
+            label='Restore default props'
+            uppercaseLabel={false}
+            backgroundColor='white'
+            labelSize={20}
+            labelColor={BaseTheme.palette.APP_PRIMARY_DARKER}
+            onPress={this.resetCustomProps} />
         </View>
       );
     }
 
     render () {
-      const { Component, items, renderAtBottom, methods } = demoConfig.components[this.state.selectedIndex];
-      const toggleEditIcon = this.state.isEditing ? 'remove' : 'category';
+      const compConfig = demoConfig.components[this.state.selectedIndex];
       return (
         <View style={{ flex: 1 }} >
           <ParallaxView
@@ -332,24 +456,12 @@ const createDemoScreen = (demoConfig) => {
             cardSpacingHorizontal={16}
             cardBorderRadius={5}
             scrollEnabled={!this.state.isEditing}
-            header={this.renderHeader()}>
-            <Row>
-              <Text.Light size='xlarge'>{this.state.isEditing ? 'Editor' : 'Props'}</Text.Light>
-              <IconButton
-                size={30}
-                name={toggleEditIcon}
-                color={BaseTheme.palette.APP_DARK_GREY}
-                onPress={this.toggleComponentEditor} />
-            </Row>
+            header={this.renderHeader(compConfig)}>
             {this.state.isEditing
               ? this.renderPropsEditor()
-              : this.renderPropsList()}
+              : this.renderPropsList(compConfig)}
           </ParallaxView>
-          {renderAtBottom && items.map((item, index) => {
-            const { props } = item;
-            const ref = methods ? { ref: this.setElRef } : {};
-            return <Component key={index} {...props} {...ref} />;
-          })}
+          {compConfig.modal && this.renderComponentDemo(compConfig)}
         </View>
       );
     }
