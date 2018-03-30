@@ -189,8 +189,12 @@ const createDemoScreen = (demoConfig) => {
     }
 
     showSaveConfirmation = () => {
-      LayoutAnimation.configureNext(CustomLayoutSpring);
-      this.setState({ showSaveConfirmation: true, newComponentName: '' });
+      if (__DEV__) {
+        LayoutAnimation.configureNext(CustomLayoutSpring);
+        this.setState({ showSaveConfirmation: true, newComponentName: '' });
+      } else {
+        this.hideComponentEditor();
+      }
     }
 
     saveComponent = () => {
@@ -270,14 +274,18 @@ const createDemoScreen = (demoConfig) => {
     }
 
     renderComponentDemo = (config = {}) => {
-      const { Component, items } = config;
+      const { Component, items, modal } = config;
+      const ref = modal && this.setElRef;
+      const containerStyle = modal
+        ? {}
+        : { flex: 1, margin: 10, flexDirection: demoConfig.containerType, ...headerAlignment };
       return (
-        <View style={{ flex: 1, margin: 10, flexDirection: demoConfig.containerType, ...headerAlignment }}>
+        <View style={containerStyle}>
           {this.state.isEditing
-            ? <Component {...this.state.customProps} />
+            ? <Component ref={ref} {...this.state.customProps} />
             : items.map((item, index) => (
               <View key={index} style={{ margin: 10, ...demoConfig.componentContainerStyle }}>
-                <Component {...item.props} />
+                <Component ref={ref} {...item.props} />
               </View>
             ))}
         </View>);
@@ -287,20 +295,30 @@ const createDemoScreen = (demoConfig) => {
       return this.renderComponentDemo(sceneConfig[route.key]);
     }
 
-    renderHeader = (compConfig) => {
-      if (compConfig.modal) {
-        return this.renderComponentMethodTrigger(compConfig.methods);
-      }
+    renderComponentDemoTabs = () => {
       return (
-        <View style={{ paddingHorizontal: 2, height: demoConfig.containerHeight, flexDirection: demoConfig.containerType }}>
-          {!this.state.isEditing && demoConfig.components.length > 1
-            ? <TabViewAnimated
-              navigationState={{ index: this.state.selectedIndex, routes: this.state.routes }}
-              renderScene={this.renderScene}
-              onIndexChange={this.onIndexChange} />
-            : this.renderComponentDemo(compConfig)}
-        </View>
-      );
+        <TabViewAnimated
+          navigationState={{ index: this.state.selectedIndex, routes: this.state.routes }}
+          renderScene={this.renderScene}
+          onIndexChange={this.onIndexChange} />);
+    }
+
+    renderHeader = (compConfig) => {
+      const { containerHeight, containerType } = demoConfig;
+      const style = {
+        paddingHorizontal: 2,
+        height: containerHeight,
+        flexDirection: containerType,
+        justifyContent: compConfig.modal && 'center'
+      };
+      return (
+        <View style={style}>
+          {compConfig.modal
+            ? this.renderComponentMethodTrigger(compConfig.methods)
+            : !this.state.isEditing && demoConfig.components.length > 1
+              ? this.renderComponentDemoTabs()
+              : this.renderComponentDemo(compConfig)}
+        </View>);
     }
 
     renderPropsList = ({ parsedProps }) => {
