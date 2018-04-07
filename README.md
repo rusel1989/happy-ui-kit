@@ -1,12 +1,12 @@
 # happy-ui-kit
 Set of highly customizable react-native components. Its also highly WIP right now.
 
-##Install
+## Install
 `yarn add happy-ui-kit`
 or
 `npm i -S happy-ui-kit`
 
-##Demo
+## Demo
 To run demo you need expo installed (`yarn global add exp`)
 
 1. clone repository
