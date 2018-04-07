@@ -1,3 +1,5 @@
 node_modules/**/*
 .expo/*
+demo/node_modules
 npm-debug.*
+yarn-error.log

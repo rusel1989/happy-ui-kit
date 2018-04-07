@@ -1,25 +1,26 @@
 import React from 'react';
 import { View, LayoutAnimation, Platform, Picker } from 'react-native';
 import { TabViewAnimated } from 'react-native-tab-view';
+import color from 'color';
 import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
-import color from 'color';
 import merge from 'lodash/merge';
 
-import Col from '../components/Col';
-import Row from '../components/Row';
-import Separator from '../components/Separator';
-import Button from '../components/Button';
-import WheelPicker from '../components/WheelPicker';
-import IconButton from '../components/IconButton';
-import Text from '../components/Text';
-import TextField from '../components/TextField';
-import ParallaxView from '../components/ParallaxView';
-import BaseTheme from '../theme/base';
-import * as componentProps from '../demo/props';
-import PropEditor from './PropEditor';
-import { saveDemoProps, saveComponent } from '../utils'; // eslint-disable-line
-import HeaderButton from '../components/HeaderButton';
+import Col from '../../lib/components/Col';
+import Row from '../../lib/components/Row';
+import Separator from '../../lib/components/Separator';
+import Button from '../../lib/components/Button';
+import WheelPicker from '../../lib/components/WheelPicker';
+import IconButton from '../../lib/components/IconButton';
+import Text from '../../lib/components/Text';
+import TextField from '../../lib/components/TextField';
+import ParallaxView from '../../lib/components/ParallaxView';
+import HeaderButton from '../../lib/components/HeaderButton';
+import BaseTheme from '../../lib/theme/base';
+
+import PropEditor from '../components/PropEditor';
+import * as componentProps from '../props';
+import { saveDemoProps, saveComponent } from './index'; // eslint-disable-line
 
 const CustomLayoutSpring = {
   duration: 400,
@@ -135,6 +136,7 @@ const createDemoScreen = (demoConfig) => {
         headerRight: <HeaderButton.Save onPress={navigation.getParam('onSavePress')} />
       } : {};
     }
+
     state = {
       selectedIndex: 0,
       routes: compRoutes,

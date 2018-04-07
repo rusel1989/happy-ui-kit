@@ -1,0 +1,3399 @@
+{
+  "components/ActionSheet/index.js": {
+    "description": "",
+    "displayName": "ActionSheet",
+    "methods": [
+      {
+        "name": "show",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "config",
+            "type": null
+          },
+          {
+            "name": "value",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "hide",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "_computeHeight",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "optionCount",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_animateSheet",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "toValue",
+            "type": null
+          },
+          {
+            "name": "duration",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_showSheet",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "_hideSheet",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "onFinishButtonPress",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "onOptionSelected",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "option",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onSubOptionSelected",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "option",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setOverlayRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setSheetRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "canSaveValue",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "duration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "400",
+          "computed": false
+        }
+      },
+      "easing": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "Easing.linear",
+          "computed": true
+        }
+      },
+      "onSelectionFinished": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "labelColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedIconColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedTextColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "iconColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemBorderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Button/index.js": {
+    "description": "",
+    "displayName": "Button",
+    "methods": [],
+    "props": {
+      "onPress": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "raised": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "fullWidth": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "align": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'center'",
+          "computed": false
+        }
+      },
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "labelColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "labelSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "labelFont": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "labelFontWeight": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "uppercaseLabel": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Calendar.Deprecated/index.js": {
+    "description": "",
+    "displayName": "Calendar",
+    "methods": [
+      {
+        "name": "hide",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "duration",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "open",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "duration",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "setContainerRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setOverlayRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setPickerType",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "pickerType",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "range": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'week'",
+              "computed": false
+            },
+            {
+              "value": "'month'",
+              "computed": false
+            },
+            {
+              "value": "'year'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'week'",
+          "computed": false
+        }
+      },
+      "month": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "currentDate.getMonth()",
+          "computed": true
+        }
+      },
+      "year": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "currentDate.getFullYear()",
+          "computed": true
+        }
+      },
+      "week": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "dayFrom": {
+              "name": "number",
+              "required": false
+            },
+            "dayTo": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "{ dayFrom: currentDate.getDate() - 7, dayTo: currentDate.getDate() }",
+          "computed": false
+        }
+      },
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "onRangeChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "onPickerTypeChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "components/Card/index.js": {
+    "description": "",
+    "displayName": "Card",
+    "methods": [],
+    "props": {
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "shadow": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "alignItems": {
+        "defaultValue": {
+          "value": "'stretch'",
+          "computed": false
+        },
+        "required": false
+      },
+      "justifyContent": {
+        "defaultValue": {
+          "value": "'flex-start'",
+          "computed": false
+        },
+        "required": false
+      }
+    },
+    "composes": [
+      "../Col"
+    ]
+  },
+  "components/Checkbox/index.js": {
+    "description": "",
+    "displayName": "Checkbox",
+    "methods": [],
+    "props": {
+      "selected": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "selectedIcon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedTintColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "tintColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "iconSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Chip/index.js": {
+    "description": "",
+    "displayName": "Chip",
+    "methods": [
+      {
+        "name": "setChipRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onChipPress",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "animated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      }
+    }
+  },
+  "components/ChipGroup/index.js": {
+    "description": "",
+    "displayName": "ChipGroup",
+    "methods": [],
+    "props": {
+      "options": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "onSelect": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "justifyContent": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'flex-start'",
+              "computed": false
+            },
+            {
+              "value": "'center'",
+              "computed": false
+            },
+            {
+              "value": "'flex-end'",
+              "computed": false
+            },
+            {
+              "value": "'space-between'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'flex-start'",
+          "computed": false
+        }
+      },
+      "animated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectable": {
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        },
+        "required": false
+      }
+    }
+  },
+  "components/CircleChart/index.js": {
+    "description": "",
+    "displayName": "CircleChart",
+    "methods": [],
+    "props": {
+      "value": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "100",
+          "computed": false
+        }
+      },
+      "size": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "lineWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showText": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "formatText": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "(v) => `${v.toFixed(0)}`",
+          "computed": false
+        }
+      },
+      "tintColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "rotation": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "linecap": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/CircleSlider/index.js": {
+    "description": "",
+    "displayName": "CircularSlider",
+    "methods": [
+      {
+        "name": "componentWillMount",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "polarToCartesian",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "angle",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "cartesianToPolar",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "x",
+            "type": null
+          },
+          {
+            "name": "y",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onValueChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "value",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handlePanResponderEnd",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "handlePanResponderMove",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "{nativeEvent: {locationX, locationY}}",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "btnRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "btnFill": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "btnStroke": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "btnStrokeWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "railWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "railColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "meterWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "meterColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "meterColors": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "initialValue": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "onValueSelected": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "formatValue": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "(v) => `${(v / 36).toFixed(1)}`",
+          "computed": false
+        }
+      }
+    }
+  },
+  "components/Col/index.js": {
+    "description": "",
+    "displayName": "Col",
+    "methods": [],
+    "props": {
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "justifyContent": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'center'",
+          "computed": false
+        }
+      },
+      "alignItems": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'center'",
+          "computed": false
+        }
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Dropdown/index.js": {
+    "description": "",
+    "displayName": "Dropdown",
+    "methods": [
+      {
+        "name": "onSelect",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "option",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setCollapsibleRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "getLabel",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'Select'",
+          "computed": false
+        }
+      },
+      "options": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "value": {
+                "name": "any",
+                "required": false
+              },
+              "label": {
+                "name": "string",
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "onSelect": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "rightIcon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/HeaderButton/BackButton.js": {
+    "description": "",
+    "methods": []
+  },
+  "components/HeaderButton/Button.js": {
+    "description": "",
+    "displayName": "HeaderButton",
+    "methods": [],
+    "props": {
+      "onPress": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "iconName": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'arrow'",
+          "computed": false
+        }
+      },
+      "iconColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/HeaderButton/CloseButton.js": {
+    "description": "",
+    "methods": []
+  },
+  "components/HeaderButton/SaveButton.js": {
+    "description": "",
+    "methods": []
+  },
+  "components/Icon/index.js": {
+    "description": "",
+    "displayName": "Icon",
+    "methods": [],
+    "props": {
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/IconButton/index.js": {
+    "description": "",
+    "displayName": "IconButton",
+    "methods": [],
+    "props": {
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "60",
+          "computed": false
+        }
+      },
+      "iconSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "onPress": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      }
+    }
+  },
+  "components/ListItem/CollapsibleListItem.js": {
+    "description": "",
+    "methods": [
+      {
+        "name": "setRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "open",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "close",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "cb",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "animate",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "to",
+            "type": null
+          },
+          {
+            "name": "callback",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onPress",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "onOpen": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "onClose": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "contentHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "240",
+          "computed": false
+        }
+      },
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      }
+    },
+    "composes": [
+      "./ListItem"
+    ]
+  },
+  "components/ListItem/ListItem.js": {
+    "description": "",
+    "displayName": "ListItem",
+    "methods": [],
+    "props": {
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "labelColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "iconColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showSeparator": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "labelSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "onPress": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "activeBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/ListItem/SelectableListItem.js": {
+    "description": "",
+    "methods": [
+      {
+        "name": "setRef",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "v",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "onPress",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "animated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "isSelected": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "selectedBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "BaseTheme.palette.WHITE",
+          "computed": true
+        }
+      },
+      "selectedIconColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedLabelColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedIcon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "rightButton": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onPress": {
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        },
+        "required": false
+      }
+    },
+    "composes": [
+      "./ListItem"
+    ]
+  },
+  "components/Notification/index.js": {
+    "description": "",
+    "displayName": "Notification",
+    "methods": [],
+    "props": {
+      "message": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "tintColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'notification'",
+          "computed": false
+        }
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textAlign": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Overlay/index.js": {
+    "description": "",
+    "displayName": "Overlay",
+    "methods": [],
+    "props": {
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "onPress": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "duration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/ParallaxView/Shadow.js": {
+    "description": "",
+    "methods": []
+  },
+  "components/ParallaxView/index.js": {
+    "description": "",
+    "displayName": "ParallaxView",
+    "methods": [],
+    "props": {
+      "refreshing": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "onRefresh": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "scrollViewRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "scrollEnabled": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "teaserHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "200",
+          "computed": false
+        }
+      },
+      "header": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "<View />",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spinnerColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "cardBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showIndicator": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "cardShadow": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "cardSpacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "cardSpacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "cardBorderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/ProgressBar/index.js": {
+    "description": "",
+    "displayName": "ProgressBar",
+    "methods": [],
+    "props": {
+      "progress": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "barColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showText": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/PullToRefreshView/index.js": {
+    "description": "",
+    "displayName": "PullToRefreshView",
+    "methods": [],
+    "props": {
+      "onRefresh": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "refreshing": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "scrollEnabled": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Row/index.js": {
+    "description": "",
+    "displayName": "Row",
+    "methods": [],
+    "props": {
+      "style": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "array"
+            },
+            {
+              "name": "object"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "justifyContent": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'space-between'",
+          "computed": false
+        }
+      },
+      "alignItems": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "'center'",
+          "computed": false
+        }
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Section/index.js": {
+    "description": "",
+    "displayName": "Section",
+    "methods": [],
+    "props": {
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerUppercase": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerTextSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerTextColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "headerBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "contentBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "contentSpacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "contentSpacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/SectionHeader/index.js": {
+    "description": "",
+    "displayName": "SectionHeader",
+    "methods": [],
+    "props": {
+      "title": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "uppercase": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/SectionList/index.js": {
+    "description": "",
+    "displayName": "SectionList",
+    "methods": [],
+    "props": {
+      "extraData": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sections": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "title": {
+                "name": "string",
+                "required": false
+              },
+              "data": {
+                "name": "array",
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "onRefresh": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "refreshing": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "loading": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "animated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "sectionHeaderTextColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sectionHeaderBackgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "separatorColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spinnerColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "animation": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showSeparator": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "showFooter": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sectionHeaderHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sectionHeaderTextSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sectionHeaderSpacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "footerSpacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "separatorWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "duration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    },
+    "composes": [
+      "react-native"
+    ]
+  },
+  "components/SegmentedControl/index.js": {
+    "description": "",
+    "displayName": "SegmentedControl",
+    "methods": [],
+    "props": {
+      "onChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "options": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "string"
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "selectedIndex": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "tintColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Separator/index.js": {
+    "description": "",
+    "displayName": "Separator",
+    "methods": [],
+    "props": {
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "width": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "color": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/SwipeRow.Deprecated/index.js": {
+    "description": "",
+    "displayName": "CustomSwipeRow",
+    "methods": [],
+    "props": {
+      "leftOpenValue": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "80",
+          "computed": false
+        }
+      },
+      "rightOpenValue": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "80",
+          "computed": false
+        }
+      },
+      "disableSwipe": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": ""
+      },
+      "onRowOpen": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "onRowClose": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "rowRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "setScrollEnabled": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      }
+    }
+  },
+  "components/Text/index.js": {
+    "description": "",
+    "displayName": "Text",
+    "methods": [],
+    "composes": [
+      "react-native"
+    ]
+  },
+  "components/TextField/index.js": {
+    "description": "",
+    "displayName": "TextField",
+    "methods": [],
+    "props": {
+      "getRef": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "font": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/Toast/index.js": {
+    "description": "",
+    "displayName": "Toast",
+    "methods": [
+      {
+        "name": "show",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "{ children = this.state.children, position = this.state.position, duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "hide",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "{ duration = this.props.animatedDuration, easing = Easing.linear, delay = this.props.delay, animationEnd }",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_onToastLayout",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_setToastPosition",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "position",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "spacing": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "30",
+          "computed": false
+        }
+      },
+      "position": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "gravity.top",
+              "computed": true
+            },
+            {
+              "value": "gravity.bottom",
+              "computed": true
+            },
+            {
+              "value": "gravity.center",
+              "computed": true
+            }
+          ]
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "gravity.bottom",
+          "computed": true
+        }
+      },
+      "duration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "3000",
+          "computed": false
+        }
+      },
+      "animatedDuration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "510",
+          "computed": false
+        }
+      },
+      "delay": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "marginTop": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        }
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "font": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingVertical": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "borderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/WheelPicker/ScrollPicker.js": {
+    "description": "",
+    "displayName": "ScrollPicker",
+    "methods": [
+      {
+        "name": "_renderPlaceHolder",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "_renderItem",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "data",
+            "type": null
+          },
+          {
+            "name": "index",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_scrollFix",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_onScrollBeginDrag",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "_onScrollEndDrag",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_onMomentumScrollBegin",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "_onMomentumScrollEnd",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "scrollToIndex",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "ind",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "getSelected",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "style": {
+        "type": {
+          "name": "custom",
+          "raw": "ViewPropTypes.style"
+        },
+        "required": false,
+        "description": ""
+      },
+      "dataSource": {
+        "type": {
+          "name": "array"
+        },
+        "required": true,
+        "description": ""
+      },
+      "selectedIndex": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "onValueChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "renderItem": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "highlightColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "wrapperHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "components/WheelPicker/index.js": {
+    "description": "",
+    "displayName": "WheelPicker",
+    "methods": [
+      {
+        "name": "onWheelChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "id",
+            "type": null
+          },
+          {
+            "name": "data",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "getValue",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "id",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
+    "props": {
+      "onChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => {}",
+          "computed": false
+        }
+      },
+      "wheels": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "id": {
+                "name": "string",
+                "required": false
+              },
+              "values": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "string"
+                },
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "value": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "selectedTextColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "backgroundColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "highlightColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedTextSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "textSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "wheelWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "itemHeight": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "spacingHorizontal": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "wheelSpacing": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedItemBorderColor": {
+        "type": {
+          "name": "custom",
+          "raw": "ExtraPropTypes.color"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedItemBorderWidth": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      },
+      "selectedItemBorderRadius": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  }
+}

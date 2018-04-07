@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const files = fs.readdirSync(path.join(__dirname, '..', 'assets', 'images'));
+const files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'assets', 'images'));
 const images = [];
 
 const getImageName = (filename) => {
@@ -27,4 +27,4 @@ export const getImagesArray = () => map(getImagesMap());
 export const getImage = (name) => getImagesMap()[name];
 `;
 
-fs.writeFileSync(path.join(__dirname, '..', 'images.js'), template(images.sort().join(',\n')));
+fs.writeFileSync(path.join(__dirname, '..', 'lib', 'images.js'), template(images.sort().join(',\n')));

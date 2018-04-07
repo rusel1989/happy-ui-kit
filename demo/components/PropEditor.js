@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { Slider, Switch, View } from 'react-native';
+import { Slider, Switch, View, ScrollView } from 'react-native';
 import { SlidersColorPicker } from 'react-native-color';
+import map from 'lodash/map';
 
-import BaseTheme from '../theme/base';
-import Text from '../components/Text';
-import Button from '../components/Button';
+import BaseTheme from '../../lib/theme/base';
+import Text from '../../lib/components/Text';
+import Button from '../../lib/components/Button';
+import IconButton from '../../lib/components/IconButton';
+import Col from '../../lib/components/Col';
+import Row from '../../lib/components/Row';
+import TextField from '../../lib/components/TextField';
+import { getImagesMap } from '../../lib/images';
 
-import Col from '../components/Col';
-import Row from '../components/Row';
-import TextField from '../components/TextField';
+const icons = map(getImagesMap(), (value, key) => {
+  return key;
+}).filter((name) => name.indexOf('icon') > -1)
+  .map((name) => name.replace('icon-', ''));
 
 class PropEditor extends Component {
   state = {
@@ -87,9 +94,29 @@ class PropEditor extends Component {
     );
   }
 
+  renderIconPicker = () => {
+    return (
+      <ScrollView
+        style={{ flex: 1 }}
+        horizontal
+        showsHorizontalScrollIndicator={false}>
+        <Row justifyContent='flex-start'>
+          {icons.map((name, i) => (
+            <IconButton
+              size={40}
+              name={name}
+              onPress={() => this.props.onChange(name)} />
+          ))}
+        </Row>
+      </ScrollView>
+    );
+  }
+
   renderEditor () {
-    const { type } = this.props;
-    if (type === 'number') {
+    const { type, name } = this.props;
+    if (/icon/i.test(name)) {
+      return this.renderIconPicker();
+    } if (type === 'number') {
       return this.renderNumberEditor();
     } else if (type === 'string') {
       return this.renderStringEditor();
@@ -119,7 +146,7 @@ class PropEditor extends Component {
               Reset
             </Text.Light>)}
         </Row>
-        <Row style={{ height: 30, marginTop: 20 }}>
+        <Row style={{ height: 40, marginTop: 20 }}>
           {this.renderEditor()}
         </Row>
       </View>

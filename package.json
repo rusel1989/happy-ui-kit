@@ -1,6 +1,7 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "private": true,
+  "main": "lib/index.js",
+  "name": "happy-ui-kit",
+  "version": "0.0.1",
   "dependencies": {
     "color": "^3.0.0",
     "color-interpolate": "^1.0.2",
@@ -25,6 +26,7 @@
   "scripts": {
     "link": "node scripts/link.js",
     "fonts": "node scripts/fonts.js",
+    "demo": "node scripts/demo.js",
     "components": "node scripts/components.js",
     "images": "node scripts/images.js"
   },

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const files = fs.readdirSync(path.join(__dirname, '..', 'assets', 'fonts'));
+const files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'assets', 'fonts'));
 const fonts = [];
 
 files.forEach((filename, i) => {
@@ -18,4 +18,4 @@ ${androidFonts}
 };
 `;
 
-fs.writeFileSync(path.join(__dirname, '..', 'fonts.js'), template('', fonts.sort().join(',\n')));
+fs.writeFileSync(path.join(__dirname, '..', 'lib', 'fonts.js'), template('', fonts.sort().join(',\n')));

@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import { FlatList, TouchableHighlight, View, Text } from 'react-native';
+import { FlatList, TouchableHighlight, View, Text, StyleSheet } from 'react-native';
 import componentList from '../component-list.json';
+
+const styles = StyleSheet.create({
+  row: {
+    height: 50,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#DDD'
+  }
+});
 
 const Button = ({ label, onPress }) => {
   return (
     <View style={{ backgroundColor: 'white' }}>
-      <TouchableHighlight style={{ height: 50, paddingHorizontal: 16, justifyContent: 'center', borderBottomWidth: 1, borderBottomColor: '#DDD' }} onPress={onPress} underlayColor='#EEE'>
+      <TouchableHighlight
+        style={styles.row} onPress={onPress} underlayColor='#EEE'>
         <Text>{label}</Text>
       </TouchableHighlight>
     </View>
@@ -19,7 +30,9 @@ export default class App extends Component {
 
   renderItem = ({ item }) => {
     return (
-      <Button label={item} onPress={() => this.onItemPress(item)} />
+      <Button
+        label={item}
+        onPress={() => this.onItemPress(item)} />
     );
   }
 

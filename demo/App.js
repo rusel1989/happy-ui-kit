@@ -3,10 +3,10 @@ import React from 'react';
 import { AppLoading, Asset, Font } from 'expo';
 import { Platform, Image, UIManager, StatusBar } from 'react-native';
 
-import { getImagesArray } from './images';
-import * as fonts from './fonts';
+import { getImagesArray } from 'happy-ui-kit/images';
+import * as fonts from 'happy-ui-kit/fonts';
+import ThemeProvider from 'happy-ui-kit/theme/Provider';
 import RootNavigator from './navigation';
-import ThemeProvider from './theme/Provider';
 
 StatusBar.setBarStyle('light-content');
 console.disableYellowBox = true;

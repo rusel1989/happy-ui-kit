@@ -1,4 +1,4 @@
-import BaseTheme from '../theme/base';
+import BaseTheme from '../../lib/theme/base';
 
 export default {
   navigationOptions: {
