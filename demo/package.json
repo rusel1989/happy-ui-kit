@@ -13,6 +13,6 @@
     "react-native-color": "^0.0.10",
     "react-native-tab-view": "^0.0.77",
     "react-navigation": "^1.5.8",
-    "happy-ui-kit": "file:../lib"
+    "happy-ui-kit": "file:../"
   }
 }

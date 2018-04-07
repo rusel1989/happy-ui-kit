@@ -6,17 +6,17 @@ import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
 import merge from 'lodash/merge';
 
-import Col from '../../lib/components/Col';
-import Row from '../../lib/components/Row';
-import Separator from '../../lib/components/Separator';
-import Button from '../../lib/components/Button';
-import WheelPicker from '../../lib/components/WheelPicker';
-import IconButton from '../../lib/components/IconButton';
-import Text from '../../lib/components/Text';
-import TextField from '../../lib/components/TextField';
-import ParallaxView from '../../lib/components/ParallaxView';
-import HeaderButton from '../../lib/components/HeaderButton';
-import BaseTheme from '../../lib/theme/base';
+import Col from 'happy-ui-kit/lib/components/Col';
+import Row from 'happy-ui-kit/lib/components/Row';
+import Separator from 'happy-ui-kit/lib/components/Separator';
+import Button from 'happy-ui-kit/lib/components/Button';
+import WheelPicker from 'happy-ui-kit/lib/components/WheelPicker';
+import IconButton from 'happy-ui-kit/lib/components/IconButton';
+import Text from 'happy-ui-kit/lib/components/Text';
+import TextField from 'happy-ui-kit/lib/components/TextField';
+import ParallaxView from 'happy-ui-kit/lib/components/ParallaxView';
+import HeaderButton from 'happy-ui-kit/lib/components/HeaderButton';
+import BaseTheme from 'happy-ui-kit/lib/theme/base';
 
 import PropEditor from '../components/PropEditor';
 import * as componentProps from '../props';

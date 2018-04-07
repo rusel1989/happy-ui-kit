@@ -3,14 +3,14 @@ import { Slider, Switch, View, ScrollView } from 'react-native';
 import { SlidersColorPicker } from 'react-native-color';
 import map from 'lodash/map';
 
-import BaseTheme from '../../lib/theme/base';
-import Text from '../../lib/components/Text';
-import Button from '../../lib/components/Button';
-import IconButton from '../../lib/components/IconButton';
-import Col from '../../lib/components/Col';
-import Row from '../../lib/components/Row';
-import TextField from '../../lib/components/TextField';
-import { getImagesMap } from '../../lib/images';
+import BaseTheme from 'happy-ui-kit/lib/theme/base';
+import Text from 'happy-ui-kit/lib/components/Text';
+import Button from 'happy-ui-kit/lib/components/Button';
+import IconButton from 'happy-ui-kit/lib/components/IconButton';
+import Col from 'happy-ui-kit/lib/components/Col';
+import Row from 'happy-ui-kit/lib/components/Row';
+import TextField from 'happy-ui-kit/lib/components/TextField';
+import { getImagesMap } from 'happy-ui-kit/lib/images';
 
 const icons = map(getImagesMap(), (value, key) => {
   return key;

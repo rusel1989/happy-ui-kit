@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 9856,
+  "expoServerNgrokUrl": "https://xd-wxb.rusel1989.demo.exp.direct",
+  "packagerNgrokUrl": "https://packager.xd-wxb.rusel1989.demo.exp.direct",
+  "ngrokPid": 9976
 }

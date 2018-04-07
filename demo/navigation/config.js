@@ -1,4 +1,4 @@
-import BaseTheme from '../../lib/theme/base';
+import BaseTheme from 'happy-ui-kit/lib/theme/base';
 
 export default {
   navigationOptions: {

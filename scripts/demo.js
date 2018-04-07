@@ -14,7 +14,7 @@ const demoTemplate = (name) => {
   return `
 import React from 'react';
 import ${name} from './index';
-import BaseTheme from '../../theme/base';
+import BaseTheme from 'happy-ui-kit/lib/theme/base';
 
 const demo = {
   containerHeight: 150,
@@ -38,7 +38,7 @@ files.forEach((filename, i) => {
   if (filename.indexOf('.') < 0) {
     list.push(filename);
     // fs.writeFileSync(path.join(__dirname, '..', 'components', filename, 'Demo.js'), demoTemplate(filename));
-    imports.push(`import ${filename} from '../../lib/components/${filename}/Demo';`);
+    imports.push(`import ${filename} from 'happy-ui-kit/lib/components/${filename}/Demo';`);
     components.push(`  ${filename}: {
     screen: createDemoScreen(${filename}),
     navigationOptions: {
