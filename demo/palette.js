@@ -1,4 +1,4 @@
-export const palette = {
+export default {
   WHITE: '#ffffff',
   BLACK: '#000000',
   APP_BACKGROUND: '#BBDEFB',
@@ -16,12 +16,4 @@ export const palette = {
   APP_DANGER: '#F44336',
   APP_SEPARATOR: '#BDBDBD',
   APP_OVERLAY: 'rgba(38,50,56,0.4)'
-};
-
-export const spacing = {
-  xsmall: 4,
-  small: 8,
-  medium: 16,
-  large: 20,
-  xlarge: 32
 };

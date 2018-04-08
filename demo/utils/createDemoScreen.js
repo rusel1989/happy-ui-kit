@@ -1,26 +1,16 @@
 import React from 'react';
 import { View, LayoutAnimation, Platform, Picker } from 'react-native';
 import { TabViewAnimated } from 'react-native-tab-view';
+import { Col, Row, Separator, Button, WheelPicker, IconButton, Text, TextField, ParallaxView, HeaderButton } from 'happy-ui-kit';
+import { withTheme } from 'happy-ui-kit/lib/theme';
 import color from 'color';
 import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
 import merge from 'lodash/merge';
 
-import Col from 'happy-ui-kit/lib/components/Col';
-import Row from 'happy-ui-kit/lib/components/Row';
-import Separator from 'happy-ui-kit/lib/components/Separator';
-import Button from 'happy-ui-kit/lib/components/Button';
-import WheelPicker from 'happy-ui-kit/lib/components/WheelPicker';
-import IconButton from 'happy-ui-kit/lib/components/IconButton';
-import Text from 'happy-ui-kit/lib/components/Text';
-import TextField from 'happy-ui-kit/lib/components/TextField';
-import ParallaxView from 'happy-ui-kit/lib/components/ParallaxView';
-import HeaderButton from 'happy-ui-kit/lib/components/HeaderButton';
-import BaseTheme from 'happy-ui-kit/lib/theme/base';
-import withTheme from 'happy-ui-kit/lib/theme/withTheme';
-
 import PropEditor from '../components/PropEditor';
 import * as componentProps from '../props';
+import palette from '../palette';
 import { saveDemoProps, saveComponent } from './index'; // eslint-disable-line
 
 const CustomLayoutSpring = {
@@ -55,17 +45,17 @@ const getTonedColor = (hex, amount = 0.7) => {
 
 const getTextColors = (value) => {
   if (value === 'true') {
-    return [ BaseTheme.palette.APP_SUCCESS, getTonedColor(BaseTheme.palette.APP_SUCCESS) ];
+    return [ palette.APP_SUCCESS, getTonedColor(palette.APP_SUCCESS) ];
   } else if (value === 'false' || value === 'n/a') {
-    return [ BaseTheme.palette.APP_DANGER, getTonedColor(BaseTheme.palette.APP_DANGER, 0.5) ];
+    return [ palette.APP_DANGER, getTonedColor(palette.APP_DANGER, 0.5) ];
   } else if (/^#[a-fA-F0-9]{6}$/.test(value)) {
     return [ getTonedColor(value), value.toUpperCase() ];
   } else if (/^\d+$/.test(value)) {
-    return [ BaseTheme.palette.WHITE, getTonedColor(BaseTheme.palette.WHITE) ];
+    return [ palette.WHITE, getTonedColor(palette.WHITE) ];
   } else if (value === '() => {}') {
-    return [ BaseTheme.palette.APP_ACCENT, getTonedColor(BaseTheme.palette.APP_ACCENT, -0.7) ];
+    return [ palette.APP_ACCENT, getTonedColor(palette.APP_ACCENT, -0.7) ];
   } else {
-    return [ BaseTheme.palette.APP_PRIMARY_TEXT, getTonedColor(BaseTheme.palette.APP_PRIMARY_TEXT, 4) ];
+    return [ palette.APP_PRIMARY_TEXT, getTonedColor(palette.APP_PRIMARY_TEXT, 4) ];
   }
 };
 
@@ -332,7 +322,7 @@ const createDemoScreen = (demoConfig) => {
             <IconButton
               size={30}
               name='category'
-              color={BaseTheme.palette.APP_DARK_GREY}
+              color={palette.APP_DARK_GREY}
               onPress={this.toggleComponentEditor} />
           </Row>
           <Row style={{ height: 35 }}>
@@ -359,8 +349,8 @@ const createDemoScreen = (demoConfig) => {
                   <Col
                     alignItems='center'
                     style={{ width: 50, borderRadius: 2, marginVertical: 4, marginRight: 10 }}
-                    backgroundColor={BaseTheme.palette.APP_PRIMARY_DARKER}>
-                    <MonospaceText color={BaseTheme.palette.WHITE} fontSize={12}>
+                    backgroundColor={palette.APP_PRIMARY_DARKER}>
+                    <MonospaceText color={palette.WHITE} fontSize={12}>
                       {padEnd(item.typeName, 6, ' ')}
                     </MonospaceText>
                   </Col>
@@ -400,12 +390,12 @@ const createDemoScreen = (demoConfig) => {
           </Row>
           <TextField
             style={{ flex: 1, borderRadius: 4, height: 40 }}
-            backgroundColor={BaseTheme.palette.APP_LIGHT_GREY}
+            backgroundColor={palette.APP_LIGHT_GREY}
             onChangeText={(val) => this.setState({ newComponentName: val })}
             value={this.state.newComponentName} />
           <Row>
             <Button
-              labelColor={BaseTheme.palette.APP_DANGER}
+              labelColor={palette.APP_DANGER}
               uppercaseLabel={false}
               backgroundColor='white'
               labelSize={20}
@@ -416,10 +406,10 @@ const createDemoScreen = (demoConfig) => {
               backgroundColor='white'
               labelSize={20}
               label='Save'
-              labelColor={BaseTheme.palette.APP_PRIMARY_DARKER}
+              labelColor={palette.APP_PRIMARY_DARKER}
               onPress={this.saveComponent} />
           </Row>
-          {this.state.saveError && <Text.Light textAlign='center' color={BaseTheme.palette.APP_DANGER}>{this.state.saveError}</Text.Light>}
+          {this.state.saveError && <Text.Light textAlign='center' color={palette.APP_DANGER}>{this.state.saveError}</Text.Light>}
         </View>
       );
     }
@@ -458,7 +448,7 @@ const createDemoScreen = (demoConfig) => {
             uppercaseLabel={false}
             backgroundColor='white'
             labelSize={20}
-            labelColor={BaseTheme.palette.APP_PRIMARY_DARKER}
+            labelColor={palette.APP_PRIMARY_DARKER}
             onPress={this.resetCustomProps} />
         </View>
       );
@@ -470,7 +460,7 @@ const createDemoScreen = (demoConfig) => {
         <View style={{ flex: 1 }} >
           <ParallaxView
             teaserHeight={demoConfig.containerHeight}
-            backgroundColor={BaseTheme.palette.APP_SEPARATOR}
+            backgroundColor={palette.APP_SEPARATOR}
             headerBackgroundColor={'transparent'}
             cardStyle={{ marginHorizontal: 8, marginBottom: 80, elevation: 5 }}
             cardSpacingVertical={10}

@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { Slider, Switch, View, ScrollView } from 'react-native';
 import { SlidersColorPicker } from 'react-native-color';
-import map from 'lodash/map';
-
-import BaseTheme from 'happy-ui-kit/lib/theme/base';
-import Text from 'happy-ui-kit/lib/components/Text';
-import Button from 'happy-ui-kit/lib/components/Button';
-import IconButton from 'happy-ui-kit/lib/components/IconButton';
-import Col from 'happy-ui-kit/lib/components/Col';
-import Row from 'happy-ui-kit/lib/components/Row';
-import TextField from 'happy-ui-kit/lib/components/TextField';
+import { Text, Button, IconButton, Col, Row, TextField } from 'happy-ui-kit';
 import { getImagesMap } from 'happy-ui-kit/lib/images';
+import { withTheme } from 'happy-ui-kit/lib/theme';
+import map from 'lodash/map';
 
 const icons = map(getImagesMap(), (value, key) => {
   return key;
 }).filter((name) => name.indexOf('icon') > -1)
   .map((name) => name.replace('icon-', ''));
 
+@withTheme()
 class PropEditor extends Component {
   state = {
     colorPickerVisible: false
@@ -27,9 +22,9 @@ class PropEditor extends Component {
       <Slider
         step={1}
         style={{ flex: 1 }}
-        thumbTintColor={BaseTheme.palette.APP_LIGHT_GREY}
-        minimumTrackTintColor={BaseTheme.palette.APP_PRIMARY_DARKER}
-        maximumTrackTintColor={BaseTheme.palette.APP_PRIMARY_DARKER}
+        thumbTintColor={this.props.theme.palette.APP_LIGHT_GREY}
+        minimumTrackTintColor={this.props.theme.palette.APP_PRIMARY_DARKER}
+        maximumTrackTintColor={this.props.theme.palette.APP_PRIMARY_DARKER}
         minimumValue={this.props.minValue}
         maximumValue={this.props.maxValue}
         value={this.props.value}
@@ -41,7 +36,7 @@ class PropEditor extends Component {
     return (
       <TextField
         style={{ flex: 1, borderRadius: 4, height: 40 }}
-        backgroundColor={BaseTheme.palette.APP_LIGHT_GREY}
+        backgroundColor={this.props.theme.palette.APP_LIGHT_GREY}
         defaultValue={this.props.value}
         value={this.props.value}
         onChangeText={this.props.onChange} />
@@ -52,8 +47,8 @@ class PropEditor extends Component {
     return (
       <Col style={{ flex: 1 }}>
         <Switch
-          tintColor={BaseTheme.palette.APP_PRIMARY_LIGHT}
-          thumbTintColor={BaseTheme.palette.APP_LIGHT_GREY}
+          tintColor={this.props.theme.palette.APP_PRIMARY_LIGHT}
+          thumbTintColor={this.props.theme.palette.APP_LIGHT_GREY}
           value={!!this.props.value}
           onValueChange={this.props.onChange} />
       </Col>
@@ -141,7 +136,7 @@ class PropEditor extends Component {
           {this.props.value !== this.props.defaultValue && (
             <Text.Light
               onPress={() => this.props.onChange(this.props.defaultValue)}
-              color={BaseTheme.palette.APP_PRIMARY}
+              color={this.props.theme.palette.APP_PRIMARY}
               size='xlarge'>
               Reset
             </Text.Light>)}
@@ -161,7 +156,7 @@ PropEditor.propTypes = {
 };
 
 PropEditor.defaultProps = {
-  defaultColor: BaseTheme.palette.APP_PRIMARY,
+  defaultColor: this.props.theme.palette.APP_PRIMARY,
   onChange: () => {},
   maxValue: 100,
   minValue: 0

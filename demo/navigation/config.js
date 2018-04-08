@@ -1,17 +1,17 @@
-import BaseTheme from 'happy-ui-kit/lib/theme/base';
+import palette from '../palette';
 
 export default {
   navigationOptions: {
     gesturesEnabled: false,
     headerStyle: {
-      backgroundColor: BaseTheme.palette.APP_PRIMARY,
-      borderBottomColor: BaseTheme.palette.APP_PRIMARY,
+      backgroundColor: palette.APP_PRIMARY,
+      borderBottomColor: palette.APP_PRIMARY,
       elevation: 0
     },
-    headerTintColor: BaseTheme.palette.WHITE,
+    headerTintColor: palette.WHITE,
     headerTitleStyle: {
       fontWeight: 'bold',
-      color: BaseTheme.palette.WHITE,
+      color: palette.WHITE,
       fontSize: 18
     }
   },
