@@ -3,12 +3,10 @@ import { LayoutAnimation } from 'react-native';
 import { HeaderButton } from 'happy-ui-kit';
 
 import { CustomLayoutSpring } from './animations';
-import { saveComponent, propsSorter, parseDemoConfig } from './index';
+import { saveComponent, propsSorter, parseDemoConfig, withDocs } from './index';
 import Demo from '../components/DemoScreen';
 
 const createDemoScreen = (rawDemoConfig) => {
-  const demoConfig = parseDemoConfig(rawDemoConfig);
-
   class DemoScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
       const isEditing = navigation.getParam('isEditing');
@@ -18,12 +16,17 @@ const createDemoScreen = (rawDemoConfig) => {
       } : {};
     }
 
-    state = {
-      selectedIndex: 0,
-      routes: demoConfig.routes,
-      sortBy: 'name',
-      customProps: {},
-      editingOptions: []
+    constructor (props) {
+      super(props);
+      const demoConfig = parseDemoConfig(rawDemoConfig, props.docs);
+      this.state = {
+        selectedIndex: 0,
+        routes: demoConfig.routes,
+        sortBy: 'name',
+        customProps: {},
+        editingOptions: [],
+        demoConfig
+      };
     }
 
     onSortPropsRequest = (sortBy) => {
@@ -57,8 +60,7 @@ const createDemoScreen = (rawDemoConfig) => {
     }
 
     onResetAllPress = () => {
-      const { Component } = demoConfig.components[this.state.selectedIndex];
-      this.setState({ customProps: Component.defaultProps });
+      this.setState({ customProps: this.getDefaultProps() });
     }
 
     onComponentNameChange = (newComponentName) => {
@@ -81,13 +83,13 @@ const createDemoScreen = (rawDemoConfig) => {
           selectedIndex={this.state.selectedIndex}
           customProps={this.state.customProps}
           onComponentTabChange={this.onComponentTabChange}
-          componentInfo={demoConfig.components[this.state.selectedIndex]}
-          containerHeight={demoConfig.containerHeight}
-          containerType={demoConfig.containerType}
-          sceneConfig={demoConfig.sceneConfig}
-          hasMultipleComponents={demoConfig.components.length > 1}
-          componentContainerStyle={demoConfig.componentContainerStyle}
-          layout={demoConfig.headerLayout}
+          componentInfo={this.state.demoConfig.components[this.state.selectedIndex]}
+          containerHeight={this.state.demoConfig.containerHeight}
+          containerType={this.state.demoConfig.containerType}
+          sceneConfig={this.state.demoConfig.sceneConfig}
+          hasMultipleComponents={this.state.demoConfig.components.length > 1}
+          componentContainerStyle={this.state.demoConfig.componentContainerStyle}
+          layout={this.state.demoConfig.headerLayout}
           onSortRequest={this.onSortPropsRequest}
           onEditPress={this.onOpenEditorPress}
           selectedPropParams={this.getSelectedPropParams()}
@@ -105,10 +107,9 @@ const createDemoScreen = (rawDemoConfig) => {
     }
 
     showComponentEditor = () => {
-      const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
       this.animateLayout();
       this.setComponentEditorHeader();
-      this.setComponentEditorParams(Component, parsedProps);
+      this.setComponentEditorParams();
     }
 
     hideComponentEditor = () => {
@@ -136,10 +137,34 @@ const createDemoScreen = (rawDemoConfig) => {
     }
 
     sortProps = (sortBy) => {
-      const selectedComponent = demoConfig.components[this.state.selectedIndex];
-      demoConfig.components[this.state.selectedIndex].parsedProps = selectedComponent.parsedProps.sort(propsSorter(sortBy));
+      const selectedComponent = this.state.demoConfig.components[this.state.selectedIndex];
+      this.state.demoConfig.components[this.state.selectedIndex].parsedProps = selectedComponent.parsedProps.sort(propsSorter(sortBy));
       this.animateLayout();
       this.setState({ sortBy });
+    }
+
+    getComponentInfo = (prop) => {
+      const info = this.state.demoConfig.components[this.state.selectedIndex];
+      if (prop) {
+        return info[prop];
+      }
+      return info;
+    }
+
+    getComponent = () => {
+      return this.getComponentInfo('Component');
+    }
+
+    getParsedProps = () => {
+      return this.getComponentInfo('parsedProps');
+    }
+
+    getDefaultProps = () => {
+      return this.getComponentInfo('Component').defaultProps || {};
+    }
+
+    getDefaultValue = (propName) => {
+      return this.getDefaultProps()[propName];
     }
 
     animateLayout = () => {
@@ -151,21 +176,19 @@ const createDemoScreen = (rawDemoConfig) => {
     }
 
     getComponentMeta = () => {
-      const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
-      const editableProps = this.getEditingOptions(Component, parsedProps);
+      const editingOptions = this.getEditingOptions();
       const componentMeta = {
-        baseComponentName: Component.displayName,
-        propTypes: editableProps,
+        baseComponentName: this.getComponent().displayName,
+        propTypes: editingOptions,
         defaultProps: { ...this.state.customProps }
       };
       return componentMeta;
     }
 
     getEditingOptions = () => {
-      const { Component, parsedProps } = demoConfig.components[this.state.selectedIndex];
-      return parsedProps
+      return this.getParsedProps()
         .map(({ name, type }) =>
-          ({ name, type, defaultValue: Component.defaultProps[name] })
+          ({ name, type, defaultValue: this.getDefaultValue(name) })
         ).filter((item) => item.type !== 'func');
     }
 
@@ -186,13 +209,13 @@ const createDemoScreen = (rawDemoConfig) => {
       });
     }
 
-    setComponentEditorParams = (Component, parsedProps) => {
-      const editableProps = this.getEditingOptions(Component, parsedProps);
+    setComponentEditorParams = () => {
+      const editingOptions = this.getEditingOptions();
       this.setState({
         isEditing: true,
-        selectedProp: editableProps[0].name,
-        customProps: Component.defaultProps,
-        editingOptions: editableProps
+        selectedProp: editingOptions[0].name,
+        customProps: this.getDefaultProps(),
+        editingOptions
       });
     }
 
@@ -209,7 +232,7 @@ const createDemoScreen = (rawDemoConfig) => {
     }
   }
 
-  return DemoScreen;
+  return withDocs()(DemoScreen);
 };
 
 export default createDemoScreen;

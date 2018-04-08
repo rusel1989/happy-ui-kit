@@ -1,9 +1,7 @@
 import keys from 'lodash/keys';
 import merge from 'lodash/merge';
 import map from 'lodash/map';
-import docs from '../docs.json';
 
-const docsArray = map(docs);
 const defaultRowLayout = { justifyContent: 'flex-start', alignItems: 'center' };
 const defaultColumnLayout = { alignItems: 'stretch', justifyContent: 'center' };
 const defaultLayouts = {
@@ -11,7 +9,7 @@ const defaultLayouts = {
   column: defaultColumnLayout
 };
 
-const parseDemoConfig = (demoConfig) => {
+const parseDemoConfig = (demoConfig, docs) => {
   const defaultLayout = defaultLayouts[demoConfig.containerType];
 
   demoConfig.headerLayout = merge({}, defaultLayout, demoConfig.containerAlignment);
@@ -23,7 +21,7 @@ const parseDemoConfig = (demoConfig) => {
 
   demoConfig.components.forEach((item, i) => {
     const { Component } = item;
-    const componentDoc = docsArray.find((c) => c.displayName === Component.displayName);
+    const componentDoc = docs.find((c) => c.displayName === Component.displayName);
 
     demoConfig.sceneConfig[Component.displayName] = item;
     item.parsedProps = [];

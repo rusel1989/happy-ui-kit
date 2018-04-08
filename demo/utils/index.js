@@ -1,5 +1,6 @@
 export { default as createDemoScreen } from './createDemoScreen';
 export { default as parseDemoConfig } from './parseDemoConfig';
+export { default as withDocs } from './withDocs';
 
 export const saveComponent = (name, config) => {
   return fetch(`http://192.168.1.103:59590/save-component/${name}`, {
