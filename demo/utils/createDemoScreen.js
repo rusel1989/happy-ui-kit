@@ -2,94 +2,20 @@ import React from 'react';
 import { View, LayoutAnimation, Platform, Picker } from 'react-native';
 import { TabViewAnimated } from 'react-native-tab-view';
 import { Col, Row, Separator, Button, WheelPicker, IconButton, Text, TextField, ParallaxView, HeaderButton } from 'happy-ui-kit';
-import { withTheme } from 'happy-ui-kit/lib/theme';
-import color from 'color';
 import keys from 'lodash/keys';
 import padEnd from 'lodash/padEnd';
 import merge from 'lodash/merge';
 
-import PropEditor from '../components/PropEditor';
+import { saveDemoProps, saveComponent, propsSorter, getDisplayName, getPropsObjectName } from './index'; // eslint-disable-line
+import { CustomLayoutSpring } from './animations';
+import { getTextColors } from './colors';
+import ComponentEditor from '../components/ComponentEditor';
+import PropList from '../components/PropList';
+
 import * as componentProps from '../props';
 import palette from '../palette';
-import { saveDemoProps, saveComponent } from './index'; // eslint-disable-line
 
-const CustomLayoutSpring = {
-  duration: 400,
-  create: {
-    type: LayoutAnimation.Types.spring,
-    property: LayoutAnimation.Properties.scaleXY,
-    springDamping: 0.7
-  },
-  update: {
-    type: LayoutAnimation.Types.spring,
-    springDamping: 0.7
-  }
-};
 
-// Linear with easing
-// eslint-disable-next-line
-const CustomLayoutLinear = {
-  duration: 200,
-  create: {
-    type: LayoutAnimation.Types.linear,
-    property: LayoutAnimation.Properties.opacity
-  },
-  update: {
-    type: LayoutAnimation.Types.curveEaseInEaseOut
-  }
-};
-
-const getTonedColor = (hex, amount = 0.7) => {
-  return color(hex).isDark() ? color(hex).lighten(amount).hex() : color(hex).darken(amount).hex();
-};
-
-const getTextColors = (value) => {
-  if (value === 'true') {
-    return [ palette.APP_SUCCESS, getTonedColor(palette.APP_SUCCESS) ];
-  } else if (value === 'false' || value === 'n/a') {
-    return [ palette.APP_DANGER, getTonedColor(palette.APP_DANGER, 0.5) ];
-  } else if (/^#[a-fA-F0-9]{6}$/.test(value)) {
-    return [ getTonedColor(value), value.toUpperCase() ];
-  } else if (/^\d+$/.test(value)) {
-    return [ palette.WHITE, getTonedColor(palette.WHITE) ];
-  } else if (value === '() => {}') {
-    return [ palette.APP_ACCENT, getTonedColor(palette.APP_ACCENT, -0.7) ];
-  } else {
-    return [ palette.APP_PRIMARY_TEXT, getTonedColor(palette.APP_PRIMARY_TEXT, 4) ];
-  }
-};
-
-const MonospaceText = ({ children, textAlign, backgroundColor, color, fontWeight = '900', fontSize }) => {
-  return (
-    <Text.Monospace
-      numberOfLines={1}
-      color={color}
-      fontWeight={fontWeight}
-      size={fontSize}
-      style={{ backgroundColor, paddingHorizontal: 4, paddingVertical: 2, textAlign }}>
-      {children}
-    </Text.Monospace>
-  );
-};
-
-const propsSorter = (key) => (a, b) => {
-  if (b.def === 'n/a') return -1;
-  if (a[key] < b[key]) return -1;
-  if (a[key] > b[key]) return 1;
-  return 0;
-};
-
-const getDisplayName = (c) => {
-  const displayName = c && c.displayName && c.displayName.replace('.', '');
-  return displayName;
-};
-
-const getPropsObjectName = (displayName) => {
-  if (!displayName) {
-    return null;
-  }
-  return displayName + 'Props';
-};
 
 const createDemoScreen = (demoConfig) => {
   const sceneConfig = {};
@@ -316,61 +242,14 @@ const createDemoScreen = (demoConfig) => {
 
     renderPropsList = ({ parsedProps }) => {
       return (
-        <View>
-          <Row>
-            <Text.Light size='xlarge'>Props</Text.Light>
-            <IconButton
-              size={30}
-              name='category'
-              color={palette.APP_DARK_GREY}
-              onPress={this.toggleComponentEditor} />
-          </Row>
-          <Row style={{ height: 35 }}>
-            <Row>
-              <Col style={{ width: 60 }} alignItems='flex-start'>
-                <Text.Medium onPress={() => this.sortProps('typeName')}>
-                  Type
-                </Text.Medium>
-              </Col>
-              <Text.Medium onPress={() => this.sortProps('key')}>
-                Name
-              </Text.Medium>
-            </Row>
-            <Text.Medium stle={{ alignSelf: 'flex-end' }} onPress={() => this.sortProps('def')}>
-              Default value
-            </Text.Medium>
-          </Row>
-          <Separator style={{ marginBottom: 10 }} />
-          {parsedProps.map((item, index) => {
-            const [ textColor, backgroundColor ] = getTextColors(item.def);
-            return (
-              <Row key={item.key} style={{ height: 35 }} alignItems='stretch'>
-                <Row>
-                  <Col
-                    alignItems='center'
-                    style={{ width: 50, borderRadius: 2, marginVertical: 4, marginRight: 10 }}
-                    backgroundColor={palette.APP_PRIMARY_DARKER}>
-                    <MonospaceText color={palette.WHITE} fontSize={12}>
-                      {padEnd(item.typeName, 6, ' ')}
-                    </MonospaceText>
-                  </Col>
-                  <Text.Regular>
-                    {item.key}
-                  </Text.Regular>
-                </Row>
-                <Col style={{ borderRadius: 2, marginVertical: 4 }} backgroundColor={backgroundColor}>
-                  <MonospaceText color={textColor} fontSize={12} >
-                    {item.def}
-                  </MonospaceText>
-                </Col>
-              </Row>
-            );
-          })}
-        </View>);
+        <PropList
+          parsedProps={parsedProps}
+          onSortRequest={this.sortProps}
+          onEditPress={this.showComponentEditor} />
+      );
     }
 
     renderSelectedPropertyEditor = () => {
-      const selectedPropParams = this.getSelectedPropParams();
       // console.log('test', selectedPropParams);
       return (
         <PropEditor
@@ -382,76 +261,25 @@ const createDemoScreen = (demoConfig) => {
       );
     }
 
-    renderSaveConfirmation = () => {
-      return (
-        <View>
-          <Row style={{ height: 50 }}>
-            <Text.Light size='large'>Enter new component name</Text.Light>
-          </Row>
-          <TextField
-            style={{ flex: 1, borderRadius: 4, height: 40 }}
-            backgroundColor={palette.APP_LIGHT_GREY}
-            onChangeText={(val) => this.setState({ newComponentName: val })}
-            value={this.state.newComponentName} />
-          <Row>
-            <Button
-              labelColor={palette.APP_DANGER}
-              uppercaseLabel={false}
-              backgroundColor='white'
-              labelSize={20}
-              label='Cancel'
-              onPress={() => this.setState({ showSaveConfirmation: false })} />
-            <Button
-              uppercaseLabel={false}
-              backgroundColor='white'
-              labelSize={20}
-              label='Save'
-              labelColor={palette.APP_PRIMARY_DARKER}
-              onPress={this.saveComponent} />
-          </Row>
-          {this.state.saveError && <Text.Light textAlign='center' color={palette.APP_DANGER}>{this.state.saveError}</Text.Light>}
-        </View>
-      );
-    }
-
     renderPropsEditor = () => {
-      if (this.state.showSaveConfirmation) {
-        return this.renderSaveConfirmation();
-      }
-      const wheelValues = this.state.editingOptions.map(({ name }) => name);
+      const selectedPropParams = this.getSelectedPropParams();
+
       return (
-        <View>
-          {this.renderSelectedPropertyEditor()}
-          <Row style={{ height: 140, zIndex: -1 }} justifyContent='center'>
-            {Platform.OS === 'ios' ? (
-              <Picker
-                style={{ flex: 1 }}
-                selectedValue={this.state.selectedProp}
-                onValueChange={this.updateSelectedProp}>
-                {wheelValues.map((prop, i) => {
-                  return (
-                    <Picker.Item label={prop} value={prop} key={i} />
-                  );
-                })}
-              </Picker>
-            ) : (
-              <WheelPicker
-                height={120}
-                wheelWidth={180}
-                onChange={({ selectedProp }) => this.updateSelectedProp(selectedProp)}
-                value={{ selectedProp: wheelValues[0] }}
-                wheels={[{ id: 'selectedProp', values: wheelValues }]} />
-            )}
-          </Row>
-          <Button
-            label='Restore default props'
-            uppercaseLabel={false}
-            backgroundColor='white'
-            labelSize={20}
-            labelColor={palette.APP_PRIMARY_DARKER}
-            onPress={this.resetCustomProps} />
-        </View>
-      );
+        <ComponentEditor
+          onComponentNameChange={(val) => this.setState({ newComponentName: val })}
+          componentName={this.state.newComponentName}
+          error={this.state.saveError}
+          onSavePress={this.saveComponent}
+          onCancelPress={() => this.setState({ showSaveConfirmation: false })}
+          editingOptions={this.state.editingOptions}
+          selectedPropParams={selectedPropParams}
+          onClosePress={this.toggleComponentEditor}
+          onSelectedPropChange={this.onSelectedPropChange}
+          selectedProp={this.state.selectedProp}
+          selectedPropValue={this.state.customProps[this.state.selectedProp]}
+          onPropSelect={this.updateSelectedProp}
+          onResetAllPress={this.resetCustomProps} />
+      )
     }
 
     render () {
@@ -461,7 +289,7 @@ const createDemoScreen = (demoConfig) => {
           <ParallaxView
             teaserHeight={demoConfig.containerHeight}
             backgroundColor={palette.APP_SEPARATOR}
-            headerBackgroundColor={'transparent'}
+            headerBackgroundColor='rgba(0,0,0,0)'
             cardStyle={{ marginHorizontal: 8, marginBottom: 80, elevation: 5 }}
             cardSpacingVertical={10}
             cardSpacingHorizontal={16}
@@ -478,7 +306,7 @@ const createDemoScreen = (demoConfig) => {
     }
   }
 
-  return withTheme()(DemoScreen);
+  return DemoScreen;
 };
 
 export default createDemoScreen;

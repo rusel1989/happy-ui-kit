@@ -27,3 +27,22 @@ export const saveComponent = (name, config) => {
       console.log(err);
     });
 };
+
+export const propsSorter = (key) => (a, b) => {
+  if (b.def === 'n/a') return -1;
+  if (a[key] < b[key]) return -1;
+  if (a[key] > b[key]) return 1;
+  return 0;
+};
+
+export const getDisplayName = (c) => {
+  const displayName = c && c.displayName && c.displayName.replace('.', '');
+  return displayName;
+};
+
+export const getPropsObjectName = (displayName) => {
+  if (!displayName) {
+    return null;
+  }
+  return displayName + 'Props';
+};

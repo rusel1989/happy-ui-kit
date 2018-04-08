@@ -84,6 +84,7 @@ class PropEditor extends Component {
           okLabel='Select'
           cancelLabel='Cancel'
           returnMode='hex'
+          swatchesLabel=''
           visible={this.state.colorPickerVisible} />
       </Col>
     );
@@ -156,7 +157,7 @@ PropEditor.propTypes = {
 };
 
 PropEditor.defaultProps = {
-  defaultColor: this.props.theme.palette.APP_PRIMARY,
+  defaultColor: '#ffffff',
   onChange: () => {},
   maxValue: 100,
   minValue: 0
