@@ -17,6 +17,7 @@ import TextField from 'happy-ui-kit/lib/components/TextField';
 import ParallaxView from 'happy-ui-kit/lib/components/ParallaxView';
 import HeaderButton from 'happy-ui-kit/lib/components/HeaderButton';
 import BaseTheme from 'happy-ui-kit/lib/theme/base';
+import withTheme from 'happy-ui-kit/lib/theme/withTheme';
 
 import PropEditor from '../components/PropEditor';
 import * as componentProps from '../props';
@@ -487,7 +488,7 @@ const createDemoScreen = (demoConfig) => {
     }
   }
 
-  return DemoScreen;
+  return withTheme()(DemoScreen);
 };
 
 export default createDemoScreen;
