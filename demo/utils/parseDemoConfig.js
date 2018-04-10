@@ -37,6 +37,7 @@ const parseDemoConfig = (demoConfig, docs) => {
         if (type === 'custom') {
           type = info.type.raw.replace('ExtraPropTypes.', '');
         }
+        console.log(info)
         return {
           name,
           type,
