@@ -1,7 +1,7 @@
 {
   "main": "lib/index.js",
   "name": "happy-ui-kit",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "dependencies": {
     "color": "^3.0.0",
     "color-interpolate": "^1.0.2",
